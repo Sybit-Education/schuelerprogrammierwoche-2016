@@ -18,7 +18,7 @@ Schülerprogrammierwoche der Firma Sybit im Rahmen des Sommerferienprogramms der
 ## Datenbank initial einrichten
 Bevor man das Projekt starten kann, muss die Datenbank eingerichtet werden.
 Dazu das Script [create-database.sql](src/main/resources/db/migration/create_database.sql) auf der MySQL-Datenbank initial ausführen. Wie das geht, ist in folgendem [Video](https://www.youtube.com/watch?v=eHDz7uWjCyU) beschrieben.
-Falls das Projekt bereits schon mal installiert war muss man beachten, das die User gelöscht werden bevor man die Datenbank intitial ausführen kann, da es sonst fehler gibt. 
+Falls das Projekt bereits schon mal installiert war, muss man beachten, dass die User gelöscht werden bevor man die Datenbank intitial ausführen kann, da es sonst Fehler gibt. 
 
 ## Projekt kompilieren
 Entweder mit dem Maven-Kommando:
