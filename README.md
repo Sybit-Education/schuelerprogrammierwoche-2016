@@ -2,7 +2,7 @@
 Schülerprogrammierwoche der Firma Sybit im Rahmen des Sommerferienprogramms der Stadt Radolfzell.
 
 [![Apache License](http://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](LICENSE)
-[![Build Status](https://travis-ci.org/Sybit-Education/schuelerprogrammierwoche-2016.svg?branch=develop)](https://travis-ci.org//Sybit-Education/schuelerprogrammierwoche-2016)
+[![Build Status](https://travis-ci.org/Sybit-Education/schuelerprogrammierwoche-2016.svg?branch=develop)](https://travis-ci.org/Sybit-Education/schuelerprogrammierwoche-2016)
 
 # Taschengeldbörse
 
