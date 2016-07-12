@@ -4,17 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sybit.education</groupId>
-    <artifactId>Taschengeldboerse</artifactId>
+    <artifactId>Taschengeldboerse-2016</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Taschengeldboerse</name>
+    <name>Taschengeldboerse 2016</name>
     <scm>
-        <connection>https://github.com/Sybit-Education/taschengeldboerse.git</connection>
+        <connection>https://github.com/Sybit-Education/schuelerprogrammierwoche-2016.git</connection>
     </scm>        
     <ciManagement>
-        <system>Jenkins</system>
-        <url></url>
+        <system>Travis-CI</system>
+        <url>https://travis-ci.org/Sybit-Education/schuelerprogrammierwoche-2016</url>
     </ciManagement>      
     
     <properties>
@@ -52,24 +52,24 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.0</version>
+            <version>1.7.21</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.0</version>
+            <version>1.7.21</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.0</version>
+            <version>1.7.21</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.14</version>
+            <version>1.2.17</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -125,26 +125,21 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${org.springframework-version}</version>
-        </dependency>  
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>1.10.0.RELEASE</version>
-        </dependency>          
+        </dependency>           
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.7.1.RELEASE</version>
+            <version>1.10.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jdbc-core</artifactId>
-            <version>1.1.0.RELEASE</version>
+            <version>1.2.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-oracle</artifactId>
-            <version>1.1.0.RELEASE</version>
+            <version>1.2.1.RELEASE</version>
         </dependency>        
       
         <!-- Spring Security -->
@@ -177,7 +172,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.0.0.Final</version>
+            <version>5.1.0.Final</version>
             <type>jar</type>
             <optional>false</optional>
             <exclusions>
@@ -194,7 +189,7 @@
         <dependency>
             <groupId>org.hibernate.common</groupId>
             <artifactId>hibernate-commons-annotations</artifactId>
-            <version>5.0.0.Final</version>
+            <version>5.0.1.Final</version>
             <optional>false</optional>
             <exclusions>
                 <exclusion>
@@ -211,7 +206,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.36</version>
+            <version>6.0.3</version>
         </dependency>   
         <dependency>
             <groupId>javax.enterprise</groupId>
@@ -232,7 +227,7 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.3.2</version>
+            <version>2.3.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -258,30 +253,17 @@
         <dependency>
             <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>
-            <version>2.5.1</version>
+            <version>2.5.2</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
     </dependencies>
-    <!--
-      <dependencyManagement>
-          <dependencies>
-              <dependency>
-                  <groupId>org.springframework</groupId>
-                  <artifactId>spring-framework-bom</artifactId>
-                  <version>${org.springframework-version}</version>
-                  <type>pom</type>
-                  <scope>import</scope>
-              </dependency>		
-          </dependencies>
-      </dependencyManagement>
-    -->
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -293,7 +275,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.6</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -301,7 +283,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
+                <version>2.10</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -326,7 +308,7 @@
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>4.0.3</version>
                 <configuration>
                     <!-- <url>jdbc:mysql://leda.sybit.de:3306/sybib?zeroDateTimeBehavior=convertToNull</url> -->
                     <url>${database.url}</url>
@@ -345,7 +327,7 @@
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.34</version>
+                        <version>6.0.3</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -361,7 +343,7 @@
             <properties>
                 <database.url>jdbc:mysql://localhost:3306/taschengeldboerse?zeroDateTimeBehavior=convertToNull</database.url>
                 <user>boersenadmin</user>
-                <password>admin2015!</password>
+                <password>admin2016!</password>
             </properties>       
         </profile>
         <profile>
@@ -378,7 +360,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
+                        <version>2.3</version>
                         <configuration>
                             <outputDirectory>webapps</outputDirectory>
                             <warName>ROOT</warName>
@@ -388,7 +370,4 @@
             </build>
         </profile>
     </profiles>
-
-
-
 </project>
