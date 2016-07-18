@@ -22,19 +22,18 @@
            name="${_csrf.parameterName}"
            value="${_csrf.token}" />
 </form>
+<footer class="footer navbar-fixed-bottom" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-
-<div class="row">
-
-    <div class="col-md-12">
-
-        &copy; 2016 Sybit | 
-        <a href="<c:url value="/impressum" />">Impressum</a> |
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            Benutzer: ${pageContext.request.userPrincipal.name} | 
-            <a href="javascript:formSubmit()"> Logout</a>	
-        </c:if>
+                &copy; 2016 Sybit | 
+                <a href="<c:url value="/impressum" />">Impressum</a> |
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    Benutzer: ${pageContext.request.userPrincipal.name} | 
+                    <a href="javascript:formSubmit()"> Logout</a>	
+                </c:if>
+            </div>
+        </div>
     </div>
-</div>
-
-
+</footer>
