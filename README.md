@@ -1,11 +1,19 @@
 # Sybit Schülerprogrammierwoche 2016
-Schülerprogrammierwoche der Firma Sybit im Rahmen des Sommerferienprogramms der Stadt Radolfzell.
 
 [![Apache License](http://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](LICENSE)
 [![Build Status](https://travis-ci.org/Sybit-Education/schuelerprogrammierwoche-2016.svg?branch=develop)](https://travis-ci.org/Sybit-Education/schuelerprogrammierwoche-2016)
 
+**Schülerprogrammierwoche der Firma Sybit im Rahmen des Sommerferienprogramms der Stadt Radolfzell.**
+
+Innerhalb einer Woche programmieren 12 Schüler zusammen mit den Auszubildenden der Firma Sybit eine Taschengeldbörse!
+
+
 # Taschengeldbörse
 
+Das Projekt umfasst die "Taschengeldbörse". 
+
+Die Taschengeldbörse vermittelt kleine Jobs von Erwachsenen, die im Haus und Garten eine Hilfe möchten.
+Wenn ein Schüler Interesse hast und  ab und zu sein Taschengeld aufbessern will, kann er über diese Börse einen job suchen.
 
 # Projekt-Setup
 
@@ -29,4 +37,10 @@ Oder in Netbeans direkt mit "Run/Build Project" ausführen.
 # Taschengeldbörse starten
 Wenn es beim Kompilieren zu keinen Fehlern kam, dann kann nun in Netbeans mit "Run/Run Project" die Taschengeldbörse gestartet werden. 
 Nach einigen Augenblicken sollte sich der Browser mit folgender URL öffen: [http://localhost:8080/taschengeldboerse](http://localhost:8080/taschengeldboerse)
+
+Initial sind Standard-Benutzer für folgende Benutzergruppen angelegt:
+
+- Benutzer Schüler: schueler/schueler
+- Benutzer Anbieter: anbieter/anbieter
+- Benutzer Admin: admin/admin
 
