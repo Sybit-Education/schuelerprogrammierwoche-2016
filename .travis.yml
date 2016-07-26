@@ -1,12 +1,17 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 sudo: false
-
 services:
-  - mysql
-  
-script: "mvn clean install -Denv=travis"
-
+- mysql
+script: mvn clean install -Denv=travis
 before_install:
-  - mysql -e "create database IF NOT EXISTS taschengeldboerse;CREATE USER 'boersenadmin'@'%' IDENTIFIED BY 'admin2015!'; GRANT ALL PRIVILEGES ON taschengeldboerse.* TO 'boersenadmin'@'%';" -uroot
+- mysql -e "create database IF NOT EXISTS taschengeldboerse;CREATE USER 'boersenadmin'@'%' IDENTIFIED BY 'admin2015!'; GRANT ALL PRIVILEGES ON taschengeldboerse.* TO 'boersenadmin'@'%';" -uroot
+deploy:
+  provider: releases
+  api_key:
+    secure: C0NVkJKPeDPJSLZAm1PmiEvV/sDLZzyLwWv87sMYYrzBAIGtjy3bcx/7oR6bKcDmnC6XfY1uOw2t/ZiUTocIRTrykSDzwm8whUB1fZKnX1o39NU3+fgPb/P6hvyXlmVLEwoWVCvRYqQk6TCXiLSjc2v7fgQ74ElA+lnE/yM+MkEeRv5ShocXI+L0UU/mx5+MG0mhiqgUO97MECdPFRYyjOUpw8+kNVtMLnH1ay0M9Ox2cSh0Cz2jcKHZ5M8u7Wt4ykRGJfJhiBskmAtvL1oGooDiTmSO/azfT14Igh3hnEurDHwCj6/3TSqZuGa5I6dLo/8XV96q6hQnYLp/FJDSlNmyUHJ339jUwIZXjJ4SKBBKapBdNMwEPKct64knqJMviGFBtFXtCiewuOrEZs2WOwUkVD6uu1fH7Va+iYWA9Ft0vTaO8ftjY/YV/9Vct9oI74Oak5McowSIAgZ8w05cWkxPOQLiG31ospc6Hb0W9Gt/TCp9O5KLdQ+7DSD9hrqKBV7cgF2muBfqDtCcc3sB43sU7QG3TjdLKTln+GZkjxRWw2zsoPwNRjz7HjSPYvWnXR5MdEeKWW+vhMQjMv/w6viPcA4Phx0XS+deum0X8O0F6QGJhmmbnzhMNL/jsd6G1R6n4nkAGaSfDHtFSuzcomMX4Po46MTzxj+WaSKrqmA=
+  file: target/*.war
+  on:
+    repo: Sybit-Education/schuelerprogrammierwoche-2016
+    branch: develop
