@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by stl on 08.06.2015.
+ * Controller für die Registrierung von Benutzern.
+ * Es gibt Anbieter und Schueler.
  */
 @Controller
 public class UserController {
@@ -46,7 +47,7 @@ public class UserController {
     }
 
     /**
-     * Save the user.
+     * Benutzer registrieren.
      *
      * @param user
      * @param model
@@ -66,7 +67,7 @@ public class UserController {
     }
 
     /**
-     * Save the user.
+     * 2. Schritt: Schueler oder Anbieter.
      *
      * @param user
      * @param model
@@ -86,11 +87,13 @@ public class UserController {
                 modelAndView.addObject("schueler", schueler);
                 modelAndView.setViewName("registrieren-schueler");
                 break;
+                
             case "ROLE_ANBIETER":
                 Anbieter anbieter = new Anbieter(user);
                 modelAndView.addObject("anbieter", anbieter);
                 modelAndView.setViewName("registrieren-anbieter");
                 break;
+                
             default:
                 throw new IllegalArgumentException("Falsche Rolle: " + user.getAuthority());
         }

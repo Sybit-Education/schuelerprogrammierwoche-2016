@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import com.sybit.education.taschengeldboerse.repository.JobsRepository;
 
 /**
- *
- * @author sat
+ * Implementierung des Services für die Jobs.
+ * 
  */
 @Service
 public class JobsServiceImpl implements JobsService {
@@ -21,11 +21,21 @@ public class JobsServiceImpl implements JobsService {
     @Autowired
     JobsRepository jobRepository;
     
+    /**
+     * Lade alle Jobs.
+     * 
+     * @return 
+     */
     @Override
     public List<Job> findAll() {
         return jobRepository.findAll();
     }
 
+    /**
+     * Neuen Job hinufügen.
+     * 
+     * @param job 
+     */
     @Override
     public void addJob(Job job) {
         
@@ -35,6 +45,12 @@ public class JobsServiceImpl implements JobsService {
         jobRepository.save(job);
     }
     
+    /**
+     * Job anhand der id aus der datenbank laden.
+     * 
+     * @param id
+     * @return 
+     */
     @Override
     public Job findById(Integer id) {
         return jobRepository.findOne(id);

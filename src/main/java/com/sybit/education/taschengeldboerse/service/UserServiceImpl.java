@@ -18,7 +18,7 @@ import com.sybit.education.taschengeldboerse.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
      * Neuen Benutzer speichern.
      *
      * @param user
+     * @return 
      */
     @Override
     public User addUser(User user) {

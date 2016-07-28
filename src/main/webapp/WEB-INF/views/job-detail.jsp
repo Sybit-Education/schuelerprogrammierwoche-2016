@@ -19,46 +19,15 @@
         
         <div class="container">
             <h1>Die Taschengeldbörse</h1>
-            <h2>Job-Details</h2>
+            <h2>Job-Details: ${job.bezeichnung}</h2>
          
+        
+            <!-- TODO: weitere Details des Jobs anzeigen -->
             
-            <div class="col-xs-6 col-md-8">
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Bezeichnung:</b>
-                    </div>
-                    <div class="col-md-9">${job.bezeichnung}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Datum:</b>
-                    </div>
-                    <div class="col-md-9">${job.datum}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Uhrzeit:</b>
-                    </div>
-                    <div class="col-md-9">${job.uhrzeit}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Zeitaufwand:</b>
-                    </div>
-                    <div class="col-md-9">${job.zeitaufwand}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Entlohnung:</b>
-                    </div>
-                    <div class="col-md-9">${job.entlohnung}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <b>Zusatz-Informationen:</b>
-                    </div>
-                    <div class="col-md-9">${job.zusaetzlicheInfos}</div>
-                </div>    
+            
+            
+            
+            
         </div>
 
         <c:import url="inc/footer.jsp" />

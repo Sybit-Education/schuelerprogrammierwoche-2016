@@ -33,24 +33,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-sm-6">
-                    <form:label path="vorname" class="col-sm-4 control-form:label">Vorname</form:label>
-                        <div class="col-sm-6">
-                        <form:input type="text" class="form-control" path="vorname" placeholder="Vorname" />
-                    </div>
-                </div>
-                <div class="form-group col-sm-6">
-                    <form:label path="name" class="col-sm-4 control-form:label">Name</form:label>
-                        <div class="col-sm-6">
-                        <form:input type="text" class="form-control" path="name" placeholder="Name" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <form:label path="email" class="col-sm-2 control-label">e-Mail</form:label>
-                        <div class="col-sm-4">
-                        <form:input type="text" class="form-control" path="email" placeholder="e-Mail" />
-                    </div>
-                </div>
+
+                            
+
+                <!-- TODO: weitere Parameter des Anbieters abfragen und speichern -->                            
+                            
+                            
+                            
+                            
+                            
                 <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <form:hidden path="id" />

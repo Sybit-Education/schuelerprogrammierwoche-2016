@@ -42,30 +42,7 @@ public class Anbieter implements Serializable {
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "Geburtsdatum")
-    private String geburtsdatum;
-
-    @Column(name = "Strasse")
-    private String strasse;
-
-    @Column(name = "PLZ")
-    private String plz;
-
-    @Column(name = "Wohnort")
-    private String wohnort;
-
-    @Column(name = "Telefonnummer")
-    private String telefonnummer;
-
-    @Column(name = "Emailadresse")
-    private String emailadresse;
-
-    @Column(name = "Merkblatt")
-    private boolean merkblatt;
-
-    @Column(name = "Datenschutz")
-    private boolean datenschutz;
-
+ 
     public Anbieter() {
     }
 
@@ -105,21 +82,6 @@ public class Anbieter implements Serializable {
         this.name = Name;
     }
 
-    public String getGeburtsdatum() {
-        return geburtsdatum;
-    }
-
-    public void setGeburtsdatum(String geburtsdatum) {
-        this.geburtsdatum = geburtsdatum;
-    }
-
-    public String getStrasse() {
-        return strasse;
-    }
-
-    public void setStrasse(String Straße) {
-        this.strasse = Straße;
-    }
 
     public String getEmail() {
         return email;
@@ -129,54 +91,6 @@ public class Anbieter implements Serializable {
         this.email = email;
     }
 
-    public String getPlz() {
-        return plz;
-    }
-
-    public void setPlz(String plz) {
-        this.plz = plz;
-    }
-
-    public String getWohnort() {
-        return wohnort;
-    }
-
-    public void setWohnort(String Wohnort) {
-        this.wohnort = Wohnort;
-    }
-
-    public String getTelefonnummer() {
-        return telefonnummer;
-    }
-
-    public void setTelefonnummer(String Telefonnummer) {
-        this.telefonnummer = Telefonnummer;
-    }
-
-    public String getEmailadresse() {
-        return emailadresse;
-    }
-
-    public void setEmailadresse(String Emailadresse) {
-        this.emailadresse = Emailadresse;
-    }
-
-    public boolean isMerkblatt() {
-        return merkblatt;
-    }
-
-    public void setMerkblatt(boolean Merkblatt) {
-        this.merkblatt = Merkblatt;
-    }
-
-    public boolean isDatenschutz() {
-        return datenschutz;
-    }
-
-    public void setDatenschutz(boolean Datenschutz) {
-        this.datenschutz = Datenschutz;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -184,14 +98,8 @@ public class Anbieter implements Serializable {
         hash = 43 * hash + Objects.hashCode(this.anrede);
         hash = 43 * hash + Objects.hashCode(this.vorname);
         hash = 43 * hash + Objects.hashCode(this.name);
-        hash = 43 * hash + Objects.hashCode(this.geburtsdatum);
-        hash = 43 * hash + Objects.hashCode(this.strasse);
-        hash = 43 * hash + Objects.hashCode(this.plz);
-        hash = 43 * hash + Objects.hashCode(this.wohnort);
-        hash = 43 * hash + Objects.hashCode(this.telefonnummer);
-        hash = 43 * hash + Objects.hashCode(this.emailadresse);
-        hash = 43 * hash + (this.merkblatt ? 1 : 0);
-        hash = 43 * hash + (this.datenschutz ? 1 : 0);
+
+
         return hash;
     }
 
@@ -207,12 +115,9 @@ public class Anbieter implements Serializable {
             return false;
         }
         final Anbieter other = (Anbieter) obj;
-        if (this.merkblatt != other.merkblatt) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
-        }
-        if (this.datenschutz != other.datenschutz) {
-            return false;
-        }
+        }        
         if (!Objects.equals(this.anrede, other.anrede)) {
             return false;
         }
@@ -222,33 +127,9 @@ public class Anbieter implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.strasse, other.strasse)) {
-            return false;
-        }
-        if (!Objects.equals(this.plz, other.plz)) {
-            return false;
-        }
-        if (!Objects.equals(this.wohnort, other.wohnort)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefonnummer, other.telefonnummer)) {
-            return false;
-        }
-        if (!Objects.equals(this.emailadresse, other.emailadresse)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.geburtsdatum, other.geburtsdatum)) {
-            return false;
-        }
+             
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "anbieter{" + "ID=" + id + ", Anrede=" + anrede + ", Vorname=" + vorname + ", Name=" + name + ", Geburtsdatum=" + geburtsdatum + ", Stra\u00dfe=" + strasse + ", PLZ=" + plz + ", Wohnort=" + wohnort + ", Telefonnummer=" + telefonnummer + ", Emailadresse=" + emailadresse + ", Merkblatt=" + merkblatt + ", Datenschutz=" + datenschutz + '}';
-    }
 
 }

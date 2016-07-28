@@ -13,22 +13,21 @@ import org.junit.Test;
 import com.sybit.education.taschengeldboerse.service.JobsService;
 import static org.junit.Assert.assertEquals;
 
-
 /**
+ * Test for JobService.
  *
- * @author sat
  */
-public class JobServiceTest extends AbstractDatabaseTest{
-    
+public class JobServiceTest extends AbstractDatabaseTest {
+
     @Autowired
     JobsService service;
-    
+
     @Test
-    public void testFindAll(){
+    public void testFindAll() {
         List<Job> jobList;
-        jobList=service.findAll();
+        jobList = service.findAll();
         assertEquals(1, jobList.size());
-        
+
         Job job = jobList.get(0);
         assertEquals("Test Job", job.getBezeichnung());
     }
