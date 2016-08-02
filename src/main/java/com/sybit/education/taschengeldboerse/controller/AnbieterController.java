@@ -3,6 +3,8 @@ package com.sybit.education.taschengeldboerse.controller;
 
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
+import com.sybit.education.taschengeldboerse.domain.User;
+import com.sybit.education.taschengeldboerse.model.AnbieterForm;
 import com.sybit.education.taschengeldboerse.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,23 +43,46 @@ public class AnbieterController {
        ModelAndView modelAndView= new ModelAndView();
 
        modelAndView.setViewName("registrieren-anbieter");
-       modelAndView.addObject("anbieter", new Anbieter());
+       modelAndView.addObject("anbieter", new AnbieterForm());
        return modelAndView;
    }
    
     /**
      * Speichere neuen Anbieter.
      *
-     * @param anbieter
+     * @param anbieterForm
      * @return the logical view to be returned
      */
     @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.POST)
-    public ModelAndView saveForm(@ModelAttribute("anbieter") Anbieter anbieter) {
+    public ModelAndView saveForm(@ModelAttribute("anbieter") AnbieterForm anbieterForm) {
         
-        anbieter = userService.saveAnbieter(anbieter);
+        /*
+        if (anbieterForm.getPassword().equals(anbieterForm.getPasswordwdh())) {
+            
+        } else {
+            
+        }*/
+        
+        User newUser = new User(anbieterForm.getEmail(), anbieterForm.getPassword());
+        newUser.setAuthority("ROLE_ANBIETER");
+        newUser.setEnabled(true);
+        
+        userService.addUser(newUser);
+        
+        Anbieter newAnbieter = new Anbieter(newUser);
+        newAnbieter.setAnrede(anbieterForm.getAnrede());
+        newAnbieter.setVorname(anbieterForm.getVorname());
+        newAnbieter.setName(anbieterForm.getName());
+        newAnbieter.setStrasse(anbieterForm.getStrasse());
+        newAnbieter.setWohnort(anbieterForm.getWohnort());
+        newAnbieter.setTelefon(anbieterForm.getTelefon());
+        
+        userService.saveAnbieter(newAnbieter);
+        
+        //anbieter = userService.saveAnbieter(anbieter);
         
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("anbieter", anbieter);
+        //modelAndView.addObject("anbieter", anbieter);
 
         modelAndView.setViewName("registrieren-anbieter");
 

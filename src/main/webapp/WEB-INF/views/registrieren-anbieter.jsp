@@ -18,7 +18,7 @@
 
         <div class="container">
 
-            <h2>Neuer Job-Anbieter kann sich anmelden</h2>
+            <h2>Job-Anbieter Registrierung</h2>
 
             <c:url var = "action" value="/registrieren/anbieter" />
             <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="anbieter">
@@ -51,6 +51,33 @@
                         </div>
                     </div>
                 </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="email" class="col-sm-2 control-label">E-Mail <span class="star">*</span> </form:label>
+                            <div class="col-sm-2">
+                            <form:input path="email" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="password" class="col-sm-2 control-label">Passwort <span class="star">*</span> </form:label>
+                            <div class="col-sm-2">
+                            <form:input path="password" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="passwordwdh" class="col-sm-2 control-label">Passwort-Wdh. <span class="star">*</span> </form:label>
+                            <div class="col-sm-2">
+                            <form:input path="passwordwdh" />
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="form-group col-sm-12">
@@ -73,20 +100,14 @@
                 <div class="row">
                     <div class="form-group col-sm-12">
                         <form:label path="telefon" class="col-sm-2 control-label">Telefonnummer</form:label>
-                            <div class="col-sm-2">
+                        <div class="col-sm-2">
                             <form:input type="tel" path="telefon" />
                         </div>
                     </div>
                 </div>
-                <!-- TODO: weitere Parameter des Anbieters abfragen und speichern -->                            
-                            
-                            
-                            
-                            
                             
                 <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <form:hidden path="id" />
             </form:form>
 
         </div>

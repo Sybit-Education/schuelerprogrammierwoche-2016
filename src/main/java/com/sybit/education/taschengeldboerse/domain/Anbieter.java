@@ -32,7 +32,7 @@ public class Anbieter implements Serializable {
     @Size(min = 5, message = "Bitte E-Mail angeben")
     @Column(unique = true)
     private String email;
-
+    
     @Column(name = "Anrede")
     private String anrede;
 
@@ -122,6 +122,7 @@ public class Anbieter implements Serializable {
     public String getTelefon() {
         return telefon;
     }
+    
 
     @Override
     public int hashCode() {

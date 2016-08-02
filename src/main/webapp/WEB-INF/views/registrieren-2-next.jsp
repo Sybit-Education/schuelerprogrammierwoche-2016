@@ -21,26 +21,10 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <c:url var = "action" value="/registrieren" />
-                    <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="user">
-
-                        <input type="hidden" name="email" value="${user.email}" />
-                        <input type="hidden" name="authority" value="ROLE_SCHUELER" />
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                        <input type="submit"class="btn btn-primary pull-right"  value="Schüler" />
-                    </form:form>                    
+                    <a role="button" class="btn btn-large btn-primary" href="<c:url value="/registrieren/schueler" />">Schüler</a>                    
                 </div>
                 <div class="col-sm-6">
-                    <c:url var = "action" value="/registrieren" />
-                    <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="user">
-
-                        <input type="hidden" name="email" value="${user.email}" />
-                        <input type="hidden" name="authority" value="ROLE_ANBIETER" />
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                        <input type="submit"class="btn btn-primary pull-right"  value="Anbieter" />
-                    </form:form>                    
+                    <a class="btn btn-large btn-primary" role="button" href="<c:url value="/registrieren/anbieter" />">Anbieter</a>             
                 </div>                
             </div>
 
