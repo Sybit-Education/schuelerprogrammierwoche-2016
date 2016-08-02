@@ -107,7 +107,7 @@
                 <div class="form-group">
                     <label for="entlohnung" class="col-md-3 control-label"> Lohn <font color="red">*</font>: </label>
                     <div class="col-md-9">
-                        <input name="entlohnung" class="form-control" id="entlohnung" type="text" value="" required /> €
+                        <input name="entlohnung" class="form-control" id="entlohnung" type="text" value="" required />
                     </div>
                 </div>
                 <div class="form-group">
