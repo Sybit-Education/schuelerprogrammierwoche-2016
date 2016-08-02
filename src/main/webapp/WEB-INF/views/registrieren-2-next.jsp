@@ -21,7 +21,7 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <c:url var = "action" value="/registrieren-2-next" />
+                    <c:url var = "action" value="/registrieren" />
                     <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="user">
 
                         <input type="hidden" name="email" value="${user.email}" />
@@ -32,7 +32,7 @@
                     </form:form>                    
                 </div>
                 <div class="col-sm-6">
-                    <c:url var = "action" value="/registrieren-2-next" />
+                    <c:url var = "action" value="/registrieren" />
                     <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="user">
 
                         <input type="hidden" name="email" value="${user.email}" />

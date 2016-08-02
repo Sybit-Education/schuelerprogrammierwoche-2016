@@ -24,7 +24,7 @@
             <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="anbieter">
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        <form:label path="anrede" class="col-sm-2 control-label">Anrede</form:label>
+                        <form:label path="anrede" class="col-sm-2 control-label">Anrede <span class="star">*</span> </form:label>
                             <div class="col-sm-2">
                             <form:select path="anrede" class="form-control col-sm-2">
                                 <form:option value="Herr">Herr</form:option>
@@ -34,8 +34,50 @@
                     </div>
                 </div>
 
-                            
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="vorname" class="col-sm-2 control-label">Vorname <span class="star">*</span> </form:label>
+                            <div class="col-sm-2">
+                            <form:input path="vorname" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="name" class="col-sm-2 control-label">Nachname <span class="star">*</span> </form:label>
+                            <div class="col-sm-2">
+                            <form:input path="name" />
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="strasse" class="col-sm-2 control-label">Straße/Nr. <span class="star">*</span> </form:label>
+                            <div class="col-sm-2">
+                            <form:input path="strasse" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="wohnort" class="col-sm-2 control-label">PLZ/Wohnort <span class="star">*</span> </form:label>
+                            <div class="col-sm-2">
+                            <form:input path="wohnort" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="telefon" class="col-sm-2 control-label">Telefonnummer</form:label>
+                            <div class="col-sm-2">
+                            <form:input type="tel" path="telefon" />
+                        </div>
+                    </div>
+                </div>
                 <!-- TODO: weitere Parameter des Anbieters abfragen und speichern -->                            
                             
                             

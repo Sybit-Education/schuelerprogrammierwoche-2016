@@ -40,7 +40,7 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", user);
 
-        modelAndView.setViewName("registrieren-1");
+        modelAndView.setViewName("registrieren-2-next");
 
         LOGGER.debug("openRegisterForm <-");
         return modelAndView;
@@ -55,7 +55,7 @@ public class UserController {
      */
     @RequestMapping(value = "/registrieren", method = RequestMethod.POST)
     public ModelAndView sendRegisterForm(User user, Model model) {
-
+        
         userService.addUser(user);
 
         ModelAndView modelAndView = new ModelAndView();
