@@ -119,9 +119,9 @@
   </div>
   <div class="form-group">
 	
-    	<label for="anforderung" class="col-md-3 control-label"> Anforderung<font color="red">*</font>:  </label>
+    	<label for="anforderung" class="col-md-3 control-label"> Anforderung:  </label>
 			<div class="col-md-9">
-    	<input id="anforderung" type="text" value="" required /> 
+    	<input id="anforderung" type="text" value="" /> 
  	 </div>
   </div>
   <div class="form-group">
