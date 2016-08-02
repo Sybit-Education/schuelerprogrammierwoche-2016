@@ -107,7 +107,7 @@
                 <div class="form-group">
                     <label for="entlohnung" class="col-md-3 control-label"> Lohn <font color="red">*</font>: </label>
                     <div class="col-md-9">
-                        <input name="entlohnung" class="form-control" id="entlohnung" type="text" value="" required />
+                        <input name="entlohnung" class="form-control" id="entlohnung" type="number" value="" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -124,12 +124,12 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-3 control-label">
-                        <input type="radio" id="turnus1" name="turnus1" value="Regelmäßig"> <label for="turnus1"> Regelmäßig</label><br>
+                        <input type="radio" id="turnus1" name="turnus" value="Regelmäßig"> <label for="turnus1"> Regelmäßig</label><br>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-3 control-label">
-                        <input type="radio" id="turnus2" name="turnus2" value="Einmalig"> <label for="turnus2"> Einmalig</label><br>
+                        <input type="radio" id="turnus2" name="turnus" value="Einmalig"> <label for="turnus2"> Einmalig</label><br>
                     </div>
                 </div>
                 <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
