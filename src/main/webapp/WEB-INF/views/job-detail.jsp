@@ -42,6 +42,7 @@
             </c:choose>
             
             <h3>Anforderungen:</h3> ${job.anforderungen}
+            <h4><li><a href="<c:url value="/schueler/jobs/" />">Zurück</a></li></h4>
         </div>
 
         <c:import url="inc/footer.jsp" />
