@@ -55,7 +55,7 @@ public class UserController {
      */
     @RequestMapping(value = "/registrieren", method = RequestMethod.POST)
     public ModelAndView sendRegisterForm(User user, Model model) {
-
+        
         userService.addUser(user);
 
         ModelAndView modelAndView = new ModelAndView();

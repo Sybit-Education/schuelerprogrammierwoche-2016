@@ -48,7 +48,7 @@ public class Anbieter implements Serializable {
     @Column(name = "Wohnort")
     private String wohnort;
     
-    @Column(name = "telefon")
+    @Column(name = "Telefonnummer")
     private String telefon;
  
     public Anbieter() {
