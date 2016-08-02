@@ -2,6 +2,7 @@ package com.sybit.education.taschengeldboerse.controller;
 
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.service.JobsService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,10 +40,10 @@ public class JobController {
 
         //TODO Liste der Jobs über den Service holen
  
-        
+        List jobList = jobService.findAll();
         
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobList", "TODO" );
+        modelAndView.addObject("jobList", jobList );
         modelAndView.setViewName("job-liste");     
         
         LOGGER.debug("jobList <------");
