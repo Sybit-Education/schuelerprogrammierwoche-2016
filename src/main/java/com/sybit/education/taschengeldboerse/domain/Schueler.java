@@ -38,7 +38,16 @@ public class Schueler implements Serializable {
     @Column(unique = true, nullable = false)
     private String email;
 
-
+    @Column
+    private String geburtsdatum;
+    
+    @Column
+    private String plz;
+    
+      @Column
+    private String wohnort; 
+   
+    
     public Schueler() {
     }
 
@@ -88,4 +97,29 @@ public class Schueler implements Serializable {
         this.vorname = vorname;
     }
 
+    public String getGeburtsdatum() {
+        return geburtsdatum;
+    }
+
+    public void setGeburtsdatum(String geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
+    }
+
+    public String getWohnort() {
+        return wohnort;
+    }
+
+    public void setWohnort(String wohnort) {
+        this.wohnort = wohnort;
+    }
+
+    
 }
