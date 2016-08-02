@@ -19,6 +19,7 @@ public class AnbieterForm {
     private String passwordwdh;
     private String strasse;
     private String wohnort;
+    private String plz;
     private String telefon;
 
     public String getAnrede() {
@@ -91,6 +92,14 @@ public class AnbieterForm {
 
     public void setPasswordwdh(String passwordwdh) {
         this.passwordwdh = passwordwdh;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
     }
     
 }

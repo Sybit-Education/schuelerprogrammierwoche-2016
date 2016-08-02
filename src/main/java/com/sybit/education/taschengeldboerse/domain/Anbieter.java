@@ -45,6 +45,9 @@ public class Anbieter implements Serializable {
     @Column(name = "Strasse")
     private String strasse;
     
+    @Column(name = "Plz")
+    private String plz;
+    
     @Column(name = "Wohnort")
     private String wohnort;
     
@@ -121,6 +124,14 @@ public class Anbieter implements Serializable {
     
     public String getTelefon() {
         return telefon;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
     }
     
 

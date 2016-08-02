@@ -56,13 +56,6 @@ public class AnbieterController {
     @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.POST)
     public ModelAndView saveForm(@ModelAttribute("anbieter") AnbieterForm anbieterForm) {
         
-        /*
-        if (anbieterForm.getPassword().equals(anbieterForm.getPasswordwdh())) {
-            
-        } else {
-            
-        }*/
-        
         User newUser = new User(anbieterForm.getEmail(), anbieterForm.getPassword());
         newUser.setAuthority("ROLE_ANBIETER");
         newUser.setEnabled(true);
@@ -75,6 +68,7 @@ public class AnbieterController {
         newAnbieter.setName(anbieterForm.getName());
         newAnbieter.setStrasse(anbieterForm.getStrasse());
         newAnbieter.setWohnort(anbieterForm.getWohnort());
+        newAnbieter.setPlz(anbieterForm.getPlz());
         newAnbieter.setTelefon(anbieterForm.getTelefon());
         
         userService.saveAnbieter(newAnbieter);
