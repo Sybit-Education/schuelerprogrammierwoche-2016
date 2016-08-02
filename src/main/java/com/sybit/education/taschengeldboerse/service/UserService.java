@@ -20,6 +20,8 @@ public interface UserService {
     
     Schueler saveSchueler(Schueler schueler);
     
+    Anbieter getAnbieterByEmail(String emailadresse);
+    
     Anbieter saveAnbieter(Anbieter anbieter);
 
 }

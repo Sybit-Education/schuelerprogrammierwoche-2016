@@ -17,6 +17,10 @@
         <c:import url="inc/navigation.jsp" />
         <h1>Die Taschengeldbörse</h1>
         <h2>Neuen Job anlegen</h2>
+        
+        <c:if test="message neq null">
+            ${message}
+        </c:if>
 
         <c:url var = "action" value="/anbieter/jobs/neu" />
         <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="job">

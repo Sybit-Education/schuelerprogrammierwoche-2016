@@ -101,13 +101,24 @@ public class UserServiceImpl implements UserService {
         
         return schueler;
     }
+    
+    @Override
+    public Anbieter getAnbieterByEmail(String emailadresse) {
+        List<Anbieter> anbieter = anbieterRepository.findByEmailadresse(emailadresse);
+
+        if (anbieter.size() > 0) {
+            return anbieter.get(0);
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public Anbieter saveAnbieter(Anbieter anbieter) {
         anbieter = anbieterRepository.save(anbieter);
         
         //jetzt benutzer aktivieren, wenn alles geklappt hat
-        User user = getUserByEmail(anbieter.getEmail());        
+        User user = getUserByEmail(anbieter.getEmailadresse());        
         user.setEnabled(true);       
         userRepository.save(user);
         
