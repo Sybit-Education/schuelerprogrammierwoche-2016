@@ -30,6 +30,7 @@ public class JobServiceTest extends AbstractDatabaseTest {
 
         Job job = jobList.get(0);
         assertEquals("Test Job", job.getBezeichnung());
+        assertEquals("test info", job.getZusaetzliche_infos());
     }
 
     @Override
