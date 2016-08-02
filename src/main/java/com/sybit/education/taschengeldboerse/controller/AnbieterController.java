@@ -1,18 +1,19 @@
 package com.sybit.education.taschengeldboerse.controller;
 
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.service.UserService;
-import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 
@@ -35,9 +36,13 @@ public class AnbieterController {
     * @return the logical view to be returned
     */
    @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.GET)
-   public String registrierenFormular( final HttpServletRequest request) {
-     
-      return "registrieren-anbieter";
+   public ModelAndView registrierenFormular( final HttpServletRequest request) {
+
+       ModelAndView modelAndView= new ModelAndView();
+
+       modelAndView.setViewName("registrieren-anbieter");
+       modelAndView.addObject("anbieter", new Anbieter());
+       return modelAndView;
    }
    
     /**
