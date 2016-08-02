@@ -64,6 +64,14 @@ public class UserServiceImpl implements UserService {
         if (getUserByEmail(user.getEmail()) != null) {
             throw new IllegalArgumentException("E-Mail already in use!");
         }
+        
+        if (!user.getEmail().contains("@") && (!user.getEmail().contains("."))) {
+            throw new IllegalArgumentException("Unknown E-Mail!");
+        }
+        
+        if (user.getEmail().length() < 5) {
+            throw new IllegalArgumentException("E-Mail too short!");
+        }
 
         if (user.getAuthority() == null) {
             user.setAuthority("unknown");

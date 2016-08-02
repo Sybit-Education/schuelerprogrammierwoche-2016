@@ -52,9 +52,9 @@ public class AnbieterController {
      * @return the logical view to be returned
      */
     @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.POST)
-    public ModelAndView saveForm(@ModelAttribute("anbieter") Schueler anbieter) {
+    public ModelAndView saveForm(@ModelAttribute("anbieter") Anbieter anbieter) {
         
-        anbieter = userService.saveSchueler(anbieter);
+        anbieter = userService.saveAnbieter(anbieter);
         
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("anbieter", anbieter);
