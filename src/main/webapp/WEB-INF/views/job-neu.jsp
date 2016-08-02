@@ -15,13 +15,11 @@
     <body>
 
         <c:import url="inc/navigation.jsp" />
-        <h1>Die Taschengeldbörse</h1>
+        <div class="container">
         <h2>Neuen Job anlegen</h2>
 
         <c:url var = "action" value="/anbieter/jobs/neu" />
         <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="job">
-
-            <div class="container">
                 <div class="form-group">
                     <label for="bezeichnung" class="col-md-3 control-label"> Job<font color="red">*</font>: </label>
                     <div class="col-md-9">
@@ -138,7 +136,8 @@
                 <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
                 <input type="hidden" path="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <form:hidden path="id" />
-            </form:form>
+        </form:form>
+                
         </div>
 
         <c:import url="inc/footer.jsp" />
