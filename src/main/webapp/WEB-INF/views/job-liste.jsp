@@ -31,9 +31,11 @@
                     
                     ${job.bezeichnung}
                     
-                </div> 
-                    
+                   </div> 
+                      
                 </c:forEach>
+                
+                
             </div>
 
         </div>
