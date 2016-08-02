@@ -1,6 +1,7 @@
 package com.sybit.education.taschengeldboerse.controller;
 
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.service.UserService;
 import javax.servlet.http.HttpServletRequest;
@@ -47,9 +48,9 @@ public class AnbieterController {
      * @return the logical view to be returned
      */
     @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.POST)
-    public ModelAndView saveForm(@ModelAttribute("anbieter") Schueler anbieter) {
+    public ModelAndView saveForm(@ModelAttribute("anbieter") Anbieter anbieter) {
         
-        anbieter = userService.saveSchueler(anbieter);
+        anbieter = userService.saveAnbieter(anbieter);
         
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("anbieter", anbieter);

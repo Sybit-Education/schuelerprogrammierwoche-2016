@@ -34,8 +34,50 @@
                     </div>
                 </div>
 
-                            
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="vorname" class="col-sm-2 control-label">Vorname</form:label>
+                            <div class="col-sm-2">
+                            <form:input path="vorname" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="name" class="col-sm-2 control-label">Nachname</form:label>
+                            <div class="col-sm-2">
+                            <form:input path="name" />
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="strasse" class="col-sm-2 control-label">Straße/Nr.</form:label>
+                            <div class="col-sm-2">
+                            <form:input path="strasse" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="wohnort" class="col-sm-2 control-label">PLZ/Wohnort</form:label>
+                            <div class="col-sm-2">
+                            <form:input path="wohnort" />
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <form:label path="telefon" class="col-sm-2 control-label">Telefonnummer</form:label>
+                            <div class="col-sm-2">
+                            <form:input type="tel" path="telefon" />
+                        </div>
+                    </div>
+                </div>
                 <!-- TODO: weitere Parameter des Anbieters abfragen und speichern -->                            
                             
                             

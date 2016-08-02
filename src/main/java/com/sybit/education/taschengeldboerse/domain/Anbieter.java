@@ -42,6 +42,14 @@ public class Anbieter implements Serializable {
     @Column(name = "Name")
     private String name;
 
+    @Column(name = "Strasse")
+    private String strasse;
+    
+    @Column(name = "Wohnort")
+    private String wohnort;
+    
+    @Column(name = "telefon")
+    private String telefon;
  
     public Anbieter() {
     }
@@ -89,6 +97,30 @@ public class Anbieter implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getStrasse() {
+        return strasse;
+    }
+    
+    public void setStrasse(String strasse) {
+        this.strasse = strasse;
+    }
+    
+    public void setWohnort(String wohnort) {
+        this.wohnort = wohnort;
+    }
+    
+    public String getWohnort() {
+        return wohnort;
+    }
+    
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+    
+    public String getTelefon() {
+        return telefon;
     }
 
     @Override
