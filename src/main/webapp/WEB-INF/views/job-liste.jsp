@@ -25,15 +25,17 @@
             
             <div class="row">
                 <c:forEach var="job" items="${jobList}">
-
+                   <div class="col-md-12">
                     
-                    <!-- TODO: Die Jobs auflisten -->
+                   
                     
+                    ${job.bezeichnung}
                     
-                    
-                    
-                    
+                   </div> 
+                      
                 </c:forEach>
+                
+                
             </div>
 
         </div>
