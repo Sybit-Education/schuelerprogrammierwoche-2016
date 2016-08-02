@@ -34,7 +34,7 @@
 	
     <label for="details" class="col-md-3 control-label"> Details/Beschreibung: </label>
     	 <div class="col-md-9">
-       	<textarea></textarea>
+       	<textarea class="form-control" rows="3"></textarea>
 	</div>
     </div>
     <div class="form-group">
@@ -133,19 +133,15 @@
     	</div>
     <div class="form-group">
   		<div class="col-md-3 control-label">
-	<input type="radio" id="turnus1" name="Turnus" value="Regelmäßig"> <label for="turnus1"> Regelmäßig</label><br>
+	<input type="radio" id="turnus1" name="turnus1" value="Regelmäßig"> <label for="turnus1"> Regelmäßig</label><br>
   </div>
     </div>
     <div class="form-group">
  		 <div class="col-md-3 control-label">
-    <input type="radio" id="turnus2" name="Turnus" value="Einmalig"> <label for="turnus2"> Einmalig</label><br>
+    <input type="radio" id="turnus2" name="turnus2" value="Einmalig"> <label for="turnus2"> Einmalig</label><br>
   </div>
     </div>
-  <div class="form-group">
-	<div class="col-md-4 control-label">
-		<input class="btn btn-default" type="submit" value="Jobangebot posten">
-   	 </div>
-	</div>
+ 
                 
                 
                
@@ -156,7 +152,7 @@
                 
                 
                 <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
-                <input type="hidden"	path="${_csrf.parameterName}"	value="${_csrf.token}"/>
+                <input type="hidden" path="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <form:hidden path="id" />
             </form:form>
         </div>
