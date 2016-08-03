@@ -58,15 +58,7 @@ public class SchuelerController {
             user.setPassword(schuelerForm.getPassword()); //TODO: Überprüfung einbauen
             user.setAuthority("ROLE_SCHUELER");
             user.setEnabled(true);
-            
-            try {
-                userService.addUser(user);
-            } catch (IllegalArgumentException e) {
-                modelAndView.addObject("addEmailFail", true);
-                modelAndView.addObject("emailMessage", e.getMessage());
-                modelAndView.setViewName("registrieren-schueler");
-                return modelAndView;
-            }
+            userService.addUser(user);
             
             Schueler schueler = new Schueler();
             schueler.setAnrede(schuelerForm.getAnrede());
@@ -79,7 +71,10 @@ public class SchuelerController {
             userService.saveSchueler(schueler);
 
             modelAndView.setViewName("job-liste");
-
+        } catch (IllegalArgumentException e) {
+                modelAndView.addObject("addEmailFail", true);
+                modelAndView.addObject("emailMessage", e.getMessage());
+                modelAndView.setViewName("registrieren-schueler");
         } catch (ConstraintViolationException e) {
             modelAndView.addObject("schueler", schuelerForm);
             modelAndView.addObject("addFail", true);
