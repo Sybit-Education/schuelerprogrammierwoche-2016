@@ -37,10 +37,10 @@
             <c:url var = "action" value="/registrieren/anbieter" />
             <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="anbieter">
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="anrede" class="col-sm-2 control-label">Anrede <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                                <select id="anrede" name="anrede" class="form-control col-sm-2" required>
+                    <div class="form-group col-md-12">
+                        <label for="anrede" class="col-md-3 control-label">Anrede <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                                <select id="anrede" name="anrede" class="form-control" required>
                                 <option value="">- Auswählen -</option>
                                 <option value="Herr">Herr</option>
                                 <option value="Frau">Frau</option>
@@ -50,82 +50,82 @@
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="vorname" class="col-sm-2 control-label">Vorname <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                            <input id="vorname" name="vorname" value="${anbieter.vorname}" required/>
+                    <div class="form-group col-md-12">
+                        <label for="vorname" class="col-md-3 control-label">Vorname <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                            <input id="vorname" name="vorname" class="form-control" value="${anbieter.vorname}" required/>
                         </div>
                     </div>
                 </div>
                         
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="name" class="col-sm-2 control-label">Nachname <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                            <input id="name" name="name" value="${anbieter.name}" required/>
+                    <div class="form-group col-md-12">
+                        <label for="name" class="col-md-3 control-label">Nachname <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                            <input id="name" name="name" class="form-control" value="${anbieter.name}" required/>
                         </div>
                     </div>
                 </div>
                         
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="email" class="col-sm-2 control-label">E-Mail <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                            <input id="email" name="email" required/>
+                    <div class="form-group col-md-12">
+                        <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                            <input id="email" name="email" class="form-control" required/>
                         </div>
                     </div>
                 </div>
                         
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="password" class="col-sm-2 control-label">Passwort <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                                <input type="password" id="password" name="password" required/>
+                    <div class="form-group col-md-12">
+                        <label for="password" class="col-md-3 control-label">Passwort <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                                <input type="password" id="password" class="form-control" name="password" required/>
                         </div>
                     </div>
                 </div>
                         
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="passwordwdh" class="col-sm-2 control-label">Passwort-Wdh. <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                                <input type="password" id="passwordwdh" name="passwordwdh" required/>
+                    <div class="form-group col-md-12">
+                        <label for="passwordwdh" class="col-md-3 control-label">Passwort-Wdh. <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                                <input type="password" id="passwordwdh" class="form-control" name="passwordwdh" required/>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="strasse" class="col-sm-2 control-label">Straße/Nr. <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                                <input id="strasse" name="strasse" value="${anbieter.strasse}" required/>
+                    <div class="form-group col-md-12">
+                        <label for="strasse" class="col-md-3 control-label">Straße/Nr. <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                                <input id="strasse" name="strasse" class="form-control" value="${anbieter.strasse}" required/>
                         </div>
                     </div>
                 </div>
                         
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="plz" class="col-sm-2 control-label">Plz <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                                <input id="plz" name="plz" value="${anbieter.plz}" required/>
+                    <div class="form-group col-md-12">
+                        <label for="plz" class="col-md-3 control-label">Plz <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                                <input id="plz" name="plz" class="form-control" value="${anbieter.plz}" required/>
                         </div>
                     </div>
                 </div>
                         
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="wohnort" class="col-sm-2 control-label">Wohnort <span class="star">*</span> </label>
-                            <div class="col-sm-2">
-                                <input id="wohnort" name="wohnort" value="${anbieter.wohnort}" required/>
+                    <div class="form-group col-md-12">
+                        <label for="wohnort" class="col-md-3 control-label">Wohnort <span class="star">*</span> </label>
+                            <div class="col-md-9">
+                                <input id="wohnort" name="wohnort" class="form-control" value="${anbieter.wohnort}" required/>
                         </div>
                     </div>
                 </div>
                         
                 <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="telefon" class="col-sm-2 control-label">Telefonnummer</label>
-                        <div class="col-sm-2">
-                            <input type="tel" id="telefon" value="${anbieter.telefon}" name="telefon"/>
+                    <div class="form-group col-md-12">
+                        <label for="telefon" class="col-md-3 control-label">Telefonnummer</label>
+                        <div class="col-md-9">
+                            <input type="tel" id="telefon" class="form-control" value="${anbieter.telefon}" name="telefon"/>
                         </div>
                     </div>
                 </div>
