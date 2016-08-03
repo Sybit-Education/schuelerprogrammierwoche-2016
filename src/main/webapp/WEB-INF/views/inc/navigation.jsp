@@ -38,6 +38,9 @@
                     <ul class="dropdown-menu" role="menu">
                         <sec:authorize access="hasRole('ROLE_SCHUELER')">
                         <li><a href="<c:url value="/schueler/jobs" />">Job-Übersicht</a></li>
+                        <li><a href="<c:url value="/schueler/offene-job-anfragen" />">Offene Job-Anfragen</a></li>
+                        <li><a href="<c:url value="/schueler/angenommene-job-anfragen" />">Angenommene Job-Anfragen</a></li>
+                        <li><hr></li>
                         </sec:authorize>
                         <li><a href="<c:url value="/registrieren/schueler" />">Registieren</a></li>
                     </ul>
@@ -48,6 +51,7 @@
                         <sec:authorize access="hasRole('ROLE_ANBIETER')">
                         <li><a href="<c:url value="/anbieter/schueler" />">Bewerber</a></li>
                         <li><a href="<c:url value="/anbieter/jobs/neu" />">Neuen Job anbieten</a></li>
+                        <li><hr></li>
                         </sec:authorize>
                         <li><a href="<c:url value="/registrieren/anbieter" />">Registieren</a></li>
                     </ul>
