@@ -6,6 +6,7 @@ import com.sybit.education.taschengeldboerse.model.SchuelerForm;
 import com.sybit.education.taschengeldboerse.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -20,11 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class SchuelerController {
-    
+
     @Autowired
     private UserService userService;
-
-
 
     /**
      * Lade das Formular für die Anlage eines Schülers.
@@ -47,21 +46,19 @@ public class SchuelerController {
      * Speichere neuen Schüler.
      *
      * @param schuelerForm
-     * @param result
      * @return the logical view to be returned
      */
     @RequestMapping(value = "/registrieren/schueler", method = RequestMethod.POST)
-    public ModelAndView saveForm(@Valid SchuelerForm schuelerForm, BindingResult result) {
-
+    public ModelAndView saveForm(@ModelAttribute("schueler") SchuelerForm schuelerForm) {
         ModelAndView modelAndView = new ModelAndView();
-        if (!result.hasErrors()) {
-            
+        try {
+
             User user = new User();
             user.setEmail(schuelerForm.getEmail());
             user.setPassword(schuelerForm.getPassword()); //TODO: Überprüfung einbauen
             user.setAuthority("ROLE_SCHUELER");
             userService.addUser(user);
-            
+
             Schueler schueler = new Schueler();
             schueler.setAnrede(schuelerForm.getAnrede());
             schueler.setName(schuelerForm.getName());
@@ -72,12 +69,14 @@ public class SchuelerController {
             schueler.setWohnort(schuelerForm.getWohnort());
             userService.saveSchueler(schueler);
 
+            modelAndView.addObject("addSuccess", true);
+            modelAndView.setViewName("home");
+
+        } catch (ConstraintViolationException e) {
+            modelAndView.addObject("schuelerForm", schuelerForm);
+            modelAndView.addObject("addFail", true);
+        } finally {
+            return modelAndView;
         }
-        modelAndView.addObject("schuelerForm", schuelerForm);
-        modelAndView.addObject("result", result);
-
-        modelAndView.setViewName("registrieren-schueler");
-
-        return modelAndView;
     }
 }
