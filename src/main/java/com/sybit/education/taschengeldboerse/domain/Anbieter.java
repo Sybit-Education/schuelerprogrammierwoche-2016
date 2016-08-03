@@ -30,9 +30,9 @@ public class Anbieter implements Serializable {
     private Integer id;
 
     @Size(min = 5, message = "Bitte E-Mail angeben")
-    @Column(unique = true)
-    private String email;
-    
+    @Column(unique = true, name = "emailadresse")
+    private String emailadresse;
+
     @Column(name = "Anrede")
     private String anrede;
 
@@ -58,7 +58,7 @@ public class Anbieter implements Serializable {
     }
 
     public Anbieter(User user) {
-        this.email = user.getEmail();
+        this.emailadresse = user.getEmail();
     }
 
     public Integer getId() {
@@ -94,12 +94,12 @@ public class Anbieter implements Serializable {
     }
 
 
-    public String getEmail() {
-        return email;
+    public String getEmailadresse() {
+        return emailadresse;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailadresse(String emailadresse) {
+        this.emailadresse = emailadresse;
     }
     
     public String getStrasse() {
