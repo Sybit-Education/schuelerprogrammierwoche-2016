@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="bezeichnung" class="col-md-3 control-label"> Job<font color="red">*</font>: </label>
                     <div class="col-md-9">
-                        <input id="bezeichnung" name="bezeichnung" type="text" class="form-control" value="" required />
+                        <from:input id="bezeichnung" name="bezeichnung" type="text" class="form-control" path="bezeichnung" required />
                     </div>
                 </div>
                 <div class="form-group">

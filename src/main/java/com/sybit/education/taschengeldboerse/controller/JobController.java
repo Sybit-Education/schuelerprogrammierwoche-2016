@@ -129,8 +129,9 @@ public class JobController {
         
         String msg = "Speichern fehlgeschlagen";
         
-        if(result != null)
+        if(result != null) {
             msg ="Job erfolgreich gespeichert.";
+        }
         
         modelAndView.addObject("message", msg);
         modelAndView.setViewName("job-neu");
