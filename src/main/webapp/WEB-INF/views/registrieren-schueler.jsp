@@ -29,6 +29,11 @@
                     Der Schüler konnte nicht angelegt werden.    
                 </div>
             </c:if>
+            <c:if test="${addEmailFail}">
+                <div id="errorEmail" class="alert alert-danger" role="alert"> 
+                    ${emailMessage}
+                </div>
+            </c:if>
             <br>
             <c:url var = "action" value="/registrieren/schueler" />
             <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="schueler">
