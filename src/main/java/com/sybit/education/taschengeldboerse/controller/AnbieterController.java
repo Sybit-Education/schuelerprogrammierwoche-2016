@@ -71,6 +71,7 @@ public class AnbieterController {
 
             userService.saveAnbieter(newAnbieter);
             modelAndView.addObject("addSuccsess", true);
+            modelAndView.setViewName("registrieren-anbieter");
             modelAndView.addObject("redirect", "/taschengeldboerse");
 
         } catch (IllegalArgumentException e) {
