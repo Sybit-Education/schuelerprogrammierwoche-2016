@@ -4,6 +4,7 @@ import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.AnbieterForm;
 import com.sybit.education.taschengeldboerse.service.UserService;
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import org.hibernate.exception.ConstraintViolationException;
 
 /**
  * Handles requests for the application home page.
@@ -72,7 +72,7 @@ public class AnbieterController {
             userService.saveAnbieter(newAnbieter);
             modelAndView.addObject("addSuccsess", true);
             modelAndView.setViewName("registrieren-anbieter");
-            modelAndView.addObject("redirect", "/taschengeldboerse");
+            modelAndView.addObject("redirect", "/");
 
         } catch (IllegalArgumentException e) {
             modelAndView.addObject("addEmailFail", true);
