@@ -9,11 +9,11 @@
 <html>
     <head>
         <c:import url="inc/header.jsp" />
+
         <title>Jobübersicht :: Taschengeldbörse</title>
 
     </head>
     <body>
-
         <c:import url="inc/navigation.jsp" />
 
         <div class="container">
@@ -116,12 +116,27 @@
                     </div>
                 </div>
                             
-                <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
+                <input class="btn btn-primary pull-right" type="submit" value="Speichern"/>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form:form>
 
         </div>
 
         <c:import url="inc/footer.jsp" />
+    <script>
+            var password = document.getElementById("password")
+               , passwordwdh = document.getElementById("passwordwdh");
+
+               function validatePassword(){
+               if(password.value != passwordwdh.value) {
+                   passwordwdh.setCustomValidity("Passwords Don't Match");
+        } else {
+                   passwordwdh.setCustomValidity('');
+        }
+        }
+
+        password.onchange = validatePassword;
+        passwordwdh.onkeyup = validatePassword;
+    </script>
     </body>
 </html>
