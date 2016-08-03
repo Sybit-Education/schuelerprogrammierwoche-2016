@@ -49,21 +49,21 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="name" class="col-md-3 control-label">Name <span class="star">*</span>: </label>   
-                        <div class="col-md-9">
-                            <input id="name" name="name" class="form-control" required/>
-                        </div>    
-                    </div>             
-                </div>
-
                 <!-- TODO: weitere Parameter des Schülers abfragen und speichern -->           
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="vorname" class="col-md-3 control-label">Vorname <span class="star">*</span>: </label>   
                         <div class="col-md-9">
-                            <input id="vorname" name="vorname" class="form-control" required/>
+                            <input id="vorname" name="vorname" class="form-control" value="${schueler.vorname}" required/>
+                        </div>    
+                    </div>             
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="name" class="col-md-3 control-label">Nachname <span class="star">*</span>: </label>   
+                        <div class="col-md-9">
+                            <input id="name" name="name" class="form-control" value="${schueler.name}" required/>
                         </div>    
                     </div>             
                 </div>
@@ -87,8 +87,8 @@
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
                                 <option value="6">6</option>
+                                <option value="5">5</option>
                                 <option value="7">7</option>
                                 <option value="8">8</option>
                                 <option value="9">9</option>
@@ -161,7 +161,7 @@
                     <div class="form-group col-md-12">
                         <label for="plz" class="col-md-3 control-label">Plz:</label>   
                         <div class="col-md-9">
-                            <input id="plz" name="plz" class="form-control col-sm-2"/>
+                            <input id="plz" name="plz" class="form-control col-sm-2" value="${schueler.plz}"/>
                         </div>    
                     </div>             
                 </div>                      
@@ -170,7 +170,7 @@
                     <div class="form-group col-md-12">
                         <label for="wohnort" class="col-md-3 control-label">Wohnort:</label>   
                         <div class="col-md-9">
-                            <input id="wohnort" name="wohnort" class="form-control col-sm-4"/>
+                            <input id="wohnort" name="wohnort" class="form-control col-sm-4" value="${schueler.wohnort}"/>
                         </div>    
                     </div>             
                 </div>                           

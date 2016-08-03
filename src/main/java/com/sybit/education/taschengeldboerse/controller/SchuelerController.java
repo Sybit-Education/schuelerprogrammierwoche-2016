@@ -78,15 +78,14 @@ public class SchuelerController {
             schueler.setWohnort(schuelerForm.getWohnort());
             userService.saveSchueler(schueler);
 
-            modelAndView.addObject("addSuccess", true);
-           // modelAndView.setViewName("home");
+            modelAndView.setViewName("job-liste");
 
         } catch (ConstraintViolationException e) {
-            modelAndView.addObject("schuelerForm", schuelerForm);
+            modelAndView.addObject("schueler", schuelerForm);
             modelAndView.addObject("addFail", true);
-        } finally {
             modelAndView.setViewName("registrieren-schueler");
-            return modelAndView;
-        }
+        } 
+        
+        return modelAndView;
     }
 }
