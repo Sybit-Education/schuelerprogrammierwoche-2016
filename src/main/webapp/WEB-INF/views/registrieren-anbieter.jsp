@@ -121,7 +121,21 @@
             </form:form>
 
         </div>
+        <script>
+            var password = document.getElementById("password")
+                    , passwordwdh = document.getElementById("passwordwdh");
 
+            function validatePassword(){
+                if(password.value != passwordwdh.value) {
+                    passwordwdh.setCustomValidity("Passwords Don't Match");
+                } else {
+                    passwordwdh.setCustomValidity('');
+                }
+            }
+
+            password.onchange = validatePassword;
+            passwordwdh.onkeyup = validatePassword;
+        </script>
         <c:import url="inc/footer.jsp" />
     <script>
             var password = document.getElementById("password")
