@@ -24,13 +24,18 @@ public class JobServiceTest extends AbstractDatabaseTest {
 
     @Test
     public void testFindAll() {
-        List<Job> jobList;
-        jobList = service.findAll();
-        assertEquals(1, jobList.size());
+        List<Job> jobList = service.getAllJobs();
+        assertEquals(3, jobList.size());
 
         Job job = jobList.get(0);
         assertEquals("Test Job", job.getBezeichnung());
         assertEquals("test info", job.getZusaetzliche_infos());
+    }
+    
+    @Test
+    public void testFindBySchuelerIsNull() {
+        List<Job> jobList = service.getFreeJobs();
+        assertEquals(2, jobList.size());
     }
 
     @Override

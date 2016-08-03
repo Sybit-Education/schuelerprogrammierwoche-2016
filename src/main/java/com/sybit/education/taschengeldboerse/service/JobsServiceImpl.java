@@ -27,7 +27,7 @@ public class JobsServiceImpl implements JobsService {
      * @return 
      */
     @Override
-    public List<Job> findAll() {
+    public List<Job> getAllJobs() {
         return jobRepository.findAll();
     }
 
@@ -54,6 +54,9 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public Job findById(Integer id) {
         return jobRepository.findOne(id);
+        
     }
-    
+    @Override
+    public List<Job> getFreeJobs() {
+       return jobRepository.findBySchuelerIsNull(); }
 }
