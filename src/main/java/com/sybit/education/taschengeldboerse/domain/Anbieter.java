@@ -6,6 +6,7 @@
 package com.sybit.education.taschengeldboerse.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -23,7 +24,6 @@ public class Anbieter implements Serializable {
     private Integer id;
 
     @Size(min = 5, message = "Bitte E-Mail angeben")
-
     @Column(unique = true, name = "emailadresse")
     private String emailadresse;
 
