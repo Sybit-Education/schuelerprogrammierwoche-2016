@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import org.hibernate.exception.ConstraintViolationException;
 
 
 
@@ -56,30 +57,42 @@ public class AnbieterController {
     @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.POST)
     public ModelAndView saveForm(@ModelAttribute("anbieter") AnbieterForm anbieterForm) {
         
-        User newUser = new User(anbieterForm.getEmail(), anbieterForm.getPassword());
-        newUser.setAuthority("ROLE_ANBIETER");
-        newUser.setEnabled(true);
-        
-        userService.addUser(newUser);
-        
-        Anbieter newAnbieter = new Anbieter(newUser);
-        newAnbieter.setAnrede(anbieterForm.getAnrede());
-        newAnbieter.setVorname(anbieterForm.getVorname());
-        newAnbieter.setName(anbieterForm.getName());
-        newAnbieter.setStrasse(anbieterForm.getStrasse());
-        newAnbieter.setWohnort(anbieterForm.getWohnort());
-        newAnbieter.setPlz(anbieterForm.getPlz());
-        newAnbieter.setTelefon(anbieterForm.getTelefon());
-        
-        userService.saveAnbieter(newAnbieter);
-        
-        //anbieter = userService.saveAnbieter(anbieter);
-        
         ModelAndView modelAndView = new ModelAndView();
-        //modelAndView.addObject("anbieter", anbieter);
+        
+        try {
+            
+            User newUser = new User(anbieterForm.getEmail(), anbieterForm.getPassword());
+            newUser.setAuthority("ROLE_ANBIETER");
+            newUser.setEnabled(true);
+            
+            try {
+                userService.addUser(newUser);
+            } catch (IllegalArgumentException e) {
+                modelAndView.addObject("addEmailFail", true);
+                modelAndView.addObject("emailMessage", e.getMessage());
+                modelAndView.setViewName("registrieren-anbieter");
+                return modelAndView;
+            }
 
-        modelAndView.setViewName("registrieren-anbieter");
+            Anbieter newAnbieter = new Anbieter(newUser);
+            newAnbieter.setAnrede(anbieterForm.getAnrede());
+            newAnbieter.setVorname(anbieterForm.getVorname());
+            newAnbieter.setName(anbieterForm.getName());
+            newAnbieter.setStrasse(anbieterForm.getStrasse());
+            newAnbieter.setWohnort(anbieterForm.getWohnort());
+            newAnbieter.setPlz(anbieterForm.getPlz());
+            newAnbieter.setTelefon(anbieterForm.getTelefon());
 
-        return modelAndView;
+            userService.saveAnbieter(newAnbieter);
+            modelAndView.addObject("addSuccsess", true);
+           // modelAndView.setViewName("home");
+        
+        } catch (ConstraintViolationException e) {
+            modelAndView.addObject("addFail", true);
+            modelAndView.addObject("anbieter", anbieterForm);
+        } finally {
+            modelAndView.setViewName("registrieren-anbieter");
+            return modelAndView;
+        }
     }
 }
