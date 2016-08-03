@@ -27,7 +27,7 @@ public class JobsServiceImpl implements JobsService {
      * @return 
      */
     @Override
-    public List<Job> findAll() {
+    public List<Job> getAllJobs() {
         return jobRepository.findAll();
     }
 
@@ -37,12 +37,14 @@ public class JobsServiceImpl implements JobsService {
      * @param job 
      */
     @Override
-    public void addJob(Job job) {
+    public Job addJob(Job job) {
         
         if(job.getAnbieter() == null) {
             job.setAnbieter(1); //zum Standardbenutzer hinzufügen. Muss noch geändert werden.
         }
-        jobRepository.save(job);
+        Job savedJob = jobRepository.save(job);
+        
+        return savedJob;
     }
     
     /**
@@ -54,6 +56,9 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public Job findById(Integer id) {
         return jobRepository.findOne(id);
+        
     }
-    
+    @Override
+    public List<Job> getFreeJobs() {
+       return jobRepository.findBySchuelerIsNull(); }
 }

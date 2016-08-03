@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
         if (!user.getEmail().contains("@") && (!user.getEmail().contains("."))) {
             throw new IllegalArgumentException("Unbekannte E-Mail.");
         }
-*/
+        */
         if (user.getAuthority() == null) {
             user.setAuthority("unknown");
             user.setEnabled(false);

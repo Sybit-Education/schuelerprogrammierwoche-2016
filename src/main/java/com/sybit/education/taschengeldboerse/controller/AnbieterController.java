@@ -1,8 +1,6 @@
 package com.sybit.education.taschengeldboerse.controller;
 
-
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
-import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.AnbieterForm;
 import com.sybit.education.taschengeldboerse.service.UserService;
