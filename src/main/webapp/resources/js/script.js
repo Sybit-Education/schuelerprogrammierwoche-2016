@@ -2,18 +2,18 @@
  * Script für die Anwendung
  */
 $(document).ready(function () {
-    var password = document.getElementById("password"), passwordwdh = document.getElementById("passwordwdh");
+    var password = document.getElementById("password"), passwordWdh = document.getElementById("passwordWdh");
 
     function validatePassword() {
-        if (password.value != passwordwdh.value) {
-            passwordwdh.setCustomValidity("Die Passwörter stimmen nicht überein!");
+        if (password.value != passwordWdh.value) {
+            passwordWdh.setCustomValidity("Die Passwörter stimmen nicht überein!");
         } else {
-            passwordwdh.setCustomValidity('');
+            passwordWdh.setCustomValidity('');
         }
     }
 
     password.onchange = validatePassword;
-    passwordwdh.onkeyup = validatePassword;
+    passwordWdh.onkeyup = validatePassword;
 
     var email = document.getElementById("email");
 

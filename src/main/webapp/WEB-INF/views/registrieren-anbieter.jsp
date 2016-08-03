@@ -38,7 +38,7 @@
             <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="anbieter">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="anrede" class="col-md-3 control-label">Anrede <span class="star">*</span> </label>
+                        <label for="anrede" class="col-md-3 control-label">Anrede <span class="star">*</span>: </label>
                             <div class="col-md-9">
                                 <select id="anrede" name="anrede" class="form-control" required>
                                 <option value="">- Auswählen -</option>
@@ -51,7 +51,7 @@
 
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="vorname" class="col-md-3 control-label">Vorname <span class="star">*</span> </label>
+                        <label for="vorname" class="col-md-3 control-label">Vorname <span class="star">*</span>: </label>
                             <div class="col-md-9">
                             <input id="vorname" name="vorname" class="form-control" value="${anbieter.vorname}" required/>
                         </div>
@@ -60,7 +60,7 @@
                         
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="name" class="col-md-3 control-label">Nachname <span class="star">*</span> </label>
+                        <label for="name" class="col-md-3 control-label">Nachname <span class="star">*</span>: </label>
                             <div class="col-md-9">
                             <input id="name" name="name" class="form-control" value="${anbieter.name}" required/>
                         </div>
@@ -69,7 +69,7 @@
                         
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span> </label>
+                        <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span>: </label>
                             <div class="col-md-9">
                             <input id="email" name="email" class="form-control" required/>
                         </div>
@@ -78,7 +78,7 @@
                         
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="password" class="col-md-3 control-label">Passwort <span class="star">*</span> </label>
+                        <label for="password" class="col-md-3 control-label">Passwort <span class="star">*</span>: </label>
                             <div class="col-md-9">
                                 <input type="password" id="password" class="form-control" name="password" required/>
                         </div>
@@ -87,16 +87,16 @@
                         
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="passwordwdh" class="col-md-3 control-label">Passwort-Wdh. <span class="star">*</span> </label>
+                        <label for="passwordWdh" class="col-md-3 control-label">Passwort-Wdh. <span class="star">*</span>: </label>
                             <div class="col-md-9">
-                                <input type="password" id="passwordwdh" class="form-control" name="passwordwdh" required/>
+                                <input type="password" id="passwordWdh" class="form-control" name="passwordWdh" required/>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="strasse" class="col-md-3 control-label">Straße/Nr. <span class="star">*</span> </label>
+                        <label for="strasse" class="col-md-3 control-label">Straße/Nr. <span class="star">*</span>: </label>
                             <div class="col-md-9">
                                 <input id="strasse" name="strasse" class="form-control" value="${anbieter.strasse}" required/>
                         </div>
@@ -105,7 +105,7 @@
                         
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="plz" class="col-md-3 control-label">Plz <span class="star">*</span> </label>
+                        <label for="plz" class="col-md-3 control-label">Plz <span class="star">*</span>: </label>
                             <div class="col-md-9">
                                 <input id="plz" name="plz" class="form-control" value="${anbieter.plz}" required/>
                         </div>
@@ -114,7 +114,7 @@
                         
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="wohnort" class="col-md-3 control-label">Wohnort <span class="star">*</span> </label>
+                        <label for="wohnort" class="col-md-3 control-label">Wohnort <span class="star">*</span>: </label>
                             <div class="col-md-9">
                                 <input id="wohnort" name="wohnort" class="form-control" value="${anbieter.wohnort}" required/>
                         </div>
@@ -123,7 +123,7 @@
                         
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="telefon" class="col-md-3 control-label">Telefonnummer</label>
+                        <label for="telefon" class="col-md-3 control-label">Telefonnummer:</label>
                         <div class="col-md-9">
                             <input type="tel" id="telefon" class="form-control" value="${anbieter.telefon}" name="telefon"/>
                         </div>
