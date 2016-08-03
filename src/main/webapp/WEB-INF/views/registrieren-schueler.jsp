@@ -9,6 +9,7 @@
 <html>
     <head>
         <c:import url="inc/header.jsp" />
+        <script type="text/javascript" src="<c:url value="/resources/js/script.js" />"></script>
         <title>Schueler registrieren :: Taschengeldbörse</title>
 
     </head>
