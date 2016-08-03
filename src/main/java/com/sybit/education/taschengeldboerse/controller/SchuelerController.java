@@ -4,6 +4,8 @@ import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.SchuelerForm;
 import com.sybit.education.taschengeldboerse.service.UserService;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +21,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class SchuelerController {
-    
+
     @Autowired
     private UserService userService;
-
-
 
     /**
      * Lade das Formular für die Anlage eines Schülers.
@@ -59,7 +59,7 @@ public class SchuelerController {
             user.setPassword(schuelerForm.getPassword()); //TODO: Überprüfung einbauen
             user.setAuthority("ROLE_SCHUELER");
             user.setEnabled(true);
-
+            
             try {
                 userService.addUser(user);
             } catch (IllegalArgumentException e) {
@@ -68,7 +68,7 @@ public class SchuelerController {
                 modelAndView.setViewName("registrieren-schueler");
                 return modelAndView;
             }
-
+            
             Schueler schueler = new Schueler();
             schueler.setAnrede(schuelerForm.getAnrede());
             schueler.setName(schuelerForm.getName());
