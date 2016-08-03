@@ -3,7 +3,12 @@ package com.sybit.education.taschengeldboerse.controller;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.service.JobsService;
+<<<<<<< HEAD
 import java.util.List;
+=======
+import com.sybit.education.taschengeldboerse.service.UserService;
+import java.util.Objects;
+>>>>>>> Job_speichern
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +34,9 @@ public class JobController {
 
     @Autowired
     private JobsService jobService;
+    
+    @Autowired
+    private UserService userService;
 
     /**
      * Liste für die Schüler alle offenen Jobs auf.
@@ -103,21 +111,38 @@ public class JobController {
      */
     @RequestMapping(value = "/anbieter/jobs/neu", method = RequestMethod.POST)
     public ModelAndView saveForm(@ModelAttribute("job") Job job, final Model model, final HttpServletRequest request) {
-
-        LOGGER.debug("Jobbezeichnung: " + job.getBezeichnung() + " " + request.getUserPrincipal().getName());
-
-        //TODO neuen Job in der Datenbak abspeichern und wieder anzeigen.
-        /*User user = userService.getUser(request.getUserPrincipal().getName());
-        job.setBezeichnung(request.getParameter("bezeichnung"));
-        job.setAnbieter(request.getParameter("bezeichnung"));
-        job.setBezeichnung(request.getParameter("bezeichnung"));
-        job.setBezeichnung(request.getParameter("bezeichnung"));
-        job.setBezeichnung(request.getParameter("bezeichnung"));
-        job.setBezeichnung(request.getParameter("bezeichnung"));*/
+        LOGGER.debug("Jobbezeichnung: " + request.getParameter("bezeichnung"));
+ 
         
+        
+        
+        User user = userService.getUserByEmail(request.getRemoteUser());
+        job.setBezeichnung(request.getParameter("bezeichnung"));
+        job.setAnbieter(userService.getAnbieterByEmail(user.getEmail()).getId());
+        job.setAnforderungen(request.getParameter("anforderungen"));
+        job.setDatum(request.getParameter("DOBDay") + "." + request.getParameter("DOBMonth") + "." + request.getParameter("DOBYear"));
+        job.setEntlohnung(request.getParameter("entlohnung"));
+        job.setZeitaufwand(request.getParameter("zeitaufwand"));
+        job.setUhrzeit(request.getParameter("uhrzeit"));
+        job.setZusaetzliche_infos(request.getParameter("zusaetzliche_infos"));
+        
+        job.setTurnus(Boolean.parseBoolean(request.getParameter("turnus")));     
+        
+        Job result = jobService.addJob(job);
         
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("job", job);
+        
+        if(result != null) {
+            modelAndView.addObject("job", result);
+        }
+        
+        String msg = "Speichern fehlgeschlagen";
+        
+        if(result != null) {
+            msg ="Job erfolgreich gespeichert.";
+        }
+        
+        modelAndView.addObject("message", msg);
         modelAndView.setViewName("job-neu");
 
         return modelAndView;
