@@ -19,7 +19,7 @@
         <div class="container">
             <h1>Schüler-Details</h1>
             <br>
-            <p>Name: ${schueler.anrede} ${schueler.vorname} ${schueler.nachname}</p>
+            <p>Name: ${schueler.anrede} ${schueler.vorname} ${schueler.name}</p>
             <p>E-Mail Adresse: ${schueler.email}</p>
             <p>Geburtstag: ${schueler.geburtsdatum}</p>
             <p>Wohnohrt: ${schueler.plz}, ${schueler.wohnort}</p>
