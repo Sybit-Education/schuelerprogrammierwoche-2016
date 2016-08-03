@@ -9,6 +9,7 @@
 <html>
     <head>
         <c:import url="inc/header.jsp" />
+        <script type="text/javascript" src="<c:url value="/resources/js/script.js" />"></script>
         <title>Jobübersicht :: Taschengeldbörse</title>
 
     </head>
@@ -20,8 +21,9 @@
 
             <h2>Job-Anbieter Registrierung</h2>
             
-            <c:if test="${addSuccess}">
+            <c:if test="${addSuccsess}">
                 <div id="successMessage" class="alert alert-success" role="alert">Der Abieter wurde erfolgreich angelegt.</div>
+                <meta http-equiv="refresh" content="3; URL=${redirect}">
             </c:if>
                 
             <c:if test="${addFail}">
@@ -51,7 +53,7 @@
                     <div class="form-group col-sm-12">
                         <label for="vorname" class="col-sm-2 control-label">Vorname <span class="star">*</span> </label>
                             <div class="col-sm-2">
-                            <input id="vorname" name="vorname" required/>
+                            <input id="vorname" name="vorname" value="${anbieter.vorname}" required/>
                         </div>
                     </div>
                 </div>
@@ -60,7 +62,7 @@
                     <div class="form-group col-sm-12">
                         <label for="name" class="col-sm-2 control-label">Nachname <span class="star">*</span> </label>
                             <div class="col-sm-2">
-                            <input id="name" name="name" required/>
+                            <input id="name" name="name" value="${anbieter.name}" required/>
                         </div>
                     </div>
                 </div>
@@ -96,7 +98,7 @@
                     <div class="form-group col-sm-12">
                         <label for="strasse" class="col-sm-2 control-label">Straße/Nr. <span class="star">*</span> </label>
                             <div class="col-sm-2">
-                                <input id="strasse" name="strasse" required/>
+                                <input id="strasse" name="strasse" value="${anbieter.strasse}" required/>
                         </div>
                     </div>
                 </div>
@@ -105,7 +107,7 @@
                     <div class="form-group col-sm-12">
                         <label for="plz" class="col-sm-2 control-label">Plz <span class="star">*</span> </label>
                             <div class="col-sm-2">
-                                <input id="plz" name="plz" required/>
+                                <input id="plz" name="plz" value="${anbieter.plz}" required/>
                         </div>
                     </div>
                 </div>
@@ -114,7 +116,7 @@
                     <div class="form-group col-sm-12">
                         <label for="wohnort" class="col-sm-2 control-label">Wohnort <span class="star">*</span> </label>
                             <div class="col-sm-2">
-                                <input id="wohnort" name="wohnort" required/>
+                                <input id="wohnort" name="wohnort" value="${anbieter.wohnort}" required/>
                         </div>
                     </div>
                 </div>
@@ -123,7 +125,7 @@
                     <div class="form-group col-sm-12">
                         <label for="telefon" class="col-sm-2 control-label">Telefonnummer</label>
                         <div class="col-sm-2">
-                            <input type="tel" id="telefon" name="telefon"/>
+                            <input type="tel" id="telefon" value="${anbieter.telefon}" name="telefon"/>
                         </div>
                     </div>
                 </div>
@@ -131,23 +133,8 @@
                 <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form:form>
-
         </div>
-        <script>
-            var password = document.getElementById("password")
-                    , passwordwdh = document.getElementById("passwordwdh");
-
-            function validatePassword(){
-                if(password.value != passwordwdh.value) {
-                    passwordwdh.setCustomValidity("Passwords Don't Match");
-                } else {
-                    passwordwdh.setCustomValidity('');
-                }
-            }
-
-            password.onchange = validatePassword;
-            passwordwdh.onkeyup = validatePassword;
-        </script>
+        
         <c:import url="inc/footer.jsp" />
     </body>
 </html>

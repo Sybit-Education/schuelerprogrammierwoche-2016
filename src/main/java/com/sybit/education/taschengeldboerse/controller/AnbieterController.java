@@ -85,7 +85,7 @@ public class AnbieterController {
 
             userService.saveAnbieter(newAnbieter);
             modelAndView.addObject("addSuccsess", true);
-           // modelAndView.setViewName("home");
+           modelAndView.addObject("redirect", "/taschengeldboerse");
         
         } catch (ConstraintViolationException e) {
             modelAndView.addObject("addFail", true);
