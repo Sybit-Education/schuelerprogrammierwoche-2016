@@ -37,12 +37,14 @@ public class JobsServiceImpl implements JobsService {
      * @param job 
      */
     @Override
-    public void addJob(Job job) {
+    public Job addJob(Job job) {
         
         if(job.getAnbieter() == null) {
             job.setAnbieter(1); //zum Standardbenutzer hinzufügen. Muss noch geändert werden.
         }
-        jobRepository.save(job);
+        Job savedJob = jobRepository.save(job);
+        
+        return savedJob;
     }
     
     /**

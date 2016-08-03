@@ -18,7 +18,7 @@ public interface JobsService {
 
     List<Job> getFreeJobs();
 
-    void addJob(Job job);
+    Job addJob(Job job);
 
     Job findById(Integer id);
 

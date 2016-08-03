@@ -19,7 +19,19 @@
         <div class="container">
 
             <h2>Job-Anbieter Registrierung</h2>
-
+            
+            <c:if test="${addSuccess}">
+                <div id="successMessage" class="alert alert-success" role="alert">Der Abieter wurde erfolgreich angelegt.</div>
+            </c:if>
+                
+            <c:if test="${addFail}">
+                <div id="successMessage" class="alert alert-danger" role="alert">Der Anbieter konnte nicht angelegt werden.</div>
+            </c:if>
+                
+            <c:if test="${addEmailFail}">
+                <div id="successMessage" class="alert alert-danger" role="alert">${emailMessage}</div>
+            </c:if>
+            
             <c:url var = "action" value="/registrieren/anbieter" />
             <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="anbieter">
                 <div class="row">
