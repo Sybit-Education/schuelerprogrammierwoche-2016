@@ -1,17 +1,30 @@
-<%-- 
-    Document   : schueler-detail
-    Created on : 03.08.2016, 03.08.2016 15:34:54
-    Author     : frz
---%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <c:import url="inc/header.jsp" />
+        <title>Taschengeldbörse</title>
+
     </head>
     <body>
-        <h1>Hello World!</h1>
+
+        <c:import url="inc/navigation.jsp" />
+
+        <div class="container">
+            <h1>Schüler-Details</h1>
+            <br>
+            <p>Name: ${schueler.anrede} ${schueler.vorname} ${schueler.nachname}</p>
+            <p>E-Mail Adresse: ${schueler.email}</p>
+            <p>Geburtstag: ${schueler.geburtsdatum}</p>
+            <p>Wohnohrt: ${schueler.plz}, ${schueler.wohnort}</p>
+        </div>
+
+        <c:import url="inc/footer.jsp" />
     </body>
 </html>
