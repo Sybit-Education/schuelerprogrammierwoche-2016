@@ -5,16 +5,9 @@
  */
 package com.sybit.education.taschengeldboerse.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Objects;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -29,22 +22,9 @@ public class Anbieter implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @Size(min = 5, message = "Bitte E-Mail angeben")
-<<<<<<< HEAD
-<<<<<<< HEAD
-    @Column(unique = true)
-    private String email;
-    
-=======
     @Column(unique = true, name = "emailadresse")
     private String emailadresse;
 
->>>>>>> Job_speichern
-=======
-    @Column(unique = true, name = "emailadresse")
-    private String emailadresse;
-
->>>>>>> 531a265736d65027da85f7d393876a08f9d56aeb
     @Column(name = "Anrede")
     private String anrede;
 

@@ -3,18 +3,14 @@ package com.sybit.education.taschengeldboerse.controller;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.service.JobsService;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import java.util.List;
-=======
-import com.sybit.education.taschengeldboerse.service.UserService;
-import java.util.Objects;
->>>>>>> Job_speichern
-=======
 import java.util.List;
 import com.sybit.education.taschengeldboerse.service.UserService;
 import java.util.Objects;
->>>>>>> 531a265736d65027da85f7d393876a08f9d56aeb
+
+import java.util.List;
+import com.sybit.education.taschengeldboerse.service.UserService;
+import java.util.Objects;
+
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
