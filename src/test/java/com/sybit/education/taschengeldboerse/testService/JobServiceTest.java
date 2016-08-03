@@ -32,6 +32,13 @@ public class JobServiceTest extends AbstractDatabaseTest {
         assertEquals("Test Job", job.getBezeichnung());
         assertEquals("test info", job.getZusaetzliche_infos());
     }
+    
+    @Test
+    public void testFindBySchuelerIsNull() {
+        List<Job> jobList;
+        jobList = service.getFreeJobs();
+        assertEquals(2, jobList.size());
+    }
 
     @Override
     public String getDataset() {
