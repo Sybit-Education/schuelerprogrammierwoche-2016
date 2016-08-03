@@ -31,6 +31,7 @@ public class Anbieter implements Serializable {
 
     @Size(min = 5, message = "Bitte E-Mail angeben")
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Column(unique = true)
     private String email;
     
@@ -39,6 +40,11 @@ public class Anbieter implements Serializable {
     private String emailadresse;
 
 >>>>>>> Job_speichern
+=======
+    @Column(unique = true, name = "emailadresse")
+    private String emailadresse;
+
+>>>>>>> 531a265736d65027da85f7d393876a08f9d56aeb
     @Column(name = "Anrede")
     private String anrede;
 
