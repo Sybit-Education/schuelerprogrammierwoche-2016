@@ -13,11 +13,13 @@ import java.util.List;
  * @author sat
  */
 public interface JobsService {
-    
-    List<Job> findAll();
-    
+
+    List<Job> getAllJobs();
+
+    List<Job> getFreeJobs();
+
     Job addJob(Job job);
-    
+
     Job findById(Integer id);
-    
+
 }

@@ -5,13 +5,6 @@ import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.service.JobsService;
 import java.util.List;
 import com.sybit.education.taschengeldboerse.service.UserService;
-import java.util.Objects;
-
-import java.util.List;
-import com.sybit.education.taschengeldboerse.service.UserService;
-import java.util.Objects;
-
-import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +45,7 @@ public class JobController {
 
         //TODO Liste der Jobs über den Service holen
  
-        List jobList = jobService.findAll();
+        List jobList = jobService.getFreeJobs();
         
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("jobList", jobList );

@@ -22,6 +22,8 @@ public class Anbieter implements Serializable {
     @Column(name = "id")
     private Integer id;
 
+    @Size(min = 5, message = "Bitte E-Mail angeben")
+
     @Column(unique = true, name = "emailadresse")
     private String emailadresse;
 
