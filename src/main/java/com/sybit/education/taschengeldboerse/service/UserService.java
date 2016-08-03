@@ -14,13 +14,14 @@ public interface UserService {
     List<User> getAllUser();
 
     User getUserByEmail(String email);
+    
+    Anbieter getAnbieterByEmail(String email);
+    
     User addUser(User user);
 
     User updateAuthority(User user);
     
     Schueler saveSchueler(Schueler schueler);
-    
-    Anbieter getAnbieterByEmail(String emailadresse);
     
     Anbieter saveAnbieter(Anbieter anbieter);
 

@@ -106,10 +106,7 @@ public class JobController {
     @RequestMapping(value = "/anbieter/jobs/neu", method = RequestMethod.POST)
     public ModelAndView saveForm(@ModelAttribute("job") Job job, final Model model, final HttpServletRequest request) {
         LOGGER.debug("Jobbezeichnung: " + request.getParameter("bezeichnung"));
- 
-        
-        
-        
+
         User user = userService.getUserByEmail(request.getRemoteUser());
         job.setBezeichnung(request.getParameter("bezeichnung"));
         job.setAnbieter(userService.getAnbieterByEmail(user.getEmail()).getId());

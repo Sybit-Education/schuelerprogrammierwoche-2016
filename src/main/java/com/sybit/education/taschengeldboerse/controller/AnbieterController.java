@@ -1,8 +1,6 @@
 package com.sybit.education.taschengeldboerse.controller;
 
-
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
-import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.AnbieterForm;
 import com.sybit.education.taschengeldboerse.service.UserService;
@@ -18,8 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import org.hibernate.exception.ConstraintViolationException;
 
-
-
 /**
  * Handles requests for the application home page.
  */
@@ -28,26 +24,25 @@ public class AnbieterController {
 
     private static final Logger logger = LoggerFactory.getLogger(AnbieterController.class);
 
-    
     @Autowired
     private UserService userService;
-   
+
     /**
-    * Simply selects the home view to render by returning its name.
-    *
-    * @param request needed to get the referring url
-    * @return the logical view to be returned
-    */
-   @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.GET)
-   public ModelAndView registrierenFormular( final HttpServletRequest request) {
+     * Simply selects the home view to render by returning its name.
+     *
+     * @param request needed to get the referring url
+     * @return the logical view to be returned
+     */
+    @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.GET)
+    public ModelAndView registrierenFormular(final HttpServletRequest request) {
 
-       ModelAndView modelAndView= new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView();
 
-       modelAndView.setViewName("registrieren-anbieter");
-       modelAndView.addObject("anbieter", new AnbieterForm());
-       return modelAndView;
-   }
-   
+        modelAndView.setViewName("registrieren-anbieter");
+        modelAndView.addObject("anbieter", new AnbieterForm());
+        return modelAndView;
+    }
+
     /**
      * Speichere neuen Anbieter.
      *
@@ -56,23 +51,14 @@ public class AnbieterController {
      */
     @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.POST)
     public ModelAndView saveForm(@ModelAttribute("anbieter") AnbieterForm anbieterForm) {
-        
+
         ModelAndView modelAndView = new ModelAndView();
-        
+
         try {
-            
             User newUser = new User(anbieterForm.getEmail(), anbieterForm.getPassword());
             newUser.setAuthority("ROLE_ANBIETER");
-            newUser.setEnabled(true);
-            
-            try {
-                userService.addUser(newUser);
-            } catch (IllegalArgumentException e) {
-                modelAndView.addObject("addEmailFail", true);
-                modelAndView.addObject("emailMessage", e.getMessage());
-                modelAndView.setViewName("registrieren-anbieter");
-                return modelAndView;
-            }
+
+            newUser = userService.addUser(newUser);
 
             Anbieter newAnbieter = new Anbieter(newUser);
             newAnbieter.setAnrede(anbieterForm.getAnrede());
@@ -85,14 +71,20 @@ public class AnbieterController {
 
             userService.saveAnbieter(newAnbieter);
             modelAndView.addObject("addSuccsess", true);
-           // modelAndView.setViewName("home");
-        
+            modelAndView.setViewName("registrieren-anbieter");
+            modelAndView.addObject("redirect", "/taschengeldboerse");
+
+        } catch (IllegalArgumentException e) {
+            modelAndView.addObject("addEmailFail", true);
+            modelAndView.addObject("emailMessage", e.getMessage());
+            modelAndView.setViewName("registrieren-anbieter");
+
         } catch (ConstraintViolationException e) {
             modelAndView.addObject("addFail", true);
             modelAndView.addObject("anbieter", anbieterForm);
-        } finally {
             modelAndView.setViewName("registrieren-anbieter");
-            return modelAndView;
         }
+
+        return modelAndView;
     }
 }
