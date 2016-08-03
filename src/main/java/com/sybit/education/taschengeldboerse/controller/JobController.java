@@ -115,17 +115,20 @@ public class JobController {
         job.setAnbieter(userService.getAnbieterByEmail(user.getEmail()).getId());
         job.setAnforderungen(request.getParameter("anforderungen"));
         job.setDatum(request.getParameter("DOBDay") + "." + request.getParameter("DOBMonth") + "." + request.getParameter("DOBYear"));
-        job.setEntlohnung(request.getParameter("entlohung"));
+        job.setEntlohnung(request.getParameter("entlohnung"));
         job.setZeitaufwand(request.getParameter("zeitaufwand"));
         job.setUhrzeit(request.getParameter("uhrzeit"));
-        job.setZusaetzliche_infos(request.getParameter("details"));
+        job.setZusaetzliche_infos(request.getParameter("zusaetzliche_infos"));
         
-        job.setTurnus(Objects.equals("Regelmäßig", request.getParameter("turnus1")));     
+        job.setTurnus(Boolean.parseBoolean(request.getParameter("turnus")));     
         
         Job result = jobService.addJob(job);
         
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("job", result);
+        
+        if(result != null) {
+            modelAndView.addObject("job", result);
+        }
         
         String msg = "Speichern fehlgeschlagen";
         
