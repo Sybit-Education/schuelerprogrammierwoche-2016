@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
-
+<%--
 <html>
     <head>
         <c:import url="inc/header.jsp" />
@@ -45,4 +45,4 @@
 
         <c:import url="inc/footer.jsp" />
     </body>
-</html>
+</html>--%>

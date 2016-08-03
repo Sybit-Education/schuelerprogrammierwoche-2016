@@ -32,7 +32,7 @@ public class Anbieter implements Serializable {
     @Size(min = 5, message = "Bitte E-Mail angeben")
     @Column(unique = true)
     private String email;
-
+    
     @Column(name = "Anrede")
     private String anrede;
 
@@ -42,6 +42,17 @@ public class Anbieter implements Serializable {
     @Column(name = "Name")
     private String name;
 
+    @Column(name = "Strasse")
+    private String strasse;
+    
+    @Column(name = "Plz")
+    private String plz;
+    
+    @Column(name = "Wohnort")
+    private String wohnort;
+    
+    @Column(name = "Telefonnummer")
+    private String telefon;
  
     public Anbieter() {
     }
@@ -90,6 +101,39 @@ public class Anbieter implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public String getStrasse() {
+        return strasse;
+    }
+    
+    public void setStrasse(String strasse) {
+        this.strasse = strasse;
+    }
+    
+    public void setWohnort(String wohnort) {
+        this.wohnort = wohnort;
+    }
+    
+    public String getWohnort() {
+        return wohnort;
+    }
+    
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+    
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
+    }
+    
 
     @Override
     public int hashCode() {

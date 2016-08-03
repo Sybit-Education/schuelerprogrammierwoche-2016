@@ -1,19 +1,23 @@
 package com.sybit.education.taschengeldboerse.controller;
 
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.service.JobsService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Handles requests for the application home page.
@@ -39,10 +43,10 @@ public class JobController {
 
         //TODO Liste der Jobs über den Service holen
  
-        
+        List jobList = jobService.findAll();
         
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobList", "TODO" );
+        modelAndView.addObject("jobList", jobList );
         modelAndView.setViewName("job-liste");     
         
         LOGGER.debug("jobList <------");
@@ -57,12 +61,9 @@ public class JobController {
      * @param request
      * @return 
      */
-    @RequestMapping(value = "/schueler/jobs/detail", method = RequestMethod.GET)
-    public ModelAndView getJobDetail(@RequestParam("id") final Integer id, final Model model, final HttpServletRequest request) {
-        Job job = null;
-
-        //TODO job mit der id laden.
-        
+    @RequestMapping(value = "/schueler/jobs/detail/{id}", method = RequestMethod.GET)
+    public ModelAndView getJobDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+        Job job = jobService.findById(id);
         
         
         ModelAndView modelAndView = new ModelAndView();
@@ -82,6 +83,7 @@ public class JobController {
      */
     @RequestMapping(value = "/anbieter/jobs/neu", method = RequestMethod.GET)
     public ModelAndView jobFormular(final HttpServletRequest request) {
+        
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("job", new Job());
@@ -102,11 +104,16 @@ public class JobController {
     @RequestMapping(value = "/anbieter/jobs/neu", method = RequestMethod.POST)
     public ModelAndView saveForm(@ModelAttribute("job") Job job, final Model model, final HttpServletRequest request) {
 
-        LOGGER.debug("Jobbezeichnung: " + job.getBezeichnung());
+        LOGGER.debug("Jobbezeichnung: " + job.getBezeichnung() + " " + request.getUserPrincipal().getName());
 
         //TODO neuen Job in der Datenbak abspeichern und wieder anzeigen.
-        
-        
+        /*User user = userService.getUser(request.getUserPrincipal().getName());
+        job.setBezeichnung(request.getParameter("bezeichnung"));
+        job.setAnbieter(request.getParameter("bezeichnung"));
+        job.setBezeichnung(request.getParameter("bezeichnung"));
+        job.setBezeichnung(request.getParameter("bezeichnung"));
+        job.setBezeichnung(request.getParameter("bezeichnung"));
+        job.setBezeichnung(request.getParameter("bezeichnung"));*/
         
         
         ModelAndView modelAndView = new ModelAndView();
