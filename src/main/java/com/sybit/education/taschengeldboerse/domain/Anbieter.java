@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.validation.constraints.Size;
 
+
 /**
  *
  * @author sat

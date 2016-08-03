@@ -19,24 +19,9 @@
         <div class="container">
 
             <h2>Anmeldung Schüler</h2>
-            <c:if test="${addSuccess}">
-                <div id="successMessage" class="alert alert-success" role="alert"> 
-                    Der Schüler wurde erfolgreich angelegt.    
-                </div>
-            </c:if>
-            <c:if test="${addFail}">
-                <div id="errorMessage" class="alert alert-danger" role="alert"> 
-                    Der Schüler konnte nicht angelegt werden.    
-                </div>
-            </c:if>
-            <c:if test="${addEmailFail}">
-                <div id="errorEmail" class="alert alert-danger" role="alert"> 
-                    ${emailMessage}
-                </div>
-            </c:if>
-            <br>
+
             <c:url var = "action" value="/registrieren/schueler" />
-            <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="schueler">
+            <form:form class="form-horizontal" action="${action}" method="post"  modelAttribute="schuelerForm">
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="anrede" class="col-md-3 control-label">Anrede <span class="star">*</span>: </label>
@@ -49,21 +34,21 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="name" class="col-md-3 control-label">Name <span class="star">*</span>: </label>   
+                        <div class="col-md-9">
+                            <input id="name" name="name" class="form-control" required/>
+                        </div>    
+                    </div>             
+                </div>
+
                 <!-- TODO: weitere Parameter des Schülers abfragen und speichern -->           
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="vorname" class="col-md-3 control-label">Vorname <span class="star">*</span>: </label>   
                         <div class="col-md-9">
-                            <input id="vorname" name="vorname" class="form-control" value="${schueler.vorname}" required/>
-                        </div>    
-                    </div>             
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="name" class="col-md-3 control-label">Nachname <span class="star">*</span>: </label>   
-                        <div class="col-md-9">
-                            <input id="name" name="name" class="form-control" value="${schueler.name}" required/>
+                            <input id="vorname" name="vorname" class="form-control" required/>
                         </div>    
                     </div>             
                 </div>
@@ -80,15 +65,31 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label">Geburtsdatum <span class="star">*</span>: </label>   
-                        <div class="col-md-3">
-                            <select class="form-control" name="DOBMonth" required>
+                        <div class="col-md-9">
+                            <select name="DOBMonth" required>
+                                <option value=""> - Monat - </option>
+                                <option value="January">Januar</option>
+                                <option value="Febuary">Februar</option>
+                                <option value="March">März</option>
+                                <option value="April">April</option>
+                                <option value="May">Mai</option>
+                                <option value="June">Juni</option>
+                                <option value="July">Juli</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">Oktober</option>
+                                <option value="November">November</option>
+                                <option value="December">Dezember</option>
+                            </select>
+
+                            <select name="DOBDay" required>
                                 <option value=""> - Tag - </option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="6">6</option>
                                 <option value="5">5</option>
+                                <option value="6">6</option>
                                 <option value="7">7</option>
                                 <option value="8">8</option>
                                 <option value="9">9</option>
@@ -115,28 +116,10 @@
                                 <option value="30">30</option>
                                 <option value="31">31</option>
                             </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-control" name="DOBDay" required>
-                                <option value=""> - Monat - </option>
-                                <option value="January">Januar</option>
-                                <option value="Febuary">Februar</option>
-                                <option value="March">März</option>
-                                <option value="April">April</option>
-                                <option value="May">Mai</option>
-                                <option value="June">Juni</option>
-                                <option value="July">Juli</option>
-                                <option value="August">August</option>
-                                <option value="September">September</option>
-                                <option value="October">Oktober</option>
-                                <option value="November">November</option>
-                                <option value="December">Dezember</option>
 
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-control" name="DOBYear" required>
-                                <option value=""> - Jahr - </option>                           
+                            <select name="DOBYear" required>
+                                <option value=""> - Jahr - </option>
+                                <option value="1990">1995</option>                             
                                 <option value="1993">2003</option>
                                 <option value="1992">2002</option>
                                 <option value="1991">2001</option>
@@ -153,15 +136,15 @@
                                 <option value="1990">1990</option>
                                 <option value="1989">1989</option>
                             </select>
-                        </div>
-                    </div>    
-                </div>                         
+                        </div>    
+                    </div>             
+                </div>             
 
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="plz" class="col-md-3 control-label">Plz:</label>   
-                        <div class="col-md-9">
-                            <input id="plz" name="plz" class="form-control col-sm-2" value="${schueler.plz}"/>
+                            <div class="col-md-9">
+                            <input id="plz" name="plz" class="form-control col-sm-2"/>
                         </div>    
                     </div>             
                 </div>                      
@@ -169,8 +152,8 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="wohnort" class="col-md-3 control-label">Wohnort:</label>   
-                        <div class="col-md-9">
-                            <input id="wohnort" name="wohnort" class="form-control col-sm-4" value="${schueler.wohnort}"/>
+                            <div class="col-md-9">
+                            <input id="wohnort" name="wohnort" class="form-control col-sm-4"/>
                         </div>    
                     </div>             
                 </div>                           
@@ -178,23 +161,23 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="password" class="col-md-3 control-label">Passwort <span class="star">*</span>:</label>   
-                        <div class="col-md-9">
-                            <input type="password" id="password" name="password" class="form-control col-sm-4" required/>
-                        </div>    
-                    </div>             
-                </div>                           
+                            <div class="col-md-9">
+                                <input type="password" id="password" name="password" class="form-control col-sm-4" required/>
+                            </div>    
+                        </div>             
+                    </div>                           
 
-                <div class="row">
-                    <div class="form-group col-md-12">
+                    <div class="row">
+                        <div class="form-group col-md-12">
                         <label for="passwordWdh" class="col-md-3 control-label">Passwort Wiederholen <span class="star">*</span>:</label>   
-                        <div class="col-md-9">
-                            <input type="password" id="passwordWdh" name="passwordWdh" class="form-control col-sm-4" required/>
-                        </div>    
-                    </div>             
-                </div>              
+                            <div class="col-md-9">
+                                <input type="password" id="passwordWdh" name="passwordWdh" class="form-control col-sm-4" required/>
+                            </div>    
+                        </div>             
+                    </div>              
 
-                <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form:form> 
 
         </div>
