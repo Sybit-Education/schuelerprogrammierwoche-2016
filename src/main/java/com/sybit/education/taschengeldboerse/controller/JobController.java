@@ -41,7 +41,7 @@ public class JobController {
 
         //TODO Liste der Jobs über den Service holen
  
-        List jobList = jobService.findAll();
+        List jobList = jobService.getFreeJobs();
         
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("jobList", jobList );

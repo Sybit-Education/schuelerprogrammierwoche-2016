@@ -59,8 +59,9 @@ public class Job implements Serializable {
     @Column(name = "entlohnung")
     private String entlohnung;
 
-   
-
+    @Column(name = "schueler")
+    private Schueler schueler;
+            
     public Job() {
     }
     
@@ -149,6 +150,12 @@ public class Job implements Serializable {
         this.entlohnung = entlohnung;
     }
     
+    public Schueler getSchueler() {
+        return schueler;
+    }
+    public void setSchueler(Schueler schueler) {
+        this.schueler = schueler;
+    }
     @Override
     public int hashCode() {
         int hash = 5;
