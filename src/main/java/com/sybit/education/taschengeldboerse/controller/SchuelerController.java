@@ -4,17 +4,16 @@ import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.SchuelerForm;
 import com.sybit.education.taschengeldboerse.service.UserService;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Handles requests for the application home page.
@@ -41,6 +40,7 @@ public class SchuelerController {
 
         return modelAndView;
     }
+
 
     /**
      * Speichere neuen Schüler.
@@ -89,3 +89,4 @@ public class SchuelerController {
         return modelAndView;
     }
 }
+

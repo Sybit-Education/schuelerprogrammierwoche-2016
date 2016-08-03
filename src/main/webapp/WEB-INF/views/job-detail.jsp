@@ -42,9 +42,25 @@
             </c:choose>
             
             <h3>Anforderungen:</h3> ${job.anforderungen}
-            <h4><li><a href="<c:url value="/schueler/jobs/" />">Zurück</a></li></h4>
+            
+             
+            
+            
         </div>
+        
 
+<body>
+
+  <div id="divid" class="examplediv">
+        <div class="container">
+            <button> Bewerbung abschicken </button>
+        </div>
+  </div>    
+        <div class="container"> 
+            <button><li><a href="<c:url value="/schueler/jobs/" />">Zurück</a></li></button>
+        </div> 
+        
+            
         <c:import url="inc/footer.jsp" />
     </body>
 </html>

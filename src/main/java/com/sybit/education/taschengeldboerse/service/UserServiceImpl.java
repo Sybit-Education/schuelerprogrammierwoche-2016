@@ -62,15 +62,15 @@ public class UserServiceImpl implements UserService {
     public User addUser(User user) {
         
         if (getUserByEmail(user.getEmail()) != null) {
-            throw new IllegalArgumentException("E-Mail already in use!");
-        }
-        
-        if (!user.getEmail().contains("@") && (!user.getEmail().contains("."))) {
-            throw new IllegalArgumentException("Unknown E-Mail!");
+            throw new IllegalArgumentException("Die E-Mail ist schon vergeben.");
         }
         
         if (user.getEmail().length() < 5) {
-            throw new IllegalArgumentException("E-Mail too short!");
+            throw new IllegalArgumentException("Die E-Mail ist zu kurz.");
+        }
+        
+        if (!user.getEmail().contains("@") && (!user.getEmail().contains("."))) {
+            throw new IllegalArgumentException("Unbekannte E-Mail.");
         }
 
         if (user.getAuthority() == null) {
@@ -109,13 +109,24 @@ public class UserServiceImpl implements UserService {
         
         return schueler;
     }
+    
+    @Override
+    public Anbieter getAnbieterByEmail(String emailadresse) {
+        List<Anbieter> anbieter = anbieterRepository.findByEmailadresse(emailadresse);
+
+        if (anbieter.size() > 0) {
+            return anbieter.get(0);
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public Anbieter saveAnbieter(Anbieter anbieter) {
         anbieter = anbieterRepository.save(anbieter);
         
         //jetzt benutzer aktivieren, wenn alles geklappt hat
-        User user = getUserByEmail(anbieter.getEmail());        
+        User user = getUserByEmail(anbieter.getEmailadresse());        
         user.setEnabled(true);       
         userRepository.save(user);
         

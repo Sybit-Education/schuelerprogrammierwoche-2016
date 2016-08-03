@@ -48,7 +48,9 @@
                     </ul>
                 </li>
                 <li><a href="<c:url value="/about" />">Wir über uns</a></li>
-                <li><a href="<c:url value="/login" />">Anmeldung</a></li>
+                <c:if test="${pageContext.request.userPrincipal == null}">
+                    <li><a href="<c:url value="/login" />">Anmeldung</a></li>
+                </c:if>
             </ul>
 
         </div>
