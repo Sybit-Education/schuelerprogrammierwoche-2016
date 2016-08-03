@@ -5,6 +5,7 @@
  */
 package com.sybit.education.taschengeldboerse.service;
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import java.util.List;
 
@@ -22,4 +23,5 @@ public interface JobsService {
 
     Job findById(Integer id);
 
+    List<Job> getJobsOfAnbieter (Anbieter anbieter);
 }

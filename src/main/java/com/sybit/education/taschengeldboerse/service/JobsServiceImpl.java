@@ -5,6 +5,7 @@
  */
 package com.sybit.education.taschengeldboerse.service;
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,4 +62,9 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public List<Job> getFreeJobs() {
        return jobRepository.findBySchuelerIsNull(); }
+
+    @Override
+    public List<Job> getJobsOfAnbieter(Anbieter anbieter) {
+        return jobRepository.findByAnbieter(anbieter.getId());
+    }
 }
