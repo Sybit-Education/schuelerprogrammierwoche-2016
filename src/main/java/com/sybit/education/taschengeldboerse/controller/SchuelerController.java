@@ -101,5 +101,13 @@ public class SchuelerController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "schueler/profil/nav", method = RequestMethod.GET)
+    public ModelAndView schuelerProfil(@RequestParam("username") String email) {
+        ModelAndView modelAndView =  new ModelAndView("schueler-detail");
+        modelAndView.addObject("schueler", userService.getSchuelerByEmail(email));
+
+        return modelAndView;
+    }
 }
 
