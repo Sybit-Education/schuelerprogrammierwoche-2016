@@ -1,5 +1,6 @@
 package com.sybit.education.taschengeldboerse.controller;
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.service.JobsService;
@@ -114,6 +115,43 @@ public class JobController {
         modelAndView.addObject("job", new Job());
 
         modelAndView.setViewName("job-neu");
+
+        return modelAndView;
+    }
+    
+    /**
+     * Zeigt dem Anbieter seine Job mit den Bewerbungen
+     * 
+     * @param request
+     * @return 
+     */
+    @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.GET)
+    public ModelAndView meineJobs(final HttpServletRequest request) {
+        
+        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
+
+        modelAndView.setViewName("anbieter-bewerbungen");
+
+        return modelAndView;
+    }
+    
+    /**
+     * Zeigt dem Anbieter seine Job mit den Bewerbungen
+     * 
+     * @param request
+     * @return 
+     */
+    @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.POST)
+    public ModelAndView meineJobsAccept(final HttpServletRequest request) {
+        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
+
+        modelAndView.setViewName("anbieter-bewerbungen");
 
         return modelAndView;
     }

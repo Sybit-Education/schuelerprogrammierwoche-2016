@@ -47,6 +47,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <sec:authorize access="hasRole('ROLE_ANBIETER')">
                         <li><a href="<c:url value="/anbieter/schueler" />">Bewerber</a></li>
+                        <li><a href="<c:url value="/anbieter/bewerbungen" />">Bewerbungen</a></li>
                         <li><a href="<c:url value="/anbieter/jobs/neu" />">Neuen Job anbieten</a></li>
                         </sec:authorize>
                         <li><a href="<c:url value="/registrieren/anbieter" />">Registieren</a></li>
