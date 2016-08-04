@@ -65,7 +65,7 @@
                                     <div class="col-md-9">
                                         <form:input id="wohnort" type="text" class="form-control" path="wohnort" required="true" />
                                     </div>
-                                    <label for="strasse" class="col-md-3 control-label"> Straße<font color=""red">*</font>: </label>
+                                    <label for="strasse" class="col-md-3 control-label"> Straße<font color="red">*</font>: </label>
                                     <div class="col-md-9">
                                         <form:input id="strasse" type="text" class="form-control" path="strasse" required="true"/>
                                     </div>

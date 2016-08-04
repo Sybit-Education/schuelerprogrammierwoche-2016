@@ -24,5 +24,20 @@ public class AnbieterServiceImpl implements AnbieterService {
     public Anbieter findAnbieterById(int id){
         return anbieterRepository.findById(id);
     }
+
+    @Override
+    public void updateAnbieter(Anbieter anbieter) {
+        Anbieter updatedAnbieter = anbieterRepository.findById(anbieter.getId());
+
+        updatedAnbieter.setVorname(anbieter.getVorname());
+        updatedAnbieter.setName(anbieter.getName());
+        updatedAnbieter.setAnrede(anbieter.getAnrede());
+        updatedAnbieter.setPlz(anbieter.getPlz());
+        updatedAnbieter.setWohnort(anbieter.getWohnort());
+        updatedAnbieter.setStrasse(anbieter.getStrasse());
+        updatedAnbieter.setImage(anbieter.getImage());
+
+        anbieterRepository.save(updatedAnbieter);
+    }
     
 }
