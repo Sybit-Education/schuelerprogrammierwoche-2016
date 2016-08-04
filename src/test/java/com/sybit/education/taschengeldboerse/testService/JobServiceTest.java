@@ -5,6 +5,7 @@
  */
 package com.sybit.education.taschengeldboerse.testService;
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.testutil.AbstractDatabaseTest;
 import java.util.List;
@@ -25,7 +26,7 @@ public class JobServiceTest extends AbstractDatabaseTest {
     @Test
     public void testFindAll() {
         List<Job> jobList = service.getAllJobs();
-        assertEquals(3, jobList.size());
+        assertEquals(5, jobList.size());
 
         Job job = jobList.get(0);
         assertEquals("Test Job", job.getBezeichnung());
@@ -37,9 +38,32 @@ public class JobServiceTest extends AbstractDatabaseTest {
         List<Job> jobList = service.getFreeJobs();
         assertEquals(2, jobList.size());
     }
+    
+    @Test
+    public void testFindByAnbieterAndSchuelerIsNull() {
+        Anbieter anbieter = new Anbieter();
+        anbieter.setId(3);
+        List<Job> jobList = service.getFreeJobsOfAnbieter(anbieter);
+        assertEquals(2, jobList.size());
+    }
 
+    @Test
+    public void testFindByAnbieter() {
+        Anbieter anbieter = new Anbieter();
+        anbieter.setId(2);
+        List<Job> jobList = service.getJobsOfAnbieter(anbieter);
+        assertEquals(2, jobList.size());    
+    }
+    @Test
+    public void testFindByAnbieter2() {
+        Anbieter anbieter = new Anbieter();
+        anbieter.setId(1);
+        List<Job> jobList = service.getJobsOfAnbieter(anbieter);
+        assertEquals(1, jobList.size());
+    }    
     @Override
     public String getDataset() {
         return "database/testJobService.xml";
     }
+    
 }

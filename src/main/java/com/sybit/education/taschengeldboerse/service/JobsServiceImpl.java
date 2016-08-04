@@ -5,6 +5,7 @@
  */
 package com.sybit.education.taschengeldboerse.service;
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
 import java.util.List;
@@ -24,7 +25,11 @@ public class JobsServiceImpl implements JobsService {
     @Autowired
     JobsRepository jobRepository;
     
-    @Autowired UserService userService;
+    @Autowired
+    UserService userService;
+    
+    @Autowired
+    private JobbewerbungService jobBewerbungService;
     
     /**
      * Lade alle Jobs.
@@ -63,11 +68,23 @@ public class JobsServiceImpl implements JobsService {
         return jobRepository.findOne(id);
         
     }
+    
     @Override
     public List<Job> getFreeJobs() {
-       return jobRepository.findBySchuelerIsNull(); }
+       return jobRepository.findBySchuelerIsNull();
+    }
 
     @Override
+    public List<Job> getJobsOfAnbieter(Anbieter anbieter) {
+        return jobRepository.findByAnbieter(anbieter.getId());
+    }
+ 
+       
+    @Override
+    public List<Job> getFreeJobsOfAnbieter(Anbieter anbieter) {
+        return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
+    }
+    
     public void bewerben(String username, Integer jobId) {
        LOGGER.debug("bewerben von benutzer " + username + " für Job id " + jobId);
        
@@ -77,4 +94,5 @@ public class JobsServiceImpl implements JobsService {
        //jobId;
         //in tabelle einfügen
     }
+
 }

@@ -19,4 +19,9 @@ public interface JobsRepository extends JpaRepository<Job, Integer>{
     Job findById(Integer id);
     
     List<Job> findBySchuelerIsNull();
-}
+    
+    List<Job> findByAnbieter(Integer id);
+    
+    List<Job> findByAnbieterAndSchuelerIsNull(Integer id);
+}   
+    

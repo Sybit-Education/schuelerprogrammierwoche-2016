@@ -24,7 +24,7 @@
             </div>
             
             <div class="row">
-                <c:forEach var="job" items="${jobList}">
+                <c:forEach items="${jobList}" var="job">
                    <div class="col-md-12">
                     
                    
