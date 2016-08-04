@@ -46,8 +46,8 @@
                     <a href="<c:url value="/anbieter"/>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Job-Anbieter <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <sec:authorize access="hasRole('ROLE_ANBIETER')">
-                        <li><a href="<c:url value="/anbieter/schueler" />">Bewerber</a></li>
-                        <li><a href="<c:url value="/anbieter/bewerbungen" />">Bewerbungen</a></li>
+                        <li><a href="<c:url value="/anbieter/bewerbungen" />">Offene Jobs</a></li>
+                        <li><a href="<c:url value="/anbieter/jobs" />">Vergebene Jobs</a></li>
                         <li><a href="<c:url value="/anbieter/jobs/neu" />">Neuen Job anbieten</a></li>
                         <li><hr></li>
                         </sec:authorize>

@@ -7,12 +7,16 @@ package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
+import com.sybit.education.taschengeldboerse.domain.Status;
+import com.sybit.education.taschengeldboerse.repository.JobBewerbungRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sybit.education.taschengeldboerse.repository.JobsRepository;
 import com.sybit.education.taschengeldboerse.repository.SchuelerRepository;
+import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,8 +31,12 @@ public class JobsServiceImpl implements JobsService {
     JobsRepository jobRepository;
     
     @Autowired
+    JobBewerbungRepository jobBewerbungRepository;
+    
+    @Autowired
     UserService userService;
     
+    //TODO: Wann brauchen wir den?!
     @Autowired
     SchuelerRepository schuelerRepository;
     
@@ -70,7 +78,25 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public Job findById(Integer id) {
         return jobRepository.findOne(id);
-        
+    }
+    
+    /**
+     * Schüler-Bewerbung auf einen Job wird angelegt. 
+     * 
+     * @param schuelerEmail
+     * @param jobId 
+     */
+    @Override
+    public void bewerben(String schuelerEmail, Integer jobId) {
+        LOGGER.debug("bewerben von benutzer " + schuelerEmail + " für Job id " + jobId);
+
+        Schueler schueler = userService.getSchuelerByEmail(schuelerEmail);
+        Jobbewerbung bewerbung = new Jobbewerbung();
+        bewerbung.setSchuelerid(schueler.getId());
+        bewerbung.setJobid(jobId);
+        bewerbung.setTimestamp(new Date());
+        bewerbung.setStatus(Status.PENDING);
+        jobBewerbungRepository.save(bewerbung);
     }
     
     @Override
@@ -83,20 +109,9 @@ public class JobsServiceImpl implements JobsService {
         return jobRepository.findByAnbieter(anbieter.getId());
     }
  
-       
     @Override
     public List<Job> getFreeJobsOfAnbieter(Anbieter anbieter) {
         return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
-    }
-    
-    public void bewerben(String username, Integer jobId) {
-       LOGGER.debug("bewerben von benutzer " + username + " für Job id " + jobId);
-       
-       Schueler schueler = userService.getSchuelerByEmail(username);
-       
-       Integer schuelerId = schueler.getId();
-       //jobId;
-        //in tabelle einfügen
     }
 
     /**
