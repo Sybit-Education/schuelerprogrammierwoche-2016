@@ -63,8 +63,7 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
         List<Jobbewerbung> bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
         assertEquals(3, bewerbungsListe.size());
 
-        jobbewerbungservice.bewerbungAnnehmen(jobId, schuelerId);
-        bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
+        bewerbungsListe = jobbewerbungservice.bewerbungAnnehmen(jobId, schuelerId);
         assertEquals(Status.ACCEPTED, bewerbungsListe.get(2).getStatus());
         assertEquals(Status.DECLINED, bewerbungsListe.get(1).getStatus());
         assertEquals(Status.DECLINED, bewerbungsListe.get(0).getStatus());
