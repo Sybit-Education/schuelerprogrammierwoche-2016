@@ -8,11 +8,13 @@ package com.sybit.education.taschengeldboerse.service;
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.repository.AnbieterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author frz
  */
+@Service
 public class AnbieterServiceImpl implements AnbieterService {
     
     @Autowired
