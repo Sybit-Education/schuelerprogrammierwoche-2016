@@ -19,14 +19,13 @@
         <div class="container">
 
             <div class="page-header">
-                <h1>Die Taschengeldbörse</h1>
                 <h2>Meine Jobs</h2>
             </div>
 
             <div class="row">
                 <c:forEach items="${jobs}" var="job">
                     <div class="col-md-12">
-                       <h3><li><a href="<c:url value="/schueler/jobs/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
+                       <h3><li><a href="<c:url value="/anbieter/jobs/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
                              
                         
                     </div>
