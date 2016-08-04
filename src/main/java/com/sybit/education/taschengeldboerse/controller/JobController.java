@@ -158,6 +158,29 @@ public class JobController {
         LOGGER.debug("jobList <------");
         return modelAndView;
     }
+    
+    /**
+     * Listet für den Anbieter alle sine offenen Jobs auf.
+     *
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/anbieter/jobs", method = RequestMethod.GET)
+    public ModelAndView jobAnbieterList(final Model model, final HttpServletRequest request) {
+        LOGGER.debug("jobList ---->");
+        
+        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
+
+        List jobList = jobService.getFreeJobsOfAnbieter(anbieter);
+        
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobList", jobList );
+        modelAndView.setViewName("job-liste");     
+        
+        LOGGER.debug("jobList <------");
+        return modelAndView;
+    }
 
     /**
      * Zeigt die Details für den Job mit der gegebenen ID an.
