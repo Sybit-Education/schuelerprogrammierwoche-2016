@@ -30,21 +30,21 @@
                 </div>--%>
 
                 <div class="item active">
-                    <img src="<c:url value="/resources/img/WirSlider.jpg" />" alt="Wir über uns">
+                    <img src="<c:url value="/resources/img/WirSlider.jpg" />" alt="Wir über uns" class="img-responsive center-block" />
                     <div class="carousel-caption">
                     </div>
                 </div>
                 <div class="item">
-                    <img src="<c:url value="/resources/img/DogSlider.jpg" />" alt="DogWalk">
+                    <img src="<c:url value="/resources/img/DogSlider.jpg" />" alt="DogWalk" class="img-responsive center-block"  />
                 </div>
                 <div class="item">
-                    <img src="<c:url value="/resources/img/MoneySlider.jpg" />" alt="Money">
+                    <img src="<c:url value="/resources/img/MoneySlider.jpg" />" alt="Money"  class="img-responsive center-block"/>
                 </div>
                 <div class="item">
-                    <img src="<c:url value="/resources/img/GardenSlider.jpg" />" alt="Garden">
+                    <img src="<c:url value="/resources/img/GardenSlider.jpg" />" alt="Garden" class="img-responsive center-block"  />
                 </div>
                 <div class="item">
-                    <img src="<c:url value="/resources/img/SupermarktSlider.jpg" />" alt="Supermarkt">
+                    <img src="<c:url value="/resources/img/SupermarktSlider.jpg"  />" alt="Supermarkt" class="img-responsive center-block" />
                 </div>
 
                 <!-- Left and right controls -->
