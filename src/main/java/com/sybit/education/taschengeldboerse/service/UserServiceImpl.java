@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
-
+    
     @Override
     public Schueler getSchuelerByEmail(String emailadresse) {
         return schuelerRepository.findByEmail(emailadresse);
