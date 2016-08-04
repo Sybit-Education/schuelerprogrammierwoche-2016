@@ -27,6 +27,5 @@ public interface UserService {
     
     Anbieter saveAnbieter(Anbieter anbieter);
 
-    public Schueler getSchuelerByEmail(String username);
 
 }
