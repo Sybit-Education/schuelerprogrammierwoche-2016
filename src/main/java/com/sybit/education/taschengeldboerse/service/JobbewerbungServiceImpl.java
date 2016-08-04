@@ -6,6 +6,7 @@
 package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Status;
 import com.sybit.education.taschengeldboerse.repository.JobBewerbungRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,14 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
     }
 
     @Override
-    public void bewerbungAnnehmen(Integer schuelerId){
+    public void bewerbungAnnehmen(Integer jobId, Integer schuelerId){
+        List<Jobbewerbung> bewerbungsListe = findAllByJobid(jobId);
+        bewerbungsListe.get(schuelerId).setStatus(Status.ACCEPTED);
+        for(Jobbewerbung bewerbung : bewerbungsListe) {
+            if (bewerbung.getSchuelerid() != schuelerId){
+                bewerbung.setStatus(Status.DECLINED);
+            }
+        }
 
     }
 }

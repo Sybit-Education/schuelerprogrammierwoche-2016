@@ -16,6 +16,6 @@ public interface JobbewerbungService {
     List<Jobbewerbung> findAll();
     List<Jobbewerbung> findAllBySchuelerid(Integer schuelerid);
     List<Jobbewerbung> findAllByJobid(Integer jobid);
-    void bewerbungAnnehmen(Integer schuelerId);
+    void bewerbungAnnehmen(Integer jobId, Integer schuelerId);
 
 }
