@@ -5,7 +5,6 @@ import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.SchuelerForm;
 import com.sybit.education.taschengeldboerse.service.SchuelerService;
 import com.sybit.education.taschengeldboerse.service.UserService;
-import javax.validation.Valid;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
