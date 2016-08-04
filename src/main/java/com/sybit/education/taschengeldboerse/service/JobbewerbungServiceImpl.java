@@ -45,10 +45,13 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
     @Override
     public void bewerbungAnnehmen(Integer jobId, Integer schuelerId){
         List<Jobbewerbung> bewerbungsListe = findAllByJobid(jobId);
-        bewerbungsListe.get(schuelerId).setStatus(Status.ACCEPTED);
         for(Jobbewerbung bewerbung : bewerbungsListe) {
             if (bewerbung.getSchuelerid() != schuelerId){
                 bewerbung.setStatus(Status.DECLINED);
+                jobbewerbungrepository.save(bewerbung);
+            }else if(bewerbung.getSchuelerid() == schuelerId) {
+                bewerbung.setStatus(Status.ACCEPTED);
+                jobbewerbungrepository.save(bewerbung);
             }
         }
 

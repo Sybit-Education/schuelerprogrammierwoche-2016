@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <dataset>
-    
-    <jobbewerbung id="1" schuelerid="1" jobid="1" />
-    <jobbewerbung id="2" schuelerid="2" jobid="2" />
-    <jobbewerbung id="3" schuelerid="3" jobid="3" />
-    <jobbewerbung id="4" schuelerid="3" jobid="4" />
-    <jobbewerbung id="5" schuelerid="3" jobid="5" />
-    <jobbewerbung id="6" schuelerid="3" jobid="6" />
-    <jobbewerbung id="7" schuelerid="5" jobid="3" />
-    <jobbewerbung id="8" schuelerid="7" jobid="3" />
+    <jobbewerbung id="1" schuelerid="1" jobid="1" status="PENDING"/>
+    <jobbewerbung id="2" schuelerid="2" jobid="2" status="ACCEPTED"/>
+    <jobbewerbung id="3" schuelerid="3" jobid="3" status="PENDING"/>
+    <jobbewerbung id="4" schuelerid="3" jobid="4" status="PENDING"/>
+    <jobbewerbung id="5" schuelerid="3" jobid="5" status="DECLINED"/>
+    <jobbewerbung id="6" schuelerid="3" jobid="7" status="PENDING"/>
+    <jobbewerbung id="7" schuelerid="5" jobid="3" status="PENDING"/>
+    <jobbewerbung id="8" schuelerid="6" jobid="3" status="ACCEPTED"/>
 </dataset>
