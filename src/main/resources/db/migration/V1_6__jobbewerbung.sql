@@ -4,3 +4,4 @@ CREATE TABLE `taschengeldboerse`.`jobbewerbung` (
   `jobid` INT NULL,
   `timestamp` TIMESTAMP NULL,
   PRIMARY KEY (`id`));
+

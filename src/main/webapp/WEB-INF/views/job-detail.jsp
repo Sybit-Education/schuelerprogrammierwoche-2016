@@ -53,7 +53,7 @@
 
   <div id="divid" class="examplediv">
         <div class="container">
-            <button> Bewerbung abschicken </button>
+            <button><li><a href="<c:url value="/schueler/jobs/${job.id}/bewerben" />">Bewerbung abschicken!</a></li></button>
         </div>
   </div>    
         <div class="container"> 
