@@ -67,14 +67,8 @@
                         <img src="<c:url value="/resources/img/Flo.JPG" />" alt="Flo">
                         <div class="caption">
                             <h3>Schüler</h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                                Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                            <p>Die Taschengeldbörse hilft dir dabei "Mini-Jobs" zu finden, 
+                                mit denen du dir dein Taschengeld ein wenig aufbessern kannst!</p>
                         </div>
                     </div>
                 </div>
@@ -92,14 +86,7 @@
                         <img src="<c:url value="/resources/img/Elfriede.JPG" />" alt="Elfried">
                         <div class="caption">
                             <h3>Anbieter</h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                                Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                            <p>Egal ob Sie hilfe brauchen, oder einfach keine Zeit haben, die Taschengeldbörse hilft Schüler zu finden die für einen kleinen Lohn Ihre Aufgaben erledigen.</p>
                         </div>
                     </div>
                 </div>
