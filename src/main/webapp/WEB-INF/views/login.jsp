@@ -44,7 +44,7 @@
 
                             <div class="control-group">
                                 <div class="controls">
-                                    <input class="input-block-level form-control" name="username" type="text" placeholder="E-Mail">
+                                    <input class="input-block-level form-control" name="username" autofocus ype="text" placeholder="E-Mail">
                                 </div>
                             </div>
                             <div class="control-group">
