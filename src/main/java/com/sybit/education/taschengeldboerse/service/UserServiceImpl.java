@@ -43,13 +43,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User getUserByEmail(String email) {
-        List<User> users = userRepository.findByEmail(email);
-
-        if (users.size() > 0) {
-            return users.get(0);
-        } else {
-            return null;
-        }
+        return userRepository.findByEmail(email);
     }
 
     /**
