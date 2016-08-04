@@ -57,7 +57,7 @@
         </div>
   </div>    
         <div class="container"> 
-            <button><li><a href="<c:url value="/schueler/jobs/" />">Zurück</a></li></button>
+            <button><li><a href="<c:url value="/schueler/jobs/" />"> Zurück </a></li></button>
         </div> 
         
             
