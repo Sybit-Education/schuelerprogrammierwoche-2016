@@ -25,6 +25,6 @@ public class ImageController {
     @RequestMapping(value = "/schueler/profil/image", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getActionImage(@RequestParam("id") Integer id) throws IOException {
         Schueler schueler = schuelerService.findSchuelerById(id);
-        return schueler.getProfilBild();
+        return schueler.getImage();
     }
 }
