@@ -9,7 +9,9 @@ import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.testutil.AbstractDatabaseTest;
 import java.util.List;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,6 +24,14 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
     @Autowired
     JobbewerbungService jobbewerbungservice;
     
+    
+    @Test
+    public void testFindByJobidAndSchuelerId() {
+        int jobId = 5;
+        int schuelerId = 3;
+        Jobbewerbung bewerbung = jobbewerbungservice.findByJobidAndSchuelerid(jobId, schuelerId);
+        assertNotEquals(null, bewerbung);
+    }
     
     @Test
     public void testFindAll() {

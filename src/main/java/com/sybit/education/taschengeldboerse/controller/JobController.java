@@ -2,7 +2,10 @@ package com.sybit.education.taschengeldboerse.controller;
 
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
+import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.service.JobsService;
 import java.util.List;
 import com.sybit.education.taschengeldboerse.service.UserService;
@@ -34,6 +37,9 @@ public class JobController {
     
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private JobbewerbungService bewerbungService;
 
     /**
      * Liste für die Schüler alle offenen Jobs auf.
@@ -58,6 +64,7 @@ public class JobController {
         return modelAndView;
     }
     
+    /*//NOTE: Duplikat?!
     @RequestMapping(value = "/schueler/jobs/{id}/bewerben", method = RequestMethod.GET)
     public ModelAndView jobBewerben(final HttpServletRequest request, @PathVariable("id") Integer jobId) {
         LOGGER.debug("job-liste -----> job id=" + jobId);
@@ -77,6 +84,42 @@ public class JobController {
         
         LOGGER.debug("job-liste <-----");
         return modelAndView;
+    }*/
+    
+    /**
+     * Speichert die Bewerbung ab.
+     * 
+     * @param id des jobs
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/schueler/jobs/{id}/bewerben", method = RequestMethod.GET)
+    public ModelAndView sendRequestForJob(@PathVariable("id") final Integer id, final HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        
+        Job job = jobService.findById(id);
+        Schueler schueler = userService.getSchuelerByEmail(request.getRemoteUser());
+        Jobbewerbung bewerbung = bewerbungService.findByJobidAndSchuelerid(job.getId(), schueler.getId());
+        
+        if(bewerbung == null) {
+            if(job != null) {
+                jobService.bewerben(request.getRemoteUser(), id);
+                modelAndView.addObject("job", job);
+                modelAndView.addObject("canRequest", false);
+                modelAndView.addObject("message", "Deine Bewerbung wurde erfolgreich abgeschickt.");
+            } else {
+                modelAndView.addObject("message", "Deine Bewerbung konnte nicht abgeschickt werden.");
+            }
+        } else {
+            modelAndView.addObject("job", job);
+            modelAndView.addObject("canRequest", false);
+            modelAndView.addObject("message", "Du hast dich auf diesen Job bereits beworben!");
+        }
+        
+        modelAndView.addObject("redirect", request.getContextPath() + "/schueler/jobs/detail/"+id);
+        
+        modelAndView.setViewName("job-detail");
+        return modelAndView;
     }
 
     /**
@@ -92,29 +135,21 @@ public class JobController {
         ModelAndView modelAndView = new ModelAndView();
         
         Job job = jobService.findById(id);
+        Schueler schueler = userService.getSchuelerByEmail(request.getRemoteUser());
+        Jobbewerbung bewerbung = bewerbungService.findByJobidAndSchuelerid(job.getId(), schueler.getId());
+        
+        boolean canRequest = false;
+        
+        if(bewerbung == null) {
+            canRequest = true;
+        }
+        
         modelAndView.addObject("job", job);
+        modelAndView.addObject("canRequest", canRequest);
         modelAndView.setViewName("job-detail");
 
         return modelAndView;
 
-    }
-    
-    /**
-     * Speichert die Bewerbung ab.
-     * 
-     * @param model
-     * @param request
-     * @return
-     */
-    @RequestMapping(value = "/schueler/jobs/detail/{id}", method = RequestMethod.POST)
-    public ModelAndView sendRequestForJob(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView();
-        
-        Job job = jobService.findById(id);
-        
-        modelAndView.addObject("job", job);
-        modelAndView.setViewName("job-detail");
-        return modelAndView;
     }
 
     /**
@@ -126,48 +161,10 @@ public class JobController {
     @RequestMapping(value = "/anbieter/jobs/neu", method = RequestMethod.GET)
     public ModelAndView jobFormular(final HttpServletRequest request) {
         
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("job", new Job());
 
         modelAndView.setViewName("job-neu");
-
-        return modelAndView;
-    }
-    
-    /**
-     * Zeigt dem Anbieter seine Job mit den Bewerbungen
-     * 
-     * @param request
-     * @return 
-     */
-    @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.GET)
-    public ModelAndView meineJobs(final HttpServletRequest request) {
-        
-        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
-
-        modelAndView.setViewName("anbieter-bewerbungen");
-
-        return modelAndView;
-    }
-    
-    /**
-     * Zeigt dem Anbieter seine Job mit den Bewerbungen
-     * 
-     * @param request
-     * @return 
-     */
-    @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.POST)
-    public ModelAndView meineJobsAccept(final HttpServletRequest request) {
-        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
-
-        modelAndView.setViewName("anbieter-bewerbungen");
 
         return modelAndView;
     }
@@ -216,6 +213,42 @@ public class JobController {
         return modelAndView;
     }
 
+    /**
+     * Zeigt dem Anbieter seine Job mit den Bewerbungen
+     * 
+     * @param request
+     * @return 
+     */
+    @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.GET)
+    public ModelAndView meineJobs(final HttpServletRequest request) {
+        
+        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
+
+        modelAndView.setViewName("anbieter-bewerbungen");
+
+        return modelAndView;
+    }
+    
+    /**
+     * Der Anbieter Akzeptiert Bewerbungen auf seine Jobs
+     * TODO: Bewerbugen akzeptieren
+     * @param request
+     * @return 
+     */
+    @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.POST)
+    public ModelAndView meineJobsAccept(final HttpServletRequest request) {
+        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
+
+        modelAndView.setViewName("anbieter-bewerbungen");
+
+        return modelAndView;
+    }
     
     public JobsService getJobService() {
         return jobService;

@@ -27,6 +27,6 @@ public interface JobsService {
 
     List<Job> getFreeJobsOfAnbieter(Anbieter anbieter);
 
-    void bewerben(String username, Integer jobId);
+    void bewerben(String schuelerEmail, Integer jobId);
 
 }

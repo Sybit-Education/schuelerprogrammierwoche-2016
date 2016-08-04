@@ -17,9 +17,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface JobBewerbungRepository extends JpaRepository<Jobbewerbung, Integer>{
+    
     List<Jobbewerbung> findAll();
     List<Jobbewerbung> findAllBySchuelerid(Integer schuelerid);
     List<Jobbewerbung> findAllByJobid(Integer jobid);
     
-    
+    Jobbewerbung findByJobidAndSchuelerid(Integer jobid, Integer schuelerid);
 }
