@@ -41,6 +41,11 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
     public List<Jobbewerbung> findAllByJobid(Integer jobid) {
       return jobbewerbungrepository.findAllByJobid(jobid);
     }
+    
+    @Override
+    public List<Jobbewerbung> findAllByStatusAndSchuelerId(Status status, int schuelerId){
+        return jobbewerbungrepository.findAllByStatusAndSchuelerId(status, schuelerId);
+    }
 
     @Override
     public void bewerbungAnnehmen(Integer jobId, Integer schuelerId){

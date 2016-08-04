@@ -6,6 +6,7 @@
 package com.sybit.education.taschengeldboerse.testService;
 
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Status;
 import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.testutil.AbstractDatabaseTest;
 import java.util.List;
@@ -57,7 +58,17 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
         assertEquals(3, jobList.size());
     }
 
+    @Test
+    public void testFindAllByStatusAndSchuelerId() {
+        
+        int schuelerId = 3;
+        List<Jobbewerbung> jobList = jobbewerbungservice.findAllByStatusAndSchuelerId(Status.PENDING, schuelerId);
+        assertEquals(2,jobList.size());
+        jobList = jobbewerbungservice.findAllByStatusAndSchuelerId(Status.ACCEPTED, schuelerId);
+        assertEquals(1,jobList.size());
+    }
 
+    
 /*    @Test
     public void flushBewerbungTable(){
         List<Jobbewerbung> bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
