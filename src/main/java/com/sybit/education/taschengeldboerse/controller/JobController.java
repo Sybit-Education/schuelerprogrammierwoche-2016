@@ -88,7 +88,7 @@ public class JobController {
      * @return 
      */
     @RequestMapping(value = "/schueler/jobs/detail/{id}", method = RequestMethod.GET)
-    public ModelAndView getJobDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+    public ModelAndView getJobSchuelerDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
         Job job = jobService.findById(id);
         
         
@@ -101,6 +101,28 @@ public class JobController {
 
     }
 
+    /**
+     * Zeigt die Details für den Job mit der gegebenen ID an.
+     * 
+     * @param id des jobs
+     * @param model
+     * @param request
+     * @return 
+     */
+    @RequestMapping(value = "/anbieter/jobs/detail/{id}", method = RequestMethod.GET)
+    public ModelAndView getJobAnbieterDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+        Job job = jobService.findById(id);
+        
+        
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("job", job);
+
+        modelAndView.setViewName("job-detail");
+
+        return modelAndView;
+
+    }
+    
     /**
      * Ruft Seite für das Anlegen eines neuen Jobs auf.
      * 
