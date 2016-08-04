@@ -174,7 +174,7 @@ public class JobController {
         LOGGER.debug("jobList ---->");
 
         //TODO Liste der Jobs über den Service holen
-
+        //Status: OPEN
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("job-liste-offene-anfragen");     
         
@@ -194,7 +194,7 @@ public class JobController {
         LOGGER.debug("jobList ---->");
 
         //TODO Liste der Jobs über den Service holen
-
+        //Status: ACCEPTED
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("job-liste-angenommene-anfragen");     
         
