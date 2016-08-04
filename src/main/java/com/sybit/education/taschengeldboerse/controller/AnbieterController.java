@@ -3,6 +3,8 @@ package com.sybit.education.taschengeldboerse.controller;
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.AnbieterForm;
+import com.sybit.education.taschengeldboerse.service.AnbieterService;
+import com.sybit.education.taschengeldboerse.service.SchuelerService;
 import com.sybit.education.taschengeldboerse.service.UserService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -26,6 +29,9 @@ public class AnbieterController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private AnbieterService anbieterService;
 
     /**
      * Simply selects the home view to render by returning its name.
@@ -85,6 +91,22 @@ public class AnbieterController {
             modelAndView.addObject("anbieter", anbieterForm);
             modelAndView.setViewName("registrieren-anbieter");
         }
+
+        return modelAndView;
+    }
+    
+    @RequestMapping(value = "anbieter/profil", method = RequestMethod.GET)
+    public ModelAndView anbieterProfil(@RequestParam("id") Integer anbieterId) {
+        ModelAndView modelAndView =  new ModelAndView("anbieter-detail");
+        modelAndView.addObject("anbieter", anbieterService.findAnbieterById(anbieterId));
+
+        return modelAndView;
+    }
+    
+    @RequestMapping(value = "anbieter/profil/nav", method = RequestMethod.GET)
+    public ModelAndView anbieterProfil(@RequestParam("username") String email) {
+        ModelAndView modelAndView =  new ModelAndView("anbieter-detail");
+        modelAndView.addObject("anbieter", userService.getAnbieterByEmail(email));
 
         return modelAndView;
     }
