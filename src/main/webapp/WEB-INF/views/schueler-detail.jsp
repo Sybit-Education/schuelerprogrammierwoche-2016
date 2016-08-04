@@ -17,12 +17,36 @@
         <c:import url="inc/navigation.jsp" />
 
         <div class="container">
-            <h1>Schüler-Details</h1>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h1>${schueler.vorname} ${schueler.name}</h1>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <img src="<c:url value="schueler/profil/image?id="/>${schueler.id}" alt="...">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <p>Geschlecht: <c:choose>
+                        <c:when test="${schueler.anrede eq 'Herr'}">
+                            Männlich
+                        </c:when>
+                        <c:otherwise>
+                            Weiblich
+                        </c:otherwise>
+                    </c:choose>
+                    </p>
+                    <p>E-Mail Adresse: ${schueler.email}</p>
+                    <p>Geburtstag: ${schueler.geburtsdatum}</p>
+                    <p>Wohnohrt: ${schueler.plz}, ${schueler.wohnort}</p>
+                </div>
+            </div>
             <br>
-            <p>Name: ${schueler.anrede} ${schueler.vorname} ${schueler.name}</p>
-            <p>E-Mail Adresse: ${schueler.email}</p>
-            <p>Geburtstag: ${schueler.geburtsdatum}</p>
-            <p>Wohnohrt: ${schueler.plz}, ${schueler.wohnort}</p>
+
+
         </div>
 
         <c:import url="inc/footer.jsp" />
