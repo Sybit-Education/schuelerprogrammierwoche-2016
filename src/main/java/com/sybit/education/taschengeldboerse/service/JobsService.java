@@ -22,4 +22,6 @@ public interface JobsService {
 
     Job findById(Integer id);
 
+    public void bewerben(String username, Integer jobId);
+
 }
