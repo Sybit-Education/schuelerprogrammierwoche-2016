@@ -26,7 +26,7 @@ public class JobServiceTest extends AbstractDatabaseTest {
     @Test
     public void testFindAll() {
         List<Job> jobList = service.getAllJobs();
-        assertEquals(3, jobList.size());
+        assertEquals(5, jobList.size());
 
         Job job = jobList.get(0);
         assertEquals("Test Job", job.getBezeichnung());
@@ -38,6 +38,15 @@ public class JobServiceTest extends AbstractDatabaseTest {
         List<Job> jobList = service.getFreeJobs();
         assertEquals(2, jobList.size());
     }
+    
+    @Test
+    public void testFindByAnbieterAndSchuelerIsNull() {
+        Anbieter anbieter = new Anbieter();
+        anbieter.setId(3);
+        List<Job> jobList = service.getFreeJobsOfAnbieter(anbieter);
+        assertEquals(2, jobList.size());
+    }
+
     @Test
     public void testFindByAnbieter() {
         Anbieter anbieter = new Anbieter();

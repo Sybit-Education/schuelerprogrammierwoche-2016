@@ -64,13 +64,21 @@ public class JobsServiceImpl implements JobsService {
         return jobRepository.findOne(id);
         
     }
+    
     @Override
     public List<Job> getFreeJobs() {
-       return jobRepository.findBySchuelerIsNull(); }
+       return jobRepository.findBySchuelerIsNull();
+    }
 
     @Override
     public List<Job> getJobsOfAnbieter(Anbieter anbieter) {
         return jobRepository.findByAnbieter(anbieter.getId());
+    }
+ 
+       
+    @Override
+    public List<Job> getFreeJobsOfAnbieter(Anbieter anbieter) {
+        return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
     }
     
     public void bewerben(String username, Integer jobId) {
@@ -82,4 +90,5 @@ public class JobsServiceImpl implements JobsService {
        //jobId;
         //in tabelle einfügen
     }
+
 }
