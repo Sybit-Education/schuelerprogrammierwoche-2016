@@ -47,10 +47,11 @@ public class AnbieterController {
      * Speichere neuen Anbieter.
      *
      * @param anbieterForm
+     * @param request
      * @return the logical view to be returned
      */
     @RequestMapping(value = "/registrieren/anbieter", method = RequestMethod.POST)
-    public ModelAndView saveForm(@ModelAttribute("anbieter") AnbieterForm anbieterForm) {
+    public ModelAndView saveForm(@ModelAttribute("anbieter") AnbieterForm anbieterForm, HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView();
 
@@ -72,7 +73,7 @@ public class AnbieterController {
             userService.saveAnbieter(newAnbieter);
             modelAndView.addObject("addSuccsess", true);
             modelAndView.setViewName("registrieren-anbieter");
-            modelAndView.addObject("redirect", "/");
+            modelAndView.addObject("redirect", request.getContextPath());
 
         } catch (IllegalArgumentException e) {
             modelAndView.addObject("addEmailFail", true);

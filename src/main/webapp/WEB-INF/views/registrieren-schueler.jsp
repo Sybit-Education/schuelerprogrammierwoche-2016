@@ -42,7 +42,7 @@
                     <div class="form-group col-md-12">
                         <label for="anrede" class="col-md-3 control-label">Anrede <span class="star">*</span>: </label>
                         <div class="col-md-9">
-                            <select path="anrede" name="anrede" class="form-control" required>
+                            <select id="anrede" name="anrede" class="form-control" required>
                                 <option value="Herr">Herr</option>
                                 <option value="Frau">Frau</option>
                             </select>
@@ -54,7 +54,7 @@
                     <div class="form-group col-md-12">
                         <label for="name" class="col-md-3 control-label">Name <span class="star">*</span>: </label>   
                         <div class="col-md-9">
-                            <input id="name" name="name" class="form-control" required/>
+                            <input id="name" name="name" value="${schueler.name}" class="form-control" required/>
                         </div>    
                     </div>             
                 </div>
@@ -64,7 +64,7 @@
                     <div class="form-group col-md-12">
                         <label for="vorname" class="col-md-3 control-label">Vorname <span class="star">*</span>: </label>   
                         <div class="col-md-9">
-                            <input id="vorname" name="vorname" class="form-control" required/>
+                            <input id="vorname" name="vorname" value="${schueler.vorname}" class="form-control" required/>
                         </div>    
                     </div>             
                 </div>
@@ -73,7 +73,7 @@
                     <div class="form-group col-md-12">
                         <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span>: </label>   
                         <div class="col-md-9">
-                            <input id="email" name="email" class="form-control" required/>
+                            <input id="email" name="email" value="${schueler.email}" class="form-control" required/>
                         </div>    
                     </div>             
                 </div>         
@@ -132,7 +132,6 @@
                                 <option value="October">Oktober</option>
                                 <option value="November">November</option>
                                 <option value="December">Dezember</option>
-
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -162,7 +161,7 @@
                     <div class="form-group col-md-12">
                         <label for="plz" class="col-md-3 control-label">Plz:</label>   
                         <div class="col-md-9">
-                            <input id="plz" name="plz" class="form-control col-sm-2"/>
+                            <input id="plz" name="plz" value="${schueler.plz}" class="form-control col-sm-2"/>
                         </div>    
                     </div>             
                 </div>                      
@@ -171,7 +170,7 @@
                     <div class="form-group col-md-12">
                         <label for="wohnort" class="col-md-3 control-label">Wohnort:</label>   
                         <div class="col-md-9">
-                            <input id="wohnort" name="wohnort" class="form-control col-sm-4"/>
+                            <input id="wohnort" name="wohnort" value="${schueler.wohnort}" class="form-control col-sm-4"/>
                         </div>    
                     </div>             
                 </div>                           

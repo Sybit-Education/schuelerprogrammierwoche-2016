@@ -44,12 +44,12 @@
 
                             <div class="control-group">
                                 <div class="controls">
-                                    <input class="input-block-level" name="username" type="text" placeholder="E-Mail">
+                                    <input class="input-block-level form-control" name="username" autofocus type="text" placeholder="E-Mail">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <div class="controls">
-                                    <input class="input-block-level" name="password" type="password" placeholder="Passwort">
+                                    <input class="input-block-level form-control" name="password" type="password" placeholder="Passwort">
                                 </div>
                             </div>
                         </div>

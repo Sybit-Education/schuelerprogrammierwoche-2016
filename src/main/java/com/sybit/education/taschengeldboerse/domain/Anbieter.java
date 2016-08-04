@@ -49,6 +49,9 @@ public class Anbieter implements Serializable {
     
     @Column(name = "Telefonnummer")
     private String telefon;
+
+    @Column(name = "image")
+    private byte[] image;
  
     public Anbieter() {
     }
@@ -129,7 +132,14 @@ public class Anbieter implements Serializable {
     public void setPlz(String plz) {
         this.plz = plz;
     }
-    
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     @Override
     public int hashCode() {
