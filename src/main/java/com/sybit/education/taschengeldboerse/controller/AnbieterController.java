@@ -1,6 +1,7 @@
 package com.sybit.education.taschengeldboerse.controller;
 
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
+import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.AnbieterForm;
 import com.sybit.education.taschengeldboerse.service.AnbieterService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -99,7 +101,7 @@ public class AnbieterController {
     public ModelAndView anbieterProfil(@RequestParam("id") Integer anbieterId) {
         ModelAndView modelAndView =  new ModelAndView("anbieter-detail");
         modelAndView.addObject("anbieter", anbieterService.findAnbieterById(anbieterId));
-
+        modelAndView.addObject("isUser", false);
         return modelAndView;
     }
     
@@ -107,7 +109,16 @@ public class AnbieterController {
     public ModelAndView anbieterProfil(@RequestParam("username") String email) {
         ModelAndView modelAndView =  new ModelAndView("anbieter-detail");
         modelAndView.addObject("anbieter", userService.getAnbieterByEmail(email));
-
+        modelAndView.addObject("isUser", true);
+        return modelAndView;
+    }
+    
+    @RequestMapping(value = "/anbieter/profil/bearbeitet", method = RequestMethod.POST)
+    public ModelAndView saveAnbieterProfil(@ModelAttribute("job") Anbieter anbieter, final Model model, final HttpServletRequest request) {
+        anbieterService.updateAnbieter(anbieter);
+        ModelAndView modelAndView =  new ModelAndView("anbieter-detail");
+        modelAndView.addObject("anbieter", anbieterService.findAnbieterById(anbieter.getId()));
+        modelAndView.addObject("isUser", true);
         return modelAndView;
     }
 }
