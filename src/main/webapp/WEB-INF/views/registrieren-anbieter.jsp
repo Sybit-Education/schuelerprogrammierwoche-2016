@@ -22,7 +22,7 @@
             <h2>Job-Anbieter Registrierung</h2>
             
             <c:if test="${addSuccsess}">
-                <div id="successMessage" class="alert alert-success" role="alert">Der Abieter wurde erfolgreich angelegt.</div>
+                <div id="successMessage" class="alert alert-success" role="alert">Der Anbieter wurde erfolgreich angelegt.</div>
                 <meta http-equiv="refresh" content="3; URL=${redirect}">
             </c:if>
                 
