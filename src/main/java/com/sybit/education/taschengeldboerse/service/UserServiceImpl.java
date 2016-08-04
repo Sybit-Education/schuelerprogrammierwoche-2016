@@ -120,19 +120,12 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
-
     
     @Override
     public Schueler getSchuelerByEmail(String emailadresse) {
-        List<Schueler> anbieter = schuelerRepository.findByEmail(emailadresse);
-
-        if (anbieter.size() > 0) {
-            return anbieter.get(0);
-        } else {
-            return null;
-        }
+        return schuelerRepository.findByEmail(emailadresse);
     }
-    
+
     @Override
     public Anbieter saveAnbieter(Anbieter anbieter) {
         anbieter = anbieterRepository.save(anbieter);

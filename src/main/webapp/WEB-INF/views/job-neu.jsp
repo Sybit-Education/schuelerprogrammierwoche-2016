@@ -28,6 +28,7 @@
                 <c:when test="${message == successMessage}">
                     <div class="col-md-9 alert alert-success" style="text-align: center">
                         <center><b>${message}</b></center>
+                        <meta http-equiv="refresh" content="3; URL=${redirect}">
                     </div>
                 </c:when>
                 <c:otherwise>

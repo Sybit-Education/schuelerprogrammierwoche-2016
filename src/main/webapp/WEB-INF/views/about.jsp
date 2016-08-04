@@ -24,7 +24,6 @@
                     
                 </div>
             </div>
-       
         </div>
 
         <c:import url="inc/footer.jsp" />
