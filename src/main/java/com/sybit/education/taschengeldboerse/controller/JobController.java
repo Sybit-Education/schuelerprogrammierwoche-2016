@@ -123,9 +123,10 @@ public class JobController {
      * @param model
      * @param request
      * @return 
-     */       
+     */
+    @RequestMapping(value = "/schueler/jobs/detail/{id}", method = RequestMethod.GET)
     public ModelAndView getJobSchuelerDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
-            ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView();
 
         Job job = jobService.findById(id);
         Schueler schueler = userService.getSchuelerByEmail(request.getRemoteUser());
