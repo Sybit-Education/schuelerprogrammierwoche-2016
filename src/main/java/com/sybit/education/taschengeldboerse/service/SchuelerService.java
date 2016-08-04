@@ -8,4 +8,6 @@ import com.sybit.education.taschengeldboerse.domain.Schueler;
 public interface SchuelerService {
 
     Schueler findSchuelerById(int Id);
+
+    void updateSchueler(Schueler schueler);
 }

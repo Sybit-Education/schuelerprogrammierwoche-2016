@@ -7,9 +7,11 @@ package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.repository.JobBewerbungRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityManager;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,9 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
    
     @Autowired
     JobBewerbungRepository jobbewerbungrepository;
-    
+
+    @Autowired
+    EntityManager entityManager;
             
     @Override
     public List<Jobbewerbung> findAll() {
@@ -41,5 +45,7 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
     public Jobbewerbung findByJobidAndSchuelerid(Integer jobid, Integer schuelerid) {
         return jobbewerbungrepository.findByJobidAndSchuelerid(jobid, schuelerid);
     }
+    public void bewerbungAnnehmen(Integer schuelerId){
 
+    }
 }

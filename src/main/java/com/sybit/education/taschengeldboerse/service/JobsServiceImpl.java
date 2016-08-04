@@ -9,6 +9,7 @@ import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
+import com.sybit.education.taschengeldboerse.domain.Status;
 import com.sybit.education.taschengeldboerse.repository.JobBewerbungRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +91,7 @@ public class JobsServiceImpl implements JobsService {
         bewerbung.setSchuelerid(schueler.getId());
         bewerbung.setJobid(jobId);
         bewerbung.setTimestamp(new Date());
+        bewerbung.setStatus(Status.PENDING);
         jobBewerbungRepository.save(bewerbung);
     }
     

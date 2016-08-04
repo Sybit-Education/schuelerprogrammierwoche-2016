@@ -15,6 +15,10 @@ import static org.junit.Assert.assertNotEquals;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  *
  * @author Schulungsnb03
@@ -52,6 +56,13 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
         List<Jobbewerbung> jobList = jobbewerbungservice.findAllByJobid(jobid);
         assertEquals(3, jobList.size());
     }
+
+
+/*    @Test
+    public void flushBewerbungTable(){
+        List<Jobbewerbung> bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
+        jobbewerbungservice.bewerbungAnnehmen(Integer schuelerId);
+    }*/
     
     @Override
     public String getDataset() {

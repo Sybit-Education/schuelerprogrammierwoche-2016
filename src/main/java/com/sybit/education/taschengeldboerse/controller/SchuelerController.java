@@ -1,14 +1,15 @@
 package com.sybit.education.taschengeldboerse.controller;
 
+import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.SchuelerForm;
 import com.sybit.education.taschengeldboerse.service.SchuelerService;
 import com.sybit.education.taschengeldboerse.service.UserService;
-import javax.validation.Valid;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -93,7 +94,7 @@ public class SchuelerController {
     public ModelAndView schuelerProfil(@RequestParam("id") Integer schuelerId) {
         ModelAndView modelAndView =  new ModelAndView("schueler-detail");
         modelAndView.addObject("schueler", schuelerService.findSchuelerById(schuelerId));
-
+        modelAndView.addObject("isUser", false);
         return modelAndView;
     }
 
@@ -101,7 +102,16 @@ public class SchuelerController {
     public ModelAndView schuelerProfil(@RequestParam("username") String email) {
         ModelAndView modelAndView =  new ModelAndView("schueler-detail");
         modelAndView.addObject("schueler", userService.getSchuelerByEmail(email));
+        modelAndView.addObject("isUser", true);
+        return modelAndView;
+    }
 
+    @RequestMapping(value = "/schueler/profil/bearbeitet", method = RequestMethod.POST)
+    public ModelAndView saveSchuelerProfil(@ModelAttribute("job") Schueler schueler, final Model model, final HttpServletRequest request) {
+        schuelerService.updateSchueler(schueler);
+        ModelAndView modelAndView =  new ModelAndView("schueler-detail");
+        modelAndView.addObject("schueler", schuelerService.findSchuelerById(schueler.getId()));
+        modelAndView.addObject("isUser", true);
         return modelAndView;
     }
 }

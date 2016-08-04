@@ -24,9 +24,21 @@
 
             <div class="row">
                 <c:forEach items="${jobs}" var="job">
-                    <div class="col-md-4">
-                        <h3>Job: ${job.bezeichnung}</h3>
-                        <table class="table">
+                    <div class="col-md-12">
+                       <h3><li><a href="<c:url value="/schueler/jobs/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
+                             
+                        
+                    </div>
+                </c:forEach>  
+            </div>
+        </div>
+        
+        
+
+        <c:import url="inc/footer.jsp" />
+    </body>
+</html>
+<!--<table class="table">
                             <tbody>
                                 <tr>
                                     <td>Icon</td>
@@ -40,16 +52,10 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </c:forEach>  
-            </div>
-        </div>
-        
-        <form type="hidden" action="POST">
+ <form type="hidden" action="POST">
             <input type="hidden" value="${job.id}">
         </form>
-
-        <script>
+<script>
             function clickAcceptButton(schuelerName) {
                 var result = confirm("Willst du " + schuelerName + " den Job geben?");
 
@@ -57,8 +63,4 @@
 
                 }
             }
-        </script>
-
-        <c:import url="inc/footer.jsp" />
-    </body>
-</html>
+        </script>--!>

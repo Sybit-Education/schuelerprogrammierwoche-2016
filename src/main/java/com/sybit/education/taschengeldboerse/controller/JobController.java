@@ -42,7 +42,7 @@ public class JobController {
     private JobbewerbungService bewerbungService;
 
     /**
-     * Liste für die Schüler alle offenen Jobs auf.
+     * Listet für die Schüler alle offenen Jobs auf.
      *
      * @param model
      * @param request
@@ -151,6 +151,19 @@ public class JobController {
         return modelAndView;
 
     }
+    
+    @RequestMapping(value = "/schueler/offene-job-anfragen", method = RequestMethod.GET)
+    public ModelAndView openOfferList(final Model model, final HttpServletRequest request) {
+        LOGGER.debug("jobList ---->");
+
+        //TODO Liste der Jobs über den Service holen
+        //Status: OPEN
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("job-liste-offene-anfragen");     
+        
+        LOGGER.debug("jobList <------");
+        return modelAndView;
+    }
 
     /**
      * Ruft Seite für das Anlegen eines neuen Jobs auf.
@@ -246,7 +259,26 @@ public class JobController {
         modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
 
         modelAndView.setViewName("anbieter-bewerbungen");
+        
+        return modelAndView;
+    }
+    
+     /* Listet für den Schüler seine angenommenen Jobs auf.
+     *
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/schueler/angenommene-job-anfragen", method = RequestMethod.GET)
+    public ModelAndView adoptedOfferList(final Model model, final HttpServletRequest request) {
+        LOGGER.debug("jobList ---->");
 
+        //TODO Liste der Jobs über den Service holen
+        //Status: ACCEPTED
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("job-liste-angenommene-anfragen");     
+        
+        LOGGER.debug("jobList <------");
         return modelAndView;
     }
     
