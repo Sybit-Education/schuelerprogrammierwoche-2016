@@ -43,7 +43,7 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
     }
 
     @Override
-    public void bewerbungAnnehmen(Integer jobId, Integer schuelerId){
+    public List<Jobbewerbung> bewerbungAnnehmen(Integer jobId, Integer schuelerId){
         List<Jobbewerbung> bewerbungsListe = findAllByJobid(jobId);
         for(Jobbewerbung bewerbung : bewerbungsListe) {
             if (bewerbung.getSchuelerid() != schuelerId){
@@ -54,7 +54,7 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
                 jobbewerbungrepository.save(bewerbung);
             }
         }
-
+        return bewerbungsListe;
     }
 
     @Override
