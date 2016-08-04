@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
  * @author Schulungsnb03
  */
 @Entity
@@ -29,8 +28,8 @@ public class Jobbewerbung implements Serializable {
     @Column(name = "timestamp")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
-
-    @Enumerated( EnumType.STRING )
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public Jobbewerbung() {
@@ -72,29 +71,47 @@ public class Jobbewerbung implements Serializable {
         this.timestamp = timestamp;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Jobbewerbung)) {
-            return false;
-        }
-        Jobbewerbung other = (Jobbewerbung) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Jobbewerbung that = (Jobbewerbung) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (schuelerid != null ? !schuelerid.equals(that.schuelerid) : that.schuelerid != null) return false;
+        if (jobid != null ? !jobid.equals(that.jobid) : that.jobid != null) return false;
+        if (timestamp != null ? !timestamp.equals(that.timestamp) : that.timestamp != null) return false;
+        return status == that.status;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (schuelerid != null ? schuelerid.hashCode() : 0);
+        result = 31 * result + (jobid != null ? jobid.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.sybit.education.taschengeldboerse.domain.Jobbewerbung[ id=" + id + " ]";
+        return "Jobbewerbung{" +
+                "id=" + id +
+                ", schuelerid=" + schuelerid +
+                ", jobid=" + jobid +
+                ", timestamp=" + timestamp +
+                ", status=" + status +
+                '}';
     }
-    
 }
