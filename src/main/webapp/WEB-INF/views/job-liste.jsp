@@ -21,6 +21,20 @@
             <div class="page-header">
                 <h1>Die Taschengeldbörse</h1>
                 <h2>Jobs</h2>
+                
+                
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      Filter
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="<c:url value="/schueler/offene-job-anfragen" />">Offene Job-Anfragen</a></li>
+                        <li><a href="<c:url value="/schueler/angenommene-job-anfragen" />">Angenommene Job-Anfragen</a></li>
+                    </ul>
+                </div>
+                
+                
             </div>
             
             <div class="row">
