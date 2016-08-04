@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <nav class="navbar navbar-inverse hidden-print">
@@ -35,15 +36,19 @@
                 <li class="dropdown">
                     <a href="<c:url value="/schueler"/>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Schüler<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
+                        <sec:authorize access="hasRole('ROLE_SCHUELER')">
                         <li><a href="<c:url value="/schueler/jobs" />">Job-Übersicht</a></li>
+                        </sec:authorize>
                         <li><a href="<c:url value="/registrieren/schueler" />">Registieren</a></li>
                     </ul>
                 </li> 
                 <li class="dropdown">
                     <a href="<c:url value="/anbieter"/>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Job-Anbieter <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
+                        <sec:authorize access="hasRole('ROLE_ANBIETER')">
                         <li><a href="<c:url value="/anbieter/schueler" />">Bewerber</a></li>
                         <li><a href="<c:url value="/anbieter/jobs/neu" />">Neuen Job anbieten</a></li>
+                        </sec:authorize>
                         <li><a href="<c:url value="/registrieren/anbieter" />">Registieren</a></li>
                     </ul>
                 </li>
@@ -51,6 +56,12 @@
                 <c:if test="${pageContext.request.userPrincipal == null}">
                     <li><a href="<c:url value="/login" />">Anmeldung</a></li>
                 </c:if>
+                <sec:authorize access="hasRole('ROLE_SCHUELER')">
+                    <c:url value="/schueler/profil/nav" var="profilUrl">
+                        <c:param name="username" value="${pageContext.request.userPrincipal.name}"/>
+                    </c:url>
+                    <li><a href="${profilUrl}">Mein Profil</a></li>
+                </sec:authorize>
             </ul>
 
         </div>
