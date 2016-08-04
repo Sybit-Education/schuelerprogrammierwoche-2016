@@ -29,7 +29,7 @@
 
             <h3>Zeitaufwand:</h3> ${job.zeitaufwand}
 
-            <h3>Lohn:</h3> ${job.entlohnung}
+            <h3>Lohn:</h3> ${job.entlohnung}€
 
             <h3>Turnus:</h3> 
             <c:choose>
@@ -59,10 +59,9 @@
 
         <script>
             function abfrage() {
-                var result = confirm("Willst du dich wirklich auf den Job \"" + ${job.bezeichnung} + "\" bewerben?");
-
+                var result = confirm("Willst du den Job \"${job.bezeichnung}\" annehmen?");
                 if (result === true) {
-
+                
                 }
             }
         </script>
