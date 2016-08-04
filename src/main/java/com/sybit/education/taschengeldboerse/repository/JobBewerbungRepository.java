@@ -5,17 +5,21 @@
  */
 package com.sybit.education.taschengeldboerse.repository;
 
+import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Schulungsnb03
  */
-public interface JobBewerbungRepository {
+@Repository
+public interface JobBewerbungRepository extends JpaRepository<Jobbewerbung, Integer>{
     List<Jobbewerbung> findAll();
-    List<Jobbewerbung> findAllBySchuelerId(Integer schuelerid);
-    List<Jobbewerbung> findAllByJobId(Integer jobid);
+    List<Jobbewerbung> findAllBySchuelerid(Integer schuelerid);
+    List<Jobbewerbung> findAllByJobid(Integer jobid);
     
     
 }

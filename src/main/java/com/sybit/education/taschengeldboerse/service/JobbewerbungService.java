@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface JobbewerbungService {
     List<Jobbewerbung> findAll();
-    List<Jobbewerbung> findAllBySchuelerId(Integer schuelerid);
-    List<Jobbewerbung> findAllByJobId(Integer jobid);
+    List<Jobbewerbung> findAllBySchuelerid(Integer schuelerid);
+    List<Jobbewerbung> findAllByJobid(Integer jobid);
     
 }

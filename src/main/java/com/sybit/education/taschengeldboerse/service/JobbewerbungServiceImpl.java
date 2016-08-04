@@ -5,16 +5,17 @@
  */
 package com.sybit.education.taschengeldboerse.service;
 
-import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.repository.JobBewerbungRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Schulungsnb03
  */
+@Service
 public class JobbewerbungServiceImpl implements JobbewerbungService {
    
     @Autowired
@@ -27,13 +28,13 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
     }
 
     @Override
-    public List<Jobbewerbung> findAllBySchuelerId(Integer schuelerid) {
-       return jobbewerbungrepository.findAllBySchuelerId(schuelerid);
+    public List<Jobbewerbung> findAllBySchuelerid(Integer schuelerid) {
+       return jobbewerbungrepository.findAllBySchuelerid(schuelerid);
     }
 
     @Override
-    public List<Jobbewerbung> findAllByJobId(Integer jobid) {
-      return jobbewerbungrepository.findAllByJobId(jobid);
+    public List<Jobbewerbung> findAllByJobid(Integer jobid) {
+      return jobbewerbungrepository.findAllByJobid(jobid);
     }
 
 
