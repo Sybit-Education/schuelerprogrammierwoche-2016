@@ -53,4 +53,9 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
         }
 
     }
+
+    @Override
+    public Jobbewerbung findByJobidAndSchuelerid(Integer jobid, Integer schuelerid) {
+        return jobbewerbungrepository.findByJobidAndSchuelerid(jobid, schuelerid);
+    }
 }

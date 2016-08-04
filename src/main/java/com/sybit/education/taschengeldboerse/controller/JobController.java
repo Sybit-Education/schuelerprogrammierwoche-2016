@@ -1,13 +1,8 @@
 package com.sybit.education.taschengeldboerse.controller;
 
-import com.sybit.education.taschengeldboerse.domain.Anbieter;
-import com.sybit.education.taschengeldboerse.domain.Job;
-import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
-import com.sybit.education.taschengeldboerse.domain.Schueler;
-import com.sybit.education.taschengeldboerse.domain.User;
+import com.sybit.education.taschengeldboerse.domain.*;
 import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.service.JobsService;
-import java.util.List;
 import com.sybit.education.taschengeldboerse.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import java.util.List;
 
 /**
  * Handles requests for the application home page.
@@ -154,6 +148,15 @@ public class JobController {
     @RequestMapping(value = "/schueler/offene-job-anfragen", method = RequestMethod.GET)
     public ModelAndView openOfferList(final Model model, final HttpServletRequest request) {
         LOGGER.debug("jobList ---->");
+
+        //TODO Liste der Jobs über den Service holen
+        //Status: OPEN
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("job-liste-offene-anfragen");
+
+        LOGGER.debug("jobList <------");
+        return modelAndView;
+    }
 
     /**
      * Zeigt die Details für den Job mit der gegebenen ID an.
