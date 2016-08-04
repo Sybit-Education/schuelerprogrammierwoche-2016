@@ -16,6 +16,8 @@ public interface UserService {
     User getUserByEmail(String email);
     
     Anbieter getAnbieterByEmail(String email);
+
+    Schueler getSchuelerByEmail(String email);
     
     User addUser(User user);
 

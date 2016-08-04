@@ -48,16 +48,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="name" class="col-md-3 control-label">Name <span class="star">*</span>: </label>   
-                        <div class="col-md-9">
-                            <input id="name" name="name" value="${schueler.name}" class="form-control" required/>
-                        </div>    
-                    </div>             
-                </div>
+                </div>          
 
                 <!-- TODO: weitere Parameter des Schülers abfragen und speichern -->           
                 <div class="row">
@@ -71,12 +62,12 @@
 
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span>: </label>   
+                        <label for="name" class="col-md-3 control-label">Nachname <span class="star">*</span>: </label>   
                         <div class="col-md-9">
-                            <input id="email" name="email" value="${schueler.email}" class="form-control" required/>
+                            <input id="name" name="name" value="${schueler.name}" class="form-control" required/>
                         </div>    
                     </div>             
-                </div>         
+                </div>
 
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -175,6 +166,15 @@
                     </div>             
                 </div>                           
 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span>: </label>   
+                        <div class="col-md-9">
+                            <input id="email" name="email" value="${schueler.email}" class="form-control" required/>
+                        </div>    
+                    </div>             
+                </div>         
+                        
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="password" class="col-md-3 control-label">Passwort <span class="star">*</span>:</label>   

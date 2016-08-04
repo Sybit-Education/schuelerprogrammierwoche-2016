@@ -66,33 +66,6 @@
                         </div>
                     </div>
                 </div>
-                        
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span>: </label>
-                            <div class="col-md-9">
-                            <input id="email" name="email" class="form-control" required/>
-                        </div>
-                    </div>
-                </div>
-                        
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="password" class="col-md-3 control-label">Passwort <span class="star">*</span>: </label>
-                            <div class="col-md-9">
-                                <input type="password" id="password" class="form-control" name="password" required/>
-                        </div>
-                    </div>
-                </div>
-                        
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="passwordWdh" class="col-md-3 control-label">Passwort-Wdh. <span class="star">*</span>: </label>
-                            <div class="col-md-9">
-                                <input type="password" id="passwordWdh" class="form-control" name="passwordWdh" required/>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -126,6 +99,33 @@
                         <label for="telefon" class="col-md-3 control-label">Telefonnummer:</label>
                         <div class="col-md-9">
                             <input type="tel" id="telefon" class="form-control" value="${anbieter.telefon}" name="telefon"/>
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="email" class="col-md-3 control-label">E-Mail <span class="star">*</span>: </label>
+                            <div class="col-md-9">
+                            <input id="email" name="email" class="form-control" required/>
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="password" class="col-md-3 control-label">Passwort <span class="star">*</span>: </label>
+                            <div class="col-md-9">
+                                <input type="password" id="password" class="form-control" name="password" required/>
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="passwordWdh" class="col-md-3 control-label">Passwort-Wdh. <span class="star">*</span>: </label>
+                            <div class="col-md-9">
+                                <input type="password" id="passwordWdh" class="form-control" name="passwordWdh" required/>
                         </div>
                     </div>
                 </div>
