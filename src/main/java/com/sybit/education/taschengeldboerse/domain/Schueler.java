@@ -45,9 +45,19 @@ public class Schueler implements Serializable {
     private String plz;
     
       @Column
-    private String wohnort; 
-   
-    
+    private String wohnort;
+
+    @Column
+    private byte[] image;
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     public Schueler() {
     }
 

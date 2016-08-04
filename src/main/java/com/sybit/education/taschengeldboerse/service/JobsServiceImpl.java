@@ -7,10 +7,13 @@ package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Schueler;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sybit.education.taschengeldboerse.repository.JobsRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Implementierung des Services für die Jobs.
@@ -18,9 +21,11 @@ import com.sybit.education.taschengeldboerse.repository.JobsRepository;
  */
 @Service
 public class JobsServiceImpl implements JobsService {
-
+  private static final Logger LOGGER = LoggerFactory.getLogger(JobsServiceImpl.class);
     @Autowired
     JobsRepository jobRepository;
+    
+    @Autowired UserService userService;
     
     /**
      * Lade alle Jobs.
@@ -66,5 +71,13 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public List<Job> getJobsOfAnbieter(Anbieter anbieter) {
         return jobRepository.findByAnbieter(anbieter.getId());
+    public void bewerben(String username, Integer jobId) {
+       LOGGER.debug("bewerben von benutzer " + username + " für Job id " + jobId);
+       
+       Schueler schueler = userService.getSchuelerByEmail(username);
+       
+       Integer schuelerId = schueler.getId();
+       //jobId;
+        //in tabelle einfügen
     }
 }

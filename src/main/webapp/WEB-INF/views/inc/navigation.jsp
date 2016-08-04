@@ -56,6 +56,12 @@
                 <c:if test="${pageContext.request.userPrincipal == null}">
                     <li><a href="<c:url value="/login" />">Anmeldung</a></li>
                 </c:if>
+                <sec:authorize access="hasRole('ROLE_SCHUELER')">
+                    <c:url value="/schueler/profil/nav" var="profilUrl">
+                        <c:param name="username" value="${pageContext.request.userPrincipal.name}"/>
+                    </c:url>
+                    <li><a href="${profilUrl}">Mein Profil</a></li>
+                </sec:authorize>
             </ul>
 
         </div>

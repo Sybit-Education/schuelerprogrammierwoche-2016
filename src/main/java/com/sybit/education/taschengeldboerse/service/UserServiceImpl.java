@@ -121,6 +121,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    
+    @Override
+    public Schueler getSchuelerByEmail(String emailadresse) {
+        return schuelerRepository.findByEmail(emailadresse);
+    }
+
     @Override
     public Anbieter saveAnbieter(Anbieter anbieter) {
         anbieter = anbieterRepository.save(anbieter);
