@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * Handles requests for the application home page.
@@ -52,6 +54,27 @@ public class JobController {
         modelAndView.setViewName("job-liste");     
         
         LOGGER.debug("jobList <------");
+        return modelAndView;
+    }
+    
+    @RequestMapping(value = "/schueler/jobs/{id}/bewerben", method = RequestMethod.GET)
+    public ModelAndView jobBewerben(final HttpServletRequest request, @PathVariable("id") Integer jobId) {
+        LOGGER.debug("job-liste -----> job id=" + jobId);
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        //bewerben...
+        jobService.bewerben(username, jobId);
+        
+        
+        List jobList = jobService.getFreeJobs();
+        
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobList", jobList);
+        modelAndView.setViewName("job-liste");
+        
+        LOGGER.debug("job-liste <-----");
         return modelAndView;
     }
 

@@ -3,6 +3,7 @@
   <persistence-unit name="Taschengeldbörse" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <non-jta-data-source/>
+    <class>com.sybit.education.taschengeldboerse.domain.Jobbewerbung</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
   </persistence-unit>

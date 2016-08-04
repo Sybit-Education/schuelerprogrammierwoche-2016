@@ -121,6 +121,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    
     @Override
     public Schueler getSchuelerByEmail(String emailadresse) {
         return schuelerRepository.findByEmail(emailadresse);

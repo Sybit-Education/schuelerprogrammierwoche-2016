@@ -66,6 +66,12 @@
                     </c:url>
                     <li><a href="${profilUrl}">Mein Profil</a></li>
                 </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_ANBIETER')">
+                    <c:url value="/anbieter/profil/nav" var="profilUrl">
+                        <c:param name="username" value="${pageContext.request.userPrincipal.name}"/>
+                    </c:url>
+                    <li><a href="${profilUrl}">Mein Profil</a></li>
+                </sec:authorize>
             </ul>
 
         </div>
