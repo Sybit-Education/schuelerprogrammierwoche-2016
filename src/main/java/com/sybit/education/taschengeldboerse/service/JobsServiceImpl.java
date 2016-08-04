@@ -25,7 +25,11 @@ public class JobsServiceImpl implements JobsService {
     @Autowired
     JobsRepository jobRepository;
     
-    @Autowired UserService userService;
+    @Autowired
+    UserService userService;
+    
+    @Autowired
+    private JobbewerbungService jobBewerbungService;
     
     /**
      * Lade alle Jobs.
