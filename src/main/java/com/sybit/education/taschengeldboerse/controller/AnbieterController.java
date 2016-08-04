@@ -103,7 +103,7 @@ public class AnbieterController {
         return modelAndView;
     }
     
-    @RequestMapping(value = "schueler/profil/nav", method = RequestMethod.GET)
+    @RequestMapping(value = "anbieter/profil/nav", method = RequestMethod.GET)
     public ModelAndView anbieterProfil(@RequestParam("username") String email) {
         ModelAndView modelAndView =  new ModelAndView("anbieter-detail");
         modelAndView.addObject("anbieter", userService.getAnbieterByEmail(email));
