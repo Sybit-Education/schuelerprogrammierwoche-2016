@@ -71,6 +71,8 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public List<Job> getJobsOfAnbieter(Anbieter anbieter) {
         return jobRepository.findByAnbieter(anbieter.getId());
+    }
+    
     public void bewerben(String username, Integer jobId) {
        LOGGER.debug("bewerben von benutzer " + username + " für Job id " + jobId);
        
