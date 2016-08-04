@@ -88,16 +88,32 @@ public class JobController {
      */
     @RequestMapping(value = "/schueler/jobs/detail/{id}", method = RequestMethod.GET)
     public ModelAndView getJobDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
-        Job job = jobService.findById(id);
-        
-        
         ModelAndView modelAndView = new ModelAndView();
+        
+        Job job = jobService.findById(id);
         modelAndView.addObject("job", job);
-
         modelAndView.setViewName("job-detail");
 
         return modelAndView;
 
+    }
+    
+    /**
+     * Speichert die Bewerbung ab.
+     * 
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/schueler/jobs/detail/{id}", method = RequestMethod.POST)
+    public ModelAndView sendRequestForJob(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        
+        Job job = jobService.findById(id);
+        
+        modelAndView.addObject("job", job);
+        modelAndView.setViewName("job-detail");
+        return modelAndView;
     }
 
     /**

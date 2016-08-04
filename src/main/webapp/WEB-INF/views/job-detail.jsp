@@ -55,13 +55,17 @@
             <br>
             <button class="btn btn-large btn-primary" onclick="window.location.href = '<c:url value="/schueler/jobs/" />'">Zurück</button>
         </div>
+        
+        <form id="myForm" action="POST">
+            <input type="hidden" value="${job.id}" />
+        </form>
 
 
         <script>
             function abfrage() {
-                var result = confirm("Willst du den Job \"${job.bezeichnung}\" annehmen?");
+                var result = confirm("Willst du dich wirklich für den Job \"${job.bezeichnung}\" bewerben?");
                 if (result === true) {
-                
+                    document.getElementById("myForm").submit();
                 }
             }
         </script>
