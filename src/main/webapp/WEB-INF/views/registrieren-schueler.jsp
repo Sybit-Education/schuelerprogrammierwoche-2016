@@ -18,8 +18,9 @@
         <c:import url="inc/navigation.jsp" />
 
         <div class="container">
-
-            <h2>Anmeldung Schüler</h2>
+            <div class="page-header">
+                <h2>Schüler Registrierung</h2>
+            </div>
             <c:if test="${addSuccess}">
                 <div id="successMessage" class="alert alert-success" role="alert"> 
                     Der Schüler wurde erfolgreich angelegt.    
