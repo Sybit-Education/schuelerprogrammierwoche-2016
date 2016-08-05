@@ -53,11 +53,6 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-xs-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="<c:url value="/schueler/profil/image?id="/>${schueler.id}" alt="...">
-                            </a>
-                        </div>
-                        <div class="col-xs-6 col-md-3">
                             <p>Name: ${schueler.anrede} ${schueler.vorname} ${schueler.name}</p>
                             <p>E-Mail Adresse: ${schueler.email}</p>
                             <p>Geburtstag: ${schueler.geburtsdatum}</p>
