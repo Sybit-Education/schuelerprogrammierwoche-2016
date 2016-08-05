@@ -1,7 +1,10 @@
 package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
+import com.sybit.education.taschengeldboerse.domain.Status;
+import com.sybit.education.taschengeldboerse.repository.JobBewerbungRepository;
 import com.sybit.education.taschengeldboerse.repository.JobsRepository;
 import com.sybit.education.taschengeldboerse.repository.SchuelerRepository;
 import com.sybit.education.taschengeldboerse.repository.UserRepository;
@@ -24,6 +27,9 @@ public class SchuelerServiceImpl implements SchuelerService {
 
     @Autowired
     JobsRepository jobsRepository;
+
+    @Autowired
+    JobBewerbungRepository jobBewerbungRepository;
 
     @Override
     public Schueler findSchuelerById(int id) {
@@ -53,5 +59,10 @@ public class SchuelerServiceImpl implements SchuelerService {
         updatedSchueler.setImage(schueler.getImage());
 
         schuelerRepository.save(updatedSchueler);
+    }
+
+    @Override
+    public List<Jobbewerbung> getPendingSchuelerJobs(Integer schuelerid) {
+        return jobBewerbungRepository.findAllBySchueleridAndStatus(schuelerid, Status.PENDING);
     }
 }

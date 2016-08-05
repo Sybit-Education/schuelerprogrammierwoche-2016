@@ -1,6 +1,7 @@
 package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface SchuelerService {
     void updateSchueler(Schueler schueler);
 
     List<Job> getSchuelerJobs(Integer schuelerid);
+
+    List<Jobbewerbung> getPendingSchuelerJobs(Integer schuelerid);
 }
