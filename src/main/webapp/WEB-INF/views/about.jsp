@@ -17,7 +17,9 @@
         <c:import url="inc/navigation.jsp" />
 
         <div class="container">
-            <h1>Wir über uns</h1>
+            <div class="page-header">
+                <h1>Wir über uns</h1>
+            </div>
             <div class="row">
                 <div class="col-md-12">
 

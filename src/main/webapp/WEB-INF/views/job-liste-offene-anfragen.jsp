@@ -19,23 +19,17 @@
         <div class="container">
             
             <div class="page-header">
-                <h1>Die Taschengeldbörse</h1>
                 <h2>Meine offenen Job-Anfragen</h2>
             </div>
             
             <div class="row">
                 <c:forEach var="job" items="${jobList}">
                    <div class="col-md-12">
-                    
-                   
                        <h3> <li><a href="<c:url value="/schueler/jobs/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
-                    
-                    
                    </div> 
                       
                 </c:forEach>
-                
-                
+
             </div>
 
         </div>
