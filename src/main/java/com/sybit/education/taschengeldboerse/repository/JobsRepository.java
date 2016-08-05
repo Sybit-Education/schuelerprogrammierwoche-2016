@@ -6,8 +6,9 @@
 package com.sybit.education.taschengeldboerse.repository;
 
 import com.sybit.education.taschengeldboerse.domain.Job;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
  *
@@ -23,5 +24,7 @@ public interface JobsRepository extends JpaRepository<Job, Integer>{
     List<Job> findByAnbieter(Integer id);
     
     List<Job> findByAnbieterAndSchuelerIsNull(Integer id);
+
+    List<Job> findAllBySchuelerid(Integer schuelerid);
 }   
     
