@@ -27,7 +27,6 @@
                    <div class="col-md-12">
                        <h3> <li><a href="<c:url value="/schueler/jobs/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
                    </div> 
-                      
                 </c:forEach>
 
             </div>
