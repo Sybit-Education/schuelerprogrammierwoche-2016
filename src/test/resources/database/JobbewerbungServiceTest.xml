@@ -6,7 +6,7 @@
     <jobbewerbung id="3" schuelerid="3" jobid="3" status="PENDING"/>
     <jobbewerbung id="4" schuelerid="3" jobid="4" status="DECLINED"/>
     <jobbewerbung id="5" schuelerid="3" jobid="5" status="PENDING"/>
-    <jobbewerbung id="6" schuelerid="3" jobid="7" status="PENDING"/>
+    <jobbewerbung id="6" schuelerid="3" jobid="7" status="ACCEPTED"/>
     <jobbewerbung id="7" schuelerid="5" jobid="3" status="PENDING"/>
     <jobbewerbung id="8" schuelerid="6" jobid="3" status="PENDING"/>
 </dataset>
