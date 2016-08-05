@@ -77,7 +77,7 @@
                                 </div>
 
                                 <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
-                                <form:input type="hidden" path="${_csrf.parameterName}" value="${_csrf.token}" />
+                                <input type="hidden" path="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <form:hidden path="id" />
                             </form:form>
                         </div>
