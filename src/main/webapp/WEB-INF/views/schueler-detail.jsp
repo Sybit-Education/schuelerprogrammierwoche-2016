@@ -25,23 +25,6 @@
 
             <c:choose>
                 <c:when test="${isUser}">
-                    <div class="row">
-                        <div class="col-xs-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="<c:url value="/schueler/profil/image?id="/>${schueler.id}" alt="...">
-                            </a>
-                        </div>
-                       <%-- <div class="col-xs-6 col-md-3">
-                            <c:url var = "imageUpload" value="/schueler/profil/upload">
-                                <c:param name="id" value="${schueler.id}"/>
-                            </c:url>
-                            <form:form action="${imageUpload}" method="post" enctype="multipart/form-data">
-                                <input type="file" name="file" size="50" />
-                                <br />
-                                <input type="submit" value="Upload File" />
-                            </form:form>
-                        </div> --%>
-                    </div>
 
                     <div class="row">
                         <div class="col-xs-6 col-md-12">
@@ -85,11 +68,6 @@
                 </c:when>
                 <c:otherwise>
                     <div class="row">
-                        <div class="col-xs-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="<c:url value="/schueler/profil/image?id="/>${schueler.id}" alt="...">
-                            </a>
-                        </div>
                         <div class="col-xs-6 col-md-3">
                             <p>Geschlecht: <c:choose>
                                 <c:when test="${schueler.anrede eq 'Herr'}">

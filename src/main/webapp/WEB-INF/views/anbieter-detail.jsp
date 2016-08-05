@@ -26,13 +26,6 @@
                 
             <c:choose>
                 <c:when test="${isUser}">
-                    <div class="row">
-                        <div class="col-xs-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="<c:url value="/anbieter/profil/image?id="/>${anbieter.id}" alt="...">
-                            </a>
-                        </div>
-                    </div>
                             
                     <div class="row">
                         <div class="col-xs-6 col-md-12">
@@ -80,11 +73,6 @@
                 </c:when>
                 <c:otherwise>
                     <div class="row">
-                        <div class="col-xs-6 col-md-3">
-                            <a href="#" class="thumbnail">
-                                <img src="<c:url value="/anbieter/profil/image?id="/>${anbieter.id}" alt="...">
-                            </a>
-                        </div>
                         <div class="col-xs-6 col-md-3">
                             <p>Geschlecht: <c:choose>
                                 <c:when test="${anbieter.anrede eq 'Herr'}">
