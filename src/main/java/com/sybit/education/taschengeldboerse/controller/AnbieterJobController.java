@@ -188,7 +188,7 @@ public class AnbieterJobController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/anbieter/bewerbungen/{jobId}/{schuelrId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/anbieter/bewerbungen/{jobId}/{schuelerId}", method = RequestMethod.GET)
     public ModelAndView acceptJobRequest(@PathVariable("jobId") Integer jobId, @PathVariable("schuelerId") Integer schuerlerId, final HttpServletRequest request) {
 
         //der eingeloggte Anbieter

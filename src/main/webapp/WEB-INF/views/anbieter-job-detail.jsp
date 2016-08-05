@@ -51,10 +51,15 @@
                     <c:forEach var="bewerber" items="${bewerberListe}">
                         <div class="panel panel-default">
                             <div class="panel-body">
+                                <div class="col-sm-8">
                                 ${bewerber.vorname}         
                                 ${bewerber.nachname}
                                 <br>
                                 Bewerbungsdatum: ${bewerber.timestamp}
+                                </div>
+                                <div class="col-sm-4">
+                                <button class="btn btn-large btn-primary" onclick="window.location.href = '<c:url value="/anbieter/bewerbungen/${job.id}/${bewerber.schuelerId}" />'">Bewerbung annehmen</button>
+                                </div>
                             </div>
                         </div>
                     </c:forEach>
