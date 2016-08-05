@@ -19,7 +19,6 @@
         <div class="container">
             
             <div class="page-header">
-                <h1>Die Taschengeldbörse</h1>
                 <h2>Meine angenommenen Job-Anfragen</h2>
             </div>
             

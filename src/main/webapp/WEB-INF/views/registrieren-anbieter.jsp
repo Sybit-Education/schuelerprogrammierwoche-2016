@@ -18,9 +18,9 @@
         <c:import url="inc/navigation.jsp" />
 
         <div class="container">
-
-            <h2>Job-Anbieter Registrierung</h2>
-            
+            <div class="page-header">
+                <h2>Job-Anbieter Registrierung</h2>
+            </div>
             <c:if test="${addSuccsess}">
                 <div id="successMessage" class="alert alert-success" role="alert">Der Anbieter wurde erfolgreich angelegt.</div>
                 <meta http-equiv="refresh" content="3; URL=${redirect}">
