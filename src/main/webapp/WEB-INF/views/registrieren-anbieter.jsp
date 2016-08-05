@@ -130,7 +130,7 @@
                     </div>
                 </div>
                             
-                <input class="btn btn-primary pull-right" type="submit" value="Speichern" />
+                <input class="btn btn-primary pull-right" type="submit" value="Speichern" id="buttonRegistrieren"/>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form:form>
         </div>

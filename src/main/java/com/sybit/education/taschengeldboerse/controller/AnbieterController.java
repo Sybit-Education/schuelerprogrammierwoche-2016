@@ -81,7 +81,7 @@ public class AnbieterController {
             userService.saveAnbieter(newAnbieter);
             modelAndView.addObject("addSuccsess", true);
             modelAndView.setViewName("registrieren-anbieter");
-            modelAndView.addObject("redirect", request.getContextPath());
+            modelAndView.addObject("redirect", request.getContextPath() + "/login");
 
         } catch (IllegalArgumentException e) {
             modelAndView.addObject("addEmailFail", true);
