@@ -57,27 +57,7 @@ public class SchuelerJobController {
         return modelAndView;
     }
 
-    /*//NOTE: Duplikat?!
-    @RequestMapping(value = "/schueler/jobs/{id}/bewerben", method = RequestMethod.GET)
-    public ModelAndView jobBewerben(final HttpServletRequest request, @PathVariable("id") Integer jobId) {
-        LOGGER.debug("job-liste -----> job id=" + jobId);
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
 
-        //bewerben...
-        jobService.bewerben(username, jobId);
-        
-        
-        List getSchuelerJobListFree = jobService.getFreeJobs();
-        
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("getSchuelerJobListFree", getSchuelerJobListFree);
-        modelAndView.setViewName("job-liste");
-        
-        LOGGER.debug("job-liste <-----");
-        return modelAndView;
-    }*/
     /**
      * Speichert die Bewerbung ab.
      *
