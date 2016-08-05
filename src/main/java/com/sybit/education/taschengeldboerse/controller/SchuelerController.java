@@ -1,6 +1,5 @@
 package com.sybit.education.taschengeldboerse.controller;
 
-import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
 import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.model.SchuelerForm;
@@ -29,6 +28,9 @@ public class SchuelerController {
 
     @Autowired
     private SchuelerService schuelerService;
+
+    public static final String ROOT = "upload-dir";
+
 
     /**
      * Lade das Formular für die Anlage eines Schülers.
