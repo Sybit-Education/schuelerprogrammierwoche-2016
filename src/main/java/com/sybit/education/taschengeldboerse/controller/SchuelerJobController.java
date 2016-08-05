@@ -1,5 +1,6 @@
 package com.sybit.education.taschengeldboerse.controller;
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
@@ -145,6 +146,7 @@ public class SchuelerJobController {
 
         Job job = jobService.findById(id);
         Schueler schueler = getSchueler(request);
+        Anbieter anbieter = userService.getAnbieterById(job.getAnbieter());
         Jobbewerbung bewerbung = bewerbungService.findByJobidAndSchuelerid(job.getId(), schueler.getId());
 
         boolean canRequest = false;
@@ -154,8 +156,9 @@ public class SchuelerJobController {
         }
 
         modelAndView.addObject("job", job);
+        modelAndView.addObject("anbieter", anbieter);
         modelAndView.addObject("canRequest", canRequest);
-        modelAndView.setViewName("job-detail");
+        modelAndView.setViewName("job-detail-mit-anbieter");
 
         return modelAndView;
 
@@ -172,7 +175,7 @@ public class SchuelerJobController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("seitenTitel", "Meine Bewerbungen");
         modelAndView.addObject("jobList", jobListe);
-        modelAndView.setViewName("job-liste-offene-anfragen");
+        modelAndView.setViewName("job-liste-mit-anbieter");
         
 
         
