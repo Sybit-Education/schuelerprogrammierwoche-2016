@@ -54,7 +54,9 @@ public class SchuelerJobController {
         LOGGER.debug("jobList ---->");
 
         //TODO Liste der Jobs über den Service holen
-        List jobList = jobService.getFreeJobs();
+        List <Job> jobList = jobService.getFreeJobs(getSchueler(request).getId());
+       
+             
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("jobList", jobList);

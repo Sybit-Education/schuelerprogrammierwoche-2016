@@ -18,7 +18,7 @@ public interface JobsService {
 
     List<Job> getAllJobs();
 
-    List<Job> getFreeJobs();
+    List<Job> getFreeJobs(Integer schuelerId);
 
     Job addJob(Job job);
 
