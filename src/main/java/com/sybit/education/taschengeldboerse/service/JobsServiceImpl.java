@@ -15,6 +15,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sybit.education.taschengeldboerse.repository.JobsRepository;
+import com.sybit.education.taschengeldboerse.repository.SchuelerRepository;
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,9 @@ public class JobsServiceImpl implements JobsService {
     UserService userService;
     
     //TODO: Wann brauchen wir den?!
+    @Autowired
+    SchuelerRepository schuelerRepository;
+    
     @Autowired
     private JobbewerbungService jobBewerbungService;
     
@@ -110,4 +114,20 @@ public class JobsServiceImpl implements JobsService {
         return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
     }
 
+    /**
+     * Prüft, ob der Job an den Schüler mit der gegebenen ID vergeben ist.
+     * 
+     * @param schuelerId id des Schuelers.
+     * @return true, wenn Job des Schuelers
+     */
+    public boolean isJobOfSchueler(Integer schuelerId, Integer jobId) {
+        
+        Job job = jobRepository.findById(jobId);
+        
+        if(job == null) {
+            return  false;
+        }
+        
+        return (job.getSchueler() != null && job.getSchueler().equals(schuelerId));
+    }
 }
