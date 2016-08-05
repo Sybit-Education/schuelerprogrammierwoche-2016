@@ -19,7 +19,7 @@
         <div class="container">
 
             <div class="page-header">
-                <h2>Meine Jobs</h2>
+                <h2>Meine offenen Jobs</h2>
             </div>
 
             <div class="row">
