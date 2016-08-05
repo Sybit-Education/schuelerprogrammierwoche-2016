@@ -36,7 +36,7 @@ public class AnbieterJobController {
     @Autowired
     private JobbewerbungService bewerbungService;
 
-    /**
+       /**
      * Zeigt die Details für den Job mit der gegebenen ID an.
      *
      * @param id des jobs
@@ -44,7 +44,7 @@ public class AnbieterJobController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/anbieter/jobs/detail/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/anbieter/bewerbungen/detail/{id}", method = RequestMethod.GET)
     public ModelAndView getJobDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView();
@@ -52,12 +52,47 @@ public class AnbieterJobController {
         Anbieter anbieter = getAnbieter(request);
 
         Job job = jobService.findById(id);
-
+        
         if (job != null && job.getAnbieter().equals(anbieter.getId())) {
 
             modelAndView.addObject("job", job);
 
             modelAndView.setViewName("job-detail");
+        } else {
+            //den Job gibt es nicht oder gehört nicht dem Anbieter!
+            modelAndView.setViewName("home");
+        }
+
+        return modelAndView;
+
+    }
+    /**
+     * Zeigt die Details für den vergebenen Job mit der gegebenen ID an.
+     *
+     * @param id des jobs
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/anbieter/jobs/detail/{id}", method = RequestMethod.GET)
+    public ModelAndView getJobAssignedDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        Anbieter anbieter = getAnbieter(request);
+
+        Job job = jobService.findById(id);
+        
+
+        if (job != null && job.getAnbieter().equals(anbieter.getId()) &&
+                userService.getSchuelerById(job.getSchueler()) != null)  {
+
+            Schueler schueler = userService.getSchuelerById(job.getSchueler());
+            
+            modelAndView.addObject("job", job);
+            modelAndView.addObject("schueler", schueler);
+
+            modelAndView.setViewName("job-detail-mit-schueler");
         } else {
             //den Job gibt es nicht oder gehört nicht dem Anbieter!
             modelAndView.setViewName("home");
