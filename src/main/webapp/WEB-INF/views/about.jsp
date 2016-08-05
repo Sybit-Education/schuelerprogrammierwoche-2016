@@ -54,7 +54,7 @@
                                 </div>                               
                             </div>
                             <div class="item">
-                                <img src="<c:url value="/resources/img/wir/IMG_3936.JPG" />" alt="" />
+                                <img src="<c:url value="/resources/img/wir/IMG_4010.JPG" />" alt="" />
                                  <div class="carousel-caption">
                                     Schülerprojektwoche 2016 bei Sybit
                                 </div>
