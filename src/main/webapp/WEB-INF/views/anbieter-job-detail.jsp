@@ -15,14 +15,36 @@
     <body>
 
         <c:import url="inc/navigation.jsp" />
-        
+
         <div class="container">
             <div class="row">
-                <h1>Job BEZEICHNUNG</h1>
+                <h1>${job.bezeichnung}</h1>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <h2>Job-Details</h2>
+
+                    <h3>Details:</h3> ${job.zusaetzliche_infos}
+
+                    <h3>Uhrzeit:</h3> ${job.uhrzeit}
+
+                    <h3>Datum:</h3> ${job.datum}
+
+                    <h3>Zeitaufwand:</h3> ${job.zeitaufwand}
+
+                    <h3>Lohn:</h3> ${job.entlohnung}€
+
+                    <h3>Turnus:</h3>
+                    <c:choose>
+                        <c:when test="${job.turnus}">
+                            regelmäßig
+                        </c:when>
+                        <c:otherwise>
+                            einmalig
+                        </c:otherwise>
+                    </c:choose>
+
+                    <h3>Anforderungen:</h3> ${job.anforderungen}
                 </div>
                 <div class="col-md-6">
                     <h2>Bewerber</h2>
@@ -38,8 +60,10 @@
                     </c:forEach>
                 </div>
             </div>
+                
+            <button class="btn btn-large btn-primary" onclick="window.location.href = '<c:url value="/anbieter/bewerbungen" />'">Zurück</button>
         </div>
-        
+
         <c:import url="inc/footer.jsp" />
     </body>
 </html>
