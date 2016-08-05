@@ -55,6 +55,15 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
         assertEquals(3, jobList.size());
     }
 
+    @Test
+    public void testFindAllByStatusAndSchuelerId() {
+        
+        int schuelerId = 3;
+        List<Jobbewerbung> jobList = jobbewerbungservice.findAllByStatusAndSchuelerId(Status.PENDING, schuelerId);
+        assertEquals(2,jobList.size());
+        jobList = jobbewerbungservice.findAllByStatusAndSchuelerId(Status.ACCEPTED, schuelerId);
+        assertEquals(1,jobList.size());
+    }
 
     @Test
     public void flushBewerbungTable(){
