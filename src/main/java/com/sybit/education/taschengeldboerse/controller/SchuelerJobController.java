@@ -166,7 +166,7 @@ public class SchuelerJobController {
 
         //TODO Liste der Jobs über den Service holen
         //Status: ACCEPTED
-        List <Job> angenommeneJobs = schuelerService.getSchuelerJobs(userService.getSchuelerByEmail(request.getRemoteUser()).getId());
+        List <Job> angenommeneJobs = schuelerService.getSchuelerJobs(schueler.getId());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("job-liste-angenommene-anfragen");
         modelAndView.addObject("jobList", angenommeneJobs);
