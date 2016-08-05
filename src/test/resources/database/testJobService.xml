@@ -7,6 +7,7 @@
     <jobs id="3" bezeichnung="Test Job3" anbieter="2" schueler="1" datum="02.08.2016" uhrzeit="10:18" zeitaufwand="3h" turnus="false" anforderungen="test anforderung" zusaetzliche_infos="test info" entlohnung="50"/>
     <jobs id="4" bezeichnung="Test Job4" anbieter="3" datum="02.08.2016" uhrzeit="10:18" zeitaufwand="3h" turnus="false" anforderungen="test anforderung" zusaetzliche_infos="test info" entlohnung="50"/>
     <jobs id="5" bezeichnung="Test Job5" anbieter="3" datum="02.08.2016" uhrzeit="10:18" zeitaufwand="3h" turnus="false" anforderungen="test anforderung" zusaetzliche_infos="test info" entlohnung="50"/>
+    
     <jobbewerbung id="1" schuelerid="1" jobid="1" status="PENDING"/>
     <jobbewerbung id="2" schuelerid="2" jobid="2" status="ACCEPTED"/>
     <jobbewerbung id="3" schuelerid="3" jobid="3" status="PENDING"/>

@@ -110,4 +110,21 @@ public class JobsServiceImpl implements JobsService {
         return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
     }
 
+    @Override
+    public void bewerbungAnnehmen(Integer jobId, Integer schuelerId) {
+        LOGGER.debug("Bewerbung annehmen von Benutzer " + schuelerId + " für den Job" + jobId);
+        
+        Jobbewerbung bewerbung = jobBewerbungRepository.findByJobidAndSchuelerid(jobId, schuelerId);
+        Job job = jobRepository.findById(jobId);
+        // Bewerber akzeptieren
+        bewerbung.setStatus(Status.ACCEPTED);
+        jobBewerbungRepository.saveAndFlush(bewerbung);
+        
+        jobBewerbungService.bewerberListeAktualisieren(jobId);
+        
+        // Dem Job den Schüler zuteilen
+        job.setSchueler(schuelerId);
+        jobRepository.saveAndFlush(job);
+    }
+
 }

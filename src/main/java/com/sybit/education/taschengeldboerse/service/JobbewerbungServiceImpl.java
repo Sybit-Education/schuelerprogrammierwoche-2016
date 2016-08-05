@@ -43,15 +43,13 @@ public class JobbewerbungServiceImpl implements JobbewerbungService {
     }
 
     @Override
-    public List<Jobbewerbung> bewerbungAnnehmen(Integer jobId, Integer schuelerId){
+    public List<Jobbewerbung> bewerberListeAktualisieren(Integer jobId){
+        // Bestehende Bewerbungen zum selben Job ablehnen
         List<Jobbewerbung> bewerbungsListe = findAllByJobid(jobId);
-        for(Jobbewerbung bewerbung : bewerbungsListe) {
-            if (bewerbung.getSchuelerid() != schuelerId){
-                bewerbung.setStatus(Status.DECLINED);
-                jobbewerbungrepository.save(bewerbung);
-            }else if(bewerbung.getSchuelerid() == schuelerId) {
-                bewerbung.setStatus(Status.ACCEPTED);
-                jobbewerbungrepository.save(bewerbung);
+        for(Jobbewerbung aktuelleBewerbung : bewerbungsListe ) {
+            if(Status.PENDING.equals(aktuelleBewerbung.getStatus())) {
+                aktuelleBewerbung.setStatus(Status.DECLINED);
+                jobbewerbungrepository.saveAndFlush(aktuelleBewerbung);
             }
         }
         return bewerbungsListe;

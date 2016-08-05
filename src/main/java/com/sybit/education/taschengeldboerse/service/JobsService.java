@@ -7,6 +7,7 @@ package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import java.util.List;
 
 /**
@@ -28,5 +29,7 @@ public interface JobsService {
     List<Job> getFreeJobsOfAnbieter(Anbieter anbieter);
 
     void bewerben(String schuelerEmail, Integer jobId);
+    
+    void bewerbungAnnehmen(Integer jobId, Integer schuelerId);
 
 }

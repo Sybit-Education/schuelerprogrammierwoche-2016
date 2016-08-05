@@ -8,6 +8,7 @@ package com.sybit.education.taschengeldboerse.testService;
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.domain.Status;
 import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
+import com.sybit.education.taschengeldboerse.service.JobsService;
 import com.sybit.education.taschengeldboerse.testutil.AbstractDatabaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,6 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
     
     @Autowired
     JobbewerbungService jobbewerbungservice;
-    
     
     @Test
     public void testFindByJobidAndSchuelerId() {
@@ -53,21 +53,6 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
         int jobid = 3;
         List<Jobbewerbung> jobList = jobbewerbungservice.findAllByJobid(jobid);
         assertEquals(3, jobList.size());
-    }
-
-
-    @Test
-    public void flushBewerbungTable(){
-        Integer jobId = 3;
-        Integer schuelerId = 6;
-        List<Jobbewerbung> bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
-        assertEquals(3, bewerbungsListe.size());
-
-        bewerbungsListe = jobbewerbungservice.bewerbungAnnehmen(jobId, schuelerId);
-        assertEquals(Status.ACCEPTED, bewerbungsListe.get(2).getStatus());
-        assertEquals(Status.DECLINED, bewerbungsListe.get(1).getStatus());
-        assertEquals(Status.DECLINED, bewerbungsListe.get(0).getStatus());
-
     }
     
     @Override

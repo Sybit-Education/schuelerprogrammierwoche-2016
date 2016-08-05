@@ -7,6 +7,9 @@ package com.sybit.education.taschengeldboerse.testService;
 
 import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Status;
+import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.testutil.AbstractDatabaseTest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,9 @@ import static org.junit.Assert.assertEquals;
  */
 public class JobServiceTest extends AbstractDatabaseTest {
 
+    @Autowired
+    JobbewerbungService jobbewerbungservice;
+    
     @Autowired
     JobsService service;
 
@@ -61,6 +67,21 @@ public class JobServiceTest extends AbstractDatabaseTest {
         List<Job> jobList = service.getJobsOfAnbieter(anbieter);
         assertEquals(1, jobList.size());
     }    
+    
+    @Test
+    public void testBewerberAnnehmen(){
+        Integer jobId = 3;
+        Integer schuelerId = 6;
+        List<Jobbewerbung> bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
+        assertEquals(3, bewerbungsListe.size());
+
+        //TODO
+        service.bewerbungAnnehmen(jobId, schuelerId);
+        //assertEquals(Status.ACCEPTED, bewerbungsListe.get(2).getStatus());
+        //assertEquals(Status.DECLINED, bewerbungsListe.get(1).getStatus());
+        //assertEquals(Status.DECLINED, bewerbungsListe.get(0).getStatus());
+    }
+    
     @Override
     public String getDataset() {
         return "database/testJobService.xml";

@@ -173,6 +173,8 @@ public class AnbieterJobController {
      * Der Anbieter Akzeptiert Bewerbungen auf seine Jobs TODO: Bewerbugen
      * akzeptieren
      *
+     * @param jobId
+     * @param schuerlerId
      * @param request
      * @return
      */
@@ -185,11 +187,10 @@ public class AnbieterJobController {
         //ausgewählter Job
         Job job = jobService.findById(jobId);
 
-
         //Was wird nun angezeigt? die offenen Jobs?
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
-
+        jobService.bewerbungAnnehmen(jobId, schuerlerId);
         modelAndView.addObject("seitenTitel", "Meine offenen Jobs");
 
         modelAndView.setViewName("anbieter-bewerbungen");
