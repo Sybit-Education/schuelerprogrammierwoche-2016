@@ -177,7 +177,7 @@ public class SchuelerJobController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("seitenTitel", "Meine Bewerbungen");
         modelAndView.addObject("jobList", jobListe);
-        modelAndView.setViewName("job-liste-mit-anbieter");
+        modelAndView.setViewName("job-liste-offene-anfragen");
         
 
         
