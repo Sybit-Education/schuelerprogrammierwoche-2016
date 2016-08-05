@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import org.springframework.web.client.HttpClientErrorException;
 
 /**
  * Handles requests for the application home page.
@@ -45,7 +44,7 @@ public class AnbieterJobController {
      * @return
      */
     @RequestMapping(value = "/anbieter/jobs/detail/{id}", method = RequestMethod.GET)
-    public ModelAndView getJobAssignedDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+    public ModelAndView getJobDetailAssigned(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView();
 
