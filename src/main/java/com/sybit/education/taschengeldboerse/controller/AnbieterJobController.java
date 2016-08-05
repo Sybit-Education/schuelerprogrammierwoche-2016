@@ -161,10 +161,16 @@ public class AnbieterJobController {
         Anbieter anbieter = getAnbieter(request);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
+        List<Job> jobs = jobService.getFreeJobsOfAnbieter(anbieter);
+        
+        for(Job job : jobs) {
+            Integer count = bewerbungService.getCountOfJobbewerbungenByJobid(job.getId());
+        }
+        
+        modelAndView.addObject("jobs", jobs);
         modelAndView.addObject("seitenTitel", "Meine offenen Jobs");
 
-        modelAndView.setViewName("anbieter-bewerbungen");
+        modelAndView.setViewName("anbieter-offenejobs");
 
         return modelAndView;
     }
