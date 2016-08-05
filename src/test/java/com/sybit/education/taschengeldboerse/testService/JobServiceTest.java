@@ -41,7 +41,8 @@ public class JobServiceTest extends AbstractDatabaseTest {
 
     @Test
     public void testFindBySchuelerIsNull() {
-        List<Job> jobList = service.getFreeJobs();
+        Integer schulerid = 7;
+        List<Job> jobList = service.getFreeJobs(schulerid);
         assertEquals(2, jobList.size());
     }
 
