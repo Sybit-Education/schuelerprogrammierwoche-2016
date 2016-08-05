@@ -1,8 +1,12 @@
 package com.sybit.education.taschengeldboerse.controller;
 
-import com.sybit.education.taschengeldboerse.domain.*;
+import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Schueler;
+import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.service.JobsService;
+import com.sybit.education.taschengeldboerse.service.SchuelerService;
 import com.sybit.education.taschengeldboerse.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +37,9 @@ public class SchuelerJobController {
 
     @Autowired
     private JobbewerbungService bewerbungService;
+    
+    @Autowired
+    private SchuelerService schuelerService;
 
     /**
      * Listet für die Schüler alle offenen Jobs auf.
@@ -57,27 +64,7 @@ public class SchuelerJobController {
         return modelAndView;
     }
 
-    /*//NOTE: Duplikat?!
-    @RequestMapping(value = "/schueler/jobs/{id}/bewerben", method = RequestMethod.GET)
-    public ModelAndView jobBewerben(final HttpServletRequest request, @PathVariable("id") Integer jobId) {
-        LOGGER.debug("job-liste -----> job id=" + jobId);
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
 
-        //bewerben...
-        jobService.bewerben(username, jobId);
-        
-        
-        List getSchuelerJobListFree = jobService.getFreeJobs();
-        
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("getSchuelerJobListFree", getSchuelerJobListFree);
-        modelAndView.setViewName("job-liste");
-        
-        LOGGER.debug("job-liste <-----");
-        return modelAndView;
-    }*/
     /**
      * Speichert die Bewerbung ab.
      *
@@ -148,11 +135,15 @@ public class SchuelerJobController {
     public ModelAndView getJobListBeworben(final Model model, final HttpServletRequest request) {
         LOGGER.debug("jobList ---->");
 
-        //TODO Liste der Jobs über den Service holen
-        //Status: OPEN
+        List<Job> jobListe = schuelerService.getPendingSchuelerJobs(
+                userService.getSchuelerByEmail(request.getRemoteUser()).getId());
+
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("seitenTitel", "Meine Bewerbungen");
+        modelAndView.addObject("jobList", jobListe);
         modelAndView.setViewName("job-liste-offene-anfragen");
+        
 
         LOGGER.debug("jobList <------");
         return modelAndView;

@@ -1,6 +1,8 @@
 package com.sybit.education.taschengeldboerse.repository;
 
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Status;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
@@ -34,5 +36,23 @@ public class JobBewerbungRepositoryImpl implements JobBewerbungRepositoryCustom 
         Query query = entityManager.createQuery( cq );
 
         bewerbungenListe = query.getResultList();
+    }
+
+    @Override
+    public List<Jobbewerbung> findAllByStatusAndSchuelerId(Status status, Integer schuelerId) {
+        List<Jobbewerbung> bewerbungenListe;
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Jobbewerbung> cq = cb.createQuery( Jobbewerbung.class );
+        Root<Jobbewerbung> bewerbungen = cq.from( Jobbewerbung.class );
+        
+        Expression<String> statusErgebnis = bewerbungen.get( "status" );
+        Expression<String> schueleridFK = bewerbungen.get( "schuelerid" );
+        
+        cq.select( bewerbungen ).where(cb.equal( statusErgebnis, status ), cb.equal( schueleridFK, schuelerId ));
+        
+        Query query = entityManager.createQuery( cq );
+        bewerbungenListe = query.getResultList();
+        
+        return bewerbungenListe;
     }
 }
