@@ -1,6 +1,9 @@
 package com.sybit.education.taschengeldboerse.controller;
 
-import com.sybit.education.taschengeldboerse.domain.*;
+import com.sybit.education.taschengeldboerse.domain.Job;
+import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Schueler;
+import com.sybit.education.taschengeldboerse.domain.User;
 import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.service.JobsService;
 import com.sybit.education.taschengeldboerse.service.SchuelerService;
@@ -132,12 +135,13 @@ public class SchuelerJobController {
     public ModelAndView getJobListBeworben(final Model model, final HttpServletRequest request) {
         LOGGER.debug("jobList ---->");
 
-        //TODO Liste der Jobs über den Service holen
-        //Status: OPEN
-        List<Jobbewerbung> offenebewerbungen = schuelerService.getPendingSchuelerJobs(userService.getSchuelerByEmail(request.getRemoteUser()).getId());
+        List<Job> jobListe = schuelerService.getPendingSchuelerJobs(
+                userService.getSchuelerByEmail(request.getRemoteUser()).getId());
+
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("seitenTitel", "Meine Bewerbungen");
-        modelAndView.addObject("jobList", offenebewerbungen);
+        modelAndView.addObject("jobList", jobListe);
         modelAndView.setViewName("job-liste-offene-anfragen");
         
 
