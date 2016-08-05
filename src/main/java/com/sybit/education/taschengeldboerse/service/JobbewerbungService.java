@@ -6,6 +6,7 @@
 package com.sybit.education.taschengeldboerse.service;
 
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.model.Bewerber;
 import java.util.List;
 
 /**
@@ -19,5 +20,7 @@ public interface JobbewerbungService {
     List<Jobbewerbung> bewerbungAnnehmen(Integer jobId, Integer schuelerId);
     
     Jobbewerbung findByJobidAndSchuelerid(Integer jobid, Integer schuelerid);
+    
+    List<Bewerber> getAllBewerberByJobid(Integer jobid);
     
 }
