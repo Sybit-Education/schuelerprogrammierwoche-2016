@@ -1,7 +1,6 @@
 package com.sybit.education.taschengeldboerse.testService;
 
 import com.sybit.education.taschengeldboerse.domain.Job;
-import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.service.SchuelerService;
 import com.sybit.education.taschengeldboerse.testutil.AbstractDatabaseTest;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class SchuelerJobsServiceTest extends AbstractDatabaseTest{
 
     @Test
     public void testGetSchuelerPendingJobs() {
-        List<Jobbewerbung> jobbewerbungListe = schuelerService.getPendingSchuelerJobs(3);
+        List<Job> jobbewerbungListe = schuelerService.getPendingSchuelerJobs(3);
 
         assertEquals(3, jobbewerbungListe.size());
     }

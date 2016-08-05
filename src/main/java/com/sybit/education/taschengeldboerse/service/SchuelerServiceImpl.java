@@ -11,6 +11,7 @@ import com.sybit.education.taschengeldboerse.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +31,9 @@ public class SchuelerServiceImpl implements SchuelerService {
 
     @Autowired
     JobBewerbungRepository jobBewerbungRepository;
+
+    @Autowired
+    JobsService jobService;
 
     @Override
     public Schueler findSchuelerById(int id) {
@@ -62,7 +66,15 @@ public class SchuelerServiceImpl implements SchuelerService {
     }
 
     @Override
-    public List<Jobbewerbung> getPendingSchuelerJobs(Integer schuelerid) {
-        return jobBewerbungRepository.findAllBySchueleridAndStatus(schuelerid, Status.PENDING);
+    public List<Job> getPendingSchuelerJobs(Integer schuelerid) {
+        List<Jobbewerbung> offenebewerbungen = jobBewerbungRepository.findAllBySchueleridAndStatus(schuelerid, Status.PENDING);
+        List<Job> jobListe = new ArrayList<>();
+        if(offenebewerbungen.size() > 0) {
+            for (int i = 0; i < offenebewerbungen.size(); ++i) {
+                Job job = jobService.findById(offenebewerbungen.get(i).getJobid());
+                jobListe.add(job);
+            }
+        }
+        return jobListe;
     }
 }
