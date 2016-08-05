@@ -161,6 +161,7 @@ public class SchuelerJobController {
         modelAndView.setViewName("job-liste-offene-anfragen");
         
 
+        
         LOGGER.debug("jobList <------");
         return modelAndView;
     }
@@ -181,8 +182,10 @@ public class SchuelerJobController {
 
         //TODO Liste der Jobs über den Service holen
         //Status: ACCEPTED
+        List <Job> angenommeneJobs = schuelerService.getSchuelerJobs(userService.getSchuelerByEmail(request.getRemoteUser()).getId());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("job-liste-angenommene-anfragen");
+        modelAndView.addObject("jobList", angenommeneJobs);
 
         LOGGER.debug("jobList <------");
         return modelAndView;
