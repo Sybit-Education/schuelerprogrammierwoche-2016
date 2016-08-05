@@ -28,6 +28,13 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
     
     
     @Test
+    public void testCountOfJobbewerbungenByJobid() {
+        int jobId = 3;
+        Integer count = jobbewerbungservice.getCountOfJobbewerbungenByJobid(jobId);
+        assertEquals((Integer)3, count);
+    }
+    
+    @Test
     public void testFindByJobidAndSchuelerId() {
         int jobId = 5;
         int schuelerId = 3;

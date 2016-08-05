@@ -109,5 +109,4 @@ public class JobsServiceImpl implements JobsService {
     public List<Job> getFreeJobsOfAnbieter(Anbieter anbieter) {
         return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
     }
-
 }
