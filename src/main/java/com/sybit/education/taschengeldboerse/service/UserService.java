@@ -27,5 +27,6 @@ public interface UserService {
     
     Anbieter saveAnbieter(Anbieter anbieter);
 
+    Schueler getSchuelerById(Integer id);
 
 }

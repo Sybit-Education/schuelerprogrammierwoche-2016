@@ -54,6 +54,30 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
         List<Jobbewerbung> jobList = jobbewerbungservice.findAllByJobid(jobid);
         assertEquals(3, jobList.size());
     }
+
+    @Test
+    public void testFindAllByStatusAndSchuelerId() {
+        
+        int schuelerId = 3;
+        List<Jobbewerbung> jobList = jobbewerbungservice.findAllByStatusAndSchuelerId(Status.PENDING, schuelerId);
+        assertEquals(2,jobList.size());
+        jobList = jobbewerbungservice.findAllByStatusAndSchuelerId(Status.ACCEPTED, schuelerId);
+        assertEquals(1,jobList.size());
+    }
+
+    /*@Test
+    public void flushBewerbungTable(){
+        Integer jobId = 3;
+        Integer schuelerId = 6;
+        List<Jobbewerbung> bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
+        assertEquals(3, bewerbungsListe.size());
+
+        bewerbungsListe = jobbewerbungservice.bewerbungAnnehmen(jobId, schuelerId);
+        assertEquals(Status.ACCEPTED, bewerbungsListe.get(2).getStatus());
+        assertEquals(Status.DECLINED, bewerbungsListe.get(1).getStatus());
+        assertEquals(Status.DECLINED, bewerbungsListe.get(0).getStatus());
+
+    }*/
     
     @Override
     public String getDataset() {

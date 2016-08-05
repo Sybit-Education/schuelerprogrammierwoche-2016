@@ -38,13 +38,13 @@ public class JobServiceTest extends AbstractDatabaseTest {
         assertEquals("Test Job", job.getBezeichnung());
         assertEquals("test info", job.getZusaetzliche_infos());
     }
-    
+
     @Test
     public void testFindBySchuelerIsNull() {
         List<Job> jobList = service.getFreeJobs();
         assertEquals(2, jobList.size());
     }
-    
+
     @Test
     public void testFindByAnbieterAndSchuelerIsNull() {
         Anbieter anbieter = new Anbieter();
@@ -58,15 +58,33 @@ public class JobServiceTest extends AbstractDatabaseTest {
         Anbieter anbieter = new Anbieter();
         anbieter.setId(2);
         List<Job> jobList = service.getJobsOfAnbieter(anbieter);
-        assertEquals(2, jobList.size());    
+        assertEquals(2, jobList.size());
     }
+
     @Test
     public void testFindByAnbieter2() {
         Anbieter anbieter = new Anbieter();
         anbieter.setId(1);
         List<Job> jobList = service.getJobsOfAnbieter(anbieter);
         assertEquals(1, jobList.size());
-    }    
+    }
+
+    @Test
+    public void testIsJobOfSchueler() {
+
+        boolean actual = service.isJobOfSchueler(1, 1);
+        assertEquals(true, actual);
+
+        actual = service.isJobOfSchueler(1, 4);
+        assertEquals(false, actual);
+        
+        actual = service.isJobOfSchueler(1, 4000);
+        assertEquals(false, actual);
+        
+        actual = service.isJobOfSchueler(100000, 2);
+        assertEquals(false, actual);
+    }
+
     
     @Test
     public void testBewerberAnnehmen(){
@@ -86,5 +104,5 @@ public class JobServiceTest extends AbstractDatabaseTest {
     public String getDataset() {
         return "database/testJobService.xml";
     }
-    
+
 }

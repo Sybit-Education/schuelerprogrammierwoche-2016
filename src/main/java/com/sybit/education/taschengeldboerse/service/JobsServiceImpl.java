@@ -15,6 +15,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sybit.education.taschengeldboerse.repository.JobsRepository;
+import com.sybit.education.taschengeldboerse.repository.SchuelerRepository;
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,9 @@ public class JobsServiceImpl implements JobsService {
     UserService userService;
     
     //TODO: Wann brauchen wir den?!
+    @Autowired
+    SchuelerRepository schuelerRepository;
+    
     @Autowired
     private JobbewerbungService jobBewerbungService;
     
@@ -110,6 +114,11 @@ public class JobsServiceImpl implements JobsService {
         return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
     }
 
+        @Override
+    public List<Job> getAssignedJobsOfAnbieter(Anbieter anbieter) {
+        return jobRepository.findByAnbieterAndSchuelerIsNotNull(anbieter.getId());
+    }
+
     @Override
     public void bewerbungAnnehmen(Integer jobId, Integer schuelerId) {
         LOGGER.debug("Bewerbung annehmen von Benutzer " + schuelerId + " für den Job" + jobId);
@@ -126,5 +135,4 @@ public class JobsServiceImpl implements JobsService {
         job.setSchueler(schuelerId);
         jobRepository.saveAndFlush(job);
     }
-
 }

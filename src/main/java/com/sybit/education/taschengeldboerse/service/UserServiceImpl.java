@@ -133,4 +133,9 @@ public class UserServiceImpl implements UserService {
         return anbieter;
     }
 
+    @Override
+    public Schueler getSchuelerById(Integer id) {
+        return schuelerRepository.findById(id);
+    }
+
 }

@@ -37,7 +37,7 @@ public class AnbieterJobController {
     private JobbewerbungService bewerbungService;
 
     /**
-     * Zeigt die Details für den Job mit der gegebenen ID an.
+     * Zeigt die Details für den vergebenen Job mit der gegebenen ID an.
      *
      * @param id des jobs
      * @param model
@@ -45,19 +45,24 @@ public class AnbieterJobController {
      * @return
      */
     @RequestMapping(value = "/anbieter/jobs/detail/{id}", method = RequestMethod.GET)
-    public ModelAndView getJobDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+    public ModelAndView getJobAssignedDetail(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView();
 
         Anbieter anbieter = getAnbieter(request);
 
         Job job = jobService.findById(id);
+        
 
-        if (job != null && job.getAnbieter().equals(anbieter.getId())) {
+        if (job != null && job.getAnbieter().equals(anbieter.getId()) &&
+                userService.getSchuelerById(job.getSchueler()) != null)  {
 
+            Schueler schueler = userService.getSchuelerById(job.getSchueler());
+            
             modelAndView.addObject("job", job);
+            modelAndView.addObject("schueler", schueler);
 
-            modelAndView.setViewName("job-detail");
+            modelAndView.setViewName("job-detail-mit-schueler");
         } else {
             //den Job gibt es nicht oder gehört nicht dem Anbieter!
             modelAndView.setViewName("home");
@@ -66,7 +71,7 @@ public class AnbieterJobController {
         return modelAndView;
 
     }
-
+    
     /**
      * Ruft Seite für das Anlegen eines neuen Jobs auf.
      *
@@ -129,26 +134,28 @@ public class AnbieterJobController {
         return modelAndView;
     }
 
-        /**
+    /**
      * Zeigt dem Anbieter seine Job mit den Bewerbungen
      *
      * @param request
      * @return
      */
     @RequestMapping(value = "/anbieter/jobs", method = RequestMethod.GET)
-    public ModelAndView getJobListOpen(final HttpServletRequest request) {
+    public ModelAndView getJobListAssigned(final HttpServletRequest request) {
 
         Anbieter anbieter = getAnbieter(request);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
-        modelAndView.addObject("seitenTitel", "Meine offenen Jobs");
+        final List<Job> jobList = jobService.getAssignedJobsOfAnbieter(anbieter);
+        modelAndView.addObject("jobs", jobList);
+        LOGGER.debug("Anzahl der vergebenen Jobs: " + jobList.size());
+        modelAndView.addObject("seitenTitel", "Meine vergebenen Jobs");
 
-        modelAndView.setViewName("anbieter-bewerbungen");
+        modelAndView.setViewName("anbieter-vergebene-jobs");
 
         return modelAndView;
     }
-    
+
     /**
      * Zeigt dem Anbieter seine Job mit den Bewerbungen
      *
@@ -156,12 +163,15 @@ public class AnbieterJobController {
      * @return
      */
     @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.GET)
-    public ModelAndView getJobListBewerbungen(final HttpServletRequest request) {
+    public ModelAndView getJobListOpen(final HttpServletRequest request) {
 
         Anbieter anbieter = getAnbieter(request);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
+        final List<Job> jobList = jobService.getFreeJobsOfAnbieter(anbieter);
+        modelAndView.addObject("jobs", jobList);
+        
+        LOGGER.debug("Anzahl der vergebenen Jobs: " + jobList.size());
         modelAndView.addObject("seitenTitel", "Meine offenen Jobs");
 
         modelAndView.setViewName("anbieter-bewerbungen");
@@ -180,10 +190,10 @@ public class AnbieterJobController {
      */
     @RequestMapping(value = "/anbieter/bewerbungen/{jobId}/{schuelrId}", method = RequestMethod.POST)
     public ModelAndView acceptJobRequest(@PathVariable("jobId") Integer jobId, @PathVariable("schuelerId") Integer schuerlerId, final HttpServletRequest request) {
-        
+
         //der eingeloggte Anbieter
         Anbieter anbieter = getAnbieter(request);
-        
+
         //ausgewählter Job
         Job job = jobService.findById(jobId);
 
@@ -194,6 +204,35 @@ public class AnbieterJobController {
         modelAndView.addObject("seitenTitel", "Meine offenen Jobs");
 
         modelAndView.setViewName("anbieter-bewerbungen");
+
+        return modelAndView;
+    }
+    
+    /**
+     * 
+     * @param jobId
+     * @param request
+     * @return 
+     */
+    @RequestMapping(value = "/anbieter/bewerbungen/detail/{jobId}", method = RequestMethod.GET)
+    public ModelAndView getJobDetail(@PathVariable("jobId") Integer jobId, final HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        Anbieter anbieter = getAnbieter(request);
+
+        Job job = jobService.findById(jobId);
+
+        if (job != null && job.getAnbieter().equals(anbieter.getId())) {
+
+            modelAndView.addObject("job", job);
+
+            modelAndView.addObject("bewerberListe", bewerbungService.getAllBewerberByJobid(jobId));
+
+            modelAndView.setViewName("anbieter-job-detail");
+        } else {
+            //den Job gibt es nicht oder gehört nicht dem Anbieter!
+            modelAndView.setViewName("home");
+        }
 
         return modelAndView;
     }
