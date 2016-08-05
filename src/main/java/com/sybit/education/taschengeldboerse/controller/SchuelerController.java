@@ -57,7 +57,7 @@ public class SchuelerController {
      * @return the logical view to be returned
      */
     @RequestMapping(value = "/registrieren/schueler", method = RequestMethod.POST)
-    public ModelAndView saveForm(@ModelAttribute("schueler") SchuelerForm schuelerForm) {
+    public ModelAndView saveForm(@ModelAttribute("schueler") SchuelerForm schuelerForm, final HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         try {
 
@@ -77,8 +77,11 @@ public class SchuelerController {
             schueler.setPlz(schuelerForm.getPlz());
             schueler.setWohnort(schuelerForm.getWohnort());
             userService.saveSchueler(schueler);
-
-            modelAndView.setViewName("job-liste");
+            
+            modelAndView.addObject("addSuccess", true);
+            modelAndView.setViewName("registrieren-schueler");
+            modelAndView.addObject("redirect", request.getContextPath() + "/login");
+            
         } catch (IllegalArgumentException e) {
                 modelAndView.addObject("addEmailFail", true);
                 modelAndView.addObject("emailMessage", e.getMessage());

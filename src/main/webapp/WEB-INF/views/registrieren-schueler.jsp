@@ -25,6 +25,7 @@
                 <div id="successMessage" class="alert alert-success" role="alert"> 
                     Der Schüler wurde erfolgreich angelegt.    
                 </div>
+                <meta http-equiv="refresh" content="3; URL=${redirect}">
             </c:if>
             <c:if test="${addFail}">
                 <div id="errorMessage" class="alert alert-danger" role="alert"> 
