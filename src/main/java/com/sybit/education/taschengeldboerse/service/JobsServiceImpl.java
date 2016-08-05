@@ -100,8 +100,21 @@ public class JobsServiceImpl implements JobsService {
     }
     
     @Override
-    public List<Job> getFreeJobs() {
-       return jobRepository.findBySchuelerIsNull();
+    public List<Job> getFreeJobs(Integer schuelerId) {
+        List <Job> jobList =jobRepository.findBySchuelerIsNull();
+         
+        for(int i =0; i < jobList.size(); ++i){
+            Job job = jobList.get(i); 
+            Jobbewerbung bewerbung = jobBewerbungService.findByJobidAndSchuelerid(job.getId(), schuelerId);
+             
+             if(bewerbung != null){
+                
+                 jobList.remove(i);
+                
+             }
+        }
+       return jobList;
+      
     }
 
     @Override
