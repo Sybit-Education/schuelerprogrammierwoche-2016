@@ -154,7 +154,8 @@
                     <label for="entlohnung" class="col-md-3 control-label"> Lohn <font color="red">*</font>: </label>
                     <div class="col-md-9">
                         <div class="input-group">
-                            <form:input path="entlohnung" name="entlohnung" class="form-control" id="entlohnung" type="number" required="true" />
+                            <form:input path="entlohnung" name="entlohnung" class="form-control" id="entlohnung"
+                                        min="1" max="450" type="number" required="true" />
                             <div class="input-group-addon">€</div>
                         </div>
                     </div>

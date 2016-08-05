@@ -56,7 +56,7 @@
                             <p>Name: ${anbieter.anrede} ${anbieter.vorname} ${anbieter.name}</p>
                             <p>E-Mail: ${anbieter.email}</p>
                             <p>Straße: ${anbieter.strasse}</p>
-                            <p>Wohnohrt: ${anbieter.plz}, ${anbieter.wohnort}</p>
+                            <p>Wohnort: ${anbieter.plz}, ${anbieter.wohnort}</p>
                         </div>
                     </div>
                 </div>
