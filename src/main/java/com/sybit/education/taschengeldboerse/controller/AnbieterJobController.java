@@ -196,10 +196,11 @@ public class AnbieterJobController {
         //ausgewählter Job
         Job job = jobService.findById(jobId);
 
+        jobService.bewerbungAnnehmen(jobId, schuerlerId);
+        
         //Was wird nun angezeigt? die offenen Jobs?
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
-        jobService.bewerbungAnnehmen(jobId, schuerlerId);
         modelAndView.addObject("seitenTitel", "Meine offenen Jobs");
 
         modelAndView.setViewName("anbieter-bewerbungen");

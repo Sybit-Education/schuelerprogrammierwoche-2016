@@ -21,17 +21,24 @@
             <div class="page-header">
                 <h2>Job-Anbieter Registrierung</h2>
             </div>
+            <div class="col-md-3"></div>
             <c:if test="${addSuccsess}">
-                <div id="successMessage" class="alert alert-success" role="alert">Der Anbieter wurde erfolgreich angelegt.</div>
+                <div id="successMessage" class="col-md-9 alert alert-success" role="alert">
+                    <center><b>Der Anbieter wurde erfolgreich angelegt.</b></center>
+                </div>
                 <meta http-equiv="refresh" content="3; URL=${redirect}">
             </c:if>
                 
             <c:if test="${addFail}">
-                <div id="successMessage" class="alert alert-danger" role="alert">Der Anbieter konnte nicht angelegt werden.</div>
+                <div id="successMessage" class="col-md-9 alert alert-danger" role="alert">
+                    <center><b>Der Anbieter konnte nicht angelegt werden.</b></center>
+                </div>
             </c:if>
                 
             <c:if test="${addEmailFail}">
-                <div id="successMessage" class="alert alert-danger" role="alert">${emailMessage}</div>
+                <div id="successMessage" class="col-md-9 alert alert-danger" role="alert">
+                    <center><b>${emailMessage}</b></center>
+                </div>
             </c:if>
             
             <c:url var = "action" value="/registrieren/anbieter" />

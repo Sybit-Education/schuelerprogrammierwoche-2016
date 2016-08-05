@@ -21,20 +21,21 @@
             <div class="page-header">
                 <h2>Schüler Registrierung</h2>
             </div>
+            <div class="col-md-3"></div>
             <c:if test="${addSuccess}">
-                <div id="successMessage" class="alert alert-success" role="alert"> 
-                    Der Schüler wurde erfolgreich angelegt.    
+                <div id="successMessage" class="col-md-9 alert alert-success" role="alert">
+                    <center><b>Der Schüler wurde erfolgreich angelegt.</b></center>
                 </div>
                 <meta http-equiv="refresh" content="3; URL=${redirect}">
             </c:if>
             <c:if test="${addFail}">
-                <div id="errorMessage" class="alert alert-danger" role="alert"> 
-                    Der Schüler konnte nicht angelegt werden.    
+                <div id="errorMessage" class="col-md-9 alert alert-danger" role="alert">
+                    <center><b>Der Schüler konnte nicht angelegt werden.</b></center>
                 </div>
             </c:if>
             <c:if test="${addEmailFail}">
-                <div id="errorEmail" class="alert alert-danger" role="alert"> 
-                    ${emailMessage}
+                <div id="errorEmail" class="col-md-9 alert alert-danger" role="alert"> 
+                    <center><b>${emailMessage}</b></center>
                 </div>
             </c:if>
             <br>
