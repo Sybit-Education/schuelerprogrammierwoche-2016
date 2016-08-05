@@ -68,23 +68,6 @@ public class JobServiceTest extends AbstractDatabaseTest {
         List<Job> jobList = service.getJobsOfAnbieter(anbieter);
         assertEquals(1, jobList.size());
     }
-
-    @Test
-    public void testIsJobOfSchueler() {
-
-        boolean actual = service.isJobOfSchueler(1, 1);
-        assertEquals(true, actual);
-
-        actual = service.isJobOfSchueler(1, 4);
-        assertEquals(false, actual);
-        
-        actual = service.isJobOfSchueler(1, 4000);
-        assertEquals(false, actual);
-        
-        actual = service.isJobOfSchueler(100000, 2);
-        assertEquals(false, actual);
-    }
-
     
     @Test
     public void testBewerberAnnehmen(){
