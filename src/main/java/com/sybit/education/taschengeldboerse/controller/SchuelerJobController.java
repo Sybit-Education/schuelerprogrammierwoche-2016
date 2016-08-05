@@ -130,6 +130,36 @@ public class SchuelerJobController {
         return modelAndView;
 
     }
+    
+      /**
+     * Zeigt die Details für den Job mit der gegebenen ID an.
+     *
+     * @param id des jobs
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/schueler/angenommene-job-anfragen/detail/{id}", method = RequestMethod.GET)
+    public ModelAndView getJobDetailAssigned(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        Job job = jobService.findById(id);
+        Schueler schueler = getSchueler(request);
+        Jobbewerbung bewerbung = bewerbungService.findByJobidAndSchuelerid(job.getId(), schueler.getId());
+
+        boolean canRequest = false;
+
+        if (bewerbung == null) {
+            canRequest = true;
+        }
+
+        modelAndView.addObject("job", job);
+        modelAndView.addObject("canRequest", canRequest);
+        modelAndView.setViewName("job-detail");
+
+        return modelAndView;
+
+    }
 
     @RequestMapping(value = "/schueler/offene-job-anfragen", method = RequestMethod.GET)
     public ModelAndView getJobListBeworben(final Model model, final HttpServletRequest request) {
