@@ -22,18 +22,25 @@
                 <h2>Meine offenen Jobs</h2>
             </div>
 
-            <div class="row">
-                <c:forEach items="${jobs}" var="job">
+            <c:forEach items="${jobs}" var="job">
                     <div class="col-md-12">
-                       <h3><li><a href="<c:url value="/anbieter/jobs/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
-                             
-                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="<c:url value="/anbieter/jobs/detail/${job.id}" />">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="badge">14</span>
+                                            ${job.bezeichnung}
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </c:forEach>  
-            </div>
+            </c:forEach>  
         </div>
-        
-        
+
+
 
         <c:import url="inc/footer.jsp" />
     </body>

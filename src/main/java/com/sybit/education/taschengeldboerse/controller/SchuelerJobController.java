@@ -57,27 +57,7 @@ public class SchuelerJobController {
         return modelAndView;
     }
 
-    /*//NOTE: Duplikat?!
-    @RequestMapping(value = "/schueler/jobs/{id}/bewerben", method = RequestMethod.GET)
-    public ModelAndView jobBewerben(final HttpServletRequest request, @PathVariable("id") Integer jobId) {
-        LOGGER.debug("job-liste -----> job id=" + jobId);
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-
-        //bewerben...
-        jobService.bewerben(username, jobId);
-        
-        
-        List getSchuelerJobListFree = jobService.getFreeJobs();
-        
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("getSchuelerJobListFree", getSchuelerJobListFree);
-        modelAndView.setViewName("job-liste");
-        
-        LOGGER.debug("job-liste <-----");
-        return modelAndView;
-    }*/
+    
     /**
      * Speichert die Bewerbung ab.
      *
@@ -181,10 +161,25 @@ public class SchuelerJobController {
         return modelAndView;
     }
 
-  
+    /**
+     * Der Anbieter Akzeptiert Bewerbungen auf seine Jobs
+     * TODO: Bewerbugen akzeptieren
+     * @param request
+     * @return 
+     */
+    @RequestMapping(value = "/anbieter/bewerbungen", method = RequestMethod.POST)
+    public ModelAndView meineJobsAccept(final HttpServletRequest request) {
+        Anbieter anbieter = userService.getAnbieterByEmail(request.getRemoteUser());
 
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobs", jobService.getFreeJobsOfAnbieter(anbieter));
 
-    /* Listet für den Schüler seine angenommenen Jobs auf.
+        modelAndView.setViewName("anbieter-bewerbungen");
+        
+        return modelAndView;
+    }
+    
+     /* Listet für den Schüler seine angenommenen Jobs auf.
      *
      * @param model
      * @param request
