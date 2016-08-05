@@ -6,18 +6,16 @@
 package com.sybit.education.taschengeldboerse.testService;
 
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
+import com.sybit.education.taschengeldboerse.domain.Status;
 import com.sybit.education.taschengeldboerse.service.JobbewerbungService;
 import com.sybit.education.taschengeldboerse.testutil.AbstractDatabaseTest;
-import java.util.List;
-import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  *
@@ -58,11 +56,19 @@ public class JobbewerbungServiceTest extends AbstractDatabaseTest{
     }
 
 
-/*    @Test
+    @Test
     public void flushBewerbungTable(){
+        Integer jobId = 3;
+        Integer schuelerId = 6;
         List<Jobbewerbung> bewerbungsListe = jobbewerbungservice.findAllByJobid(3);
-        jobbewerbungservice.bewerbungAnnehmen(Integer schuelerId);
-    }*/
+        assertEquals(3, bewerbungsListe.size());
+
+        bewerbungsListe = jobbewerbungservice.bewerbungAnnehmen(jobId, schuelerId);
+        assertEquals(Status.ACCEPTED, bewerbungsListe.get(2).getStatus());
+        assertEquals(Status.DECLINED, bewerbungsListe.get(1).getStatus());
+        assertEquals(Status.DECLINED, bewerbungsListe.get(0).getStatus());
+
+    }
     
     @Override
     public String getDataset() {

@@ -14,4 +14,6 @@ import com.sybit.education.taschengeldboerse.domain.Anbieter;
 public interface AnbieterService {
     
     Anbieter findAnbieterById(int Id);
+    
+    void updateAnbieter(Anbieter anbieter);
 }
