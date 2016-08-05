@@ -196,6 +196,16 @@ public class AnbieterJobController {
 
         return modelAndView;
     }
+    
+    @RequestMapping(value = "/anbieter/job/detail/{jobId}", method = RequestMethod.GET)
+    public ModelAndView getJobDetail(@PathVariable("jobId") Integer jobId, final HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        
+        modelAndView.addObject("bewerberListe", bewerbungService.getAllBewerberByJobid(jobId));
+        
+        modelAndView.setViewName("anbieter-job-detail");
+        return modelAndView;
+    }
 
     /**
      * Anbieter anhand des request objets auslesen.
