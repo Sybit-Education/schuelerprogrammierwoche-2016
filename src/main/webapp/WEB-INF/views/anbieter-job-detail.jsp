@@ -60,8 +60,9 @@
                     </c:forEach>
                 </div>
             </div>
-                
-            <button class="btn btn-large btn-primary" onclick="window.location.href = '<c:url value="/anbieter/bewerbungen" />'">Zurück</button>
+            <div class="row">
+                <button class="btn btn-large btn-primary" onclick="window.location.href = '<c:url value="/anbieter/bewerbungen" />'">Zurück</button>
+            </div>
         </div>
 
         <c:import url="inc/footer.jsp" />
