@@ -56,7 +56,7 @@
                             <p>Name: ${schueler.anrede} ${schueler.vorname} ${schueler.name}</p>
                             <p>E-Mail Adresse: ${schueler.email}</p>
                             <p>Geburtstag: ${schueler.geburtsdatum}</p>
-                            <p>Wohnohrt: ${schueler.plz}, ${schueler.wohnort}</p>
+                            <p>Wohnort: ${schueler.plz}, ${schueler.wohnort}</p>
                         </div>
                     </div>
                 </div>
