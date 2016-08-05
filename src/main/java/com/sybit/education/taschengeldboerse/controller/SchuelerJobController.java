@@ -1,5 +1,6 @@
 package com.sybit.education.taschengeldboerse.controller;
 
+import com.sybit.education.taschengeldboerse.domain.Anbieter;
 import com.sybit.education.taschengeldboerse.domain.Job;
 import com.sybit.education.taschengeldboerse.domain.Jobbewerbung;
 import com.sybit.education.taschengeldboerse.domain.Schueler;
@@ -130,6 +131,38 @@ public class SchuelerJobController {
         return modelAndView;
 
     }
+    
+      /**
+     * Zeigt die Details für den Job mit der gegebenen ID an.
+     *
+     * @param id des jobs
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/schueler/angenommene-job-anfragen/detail/{id}", method = RequestMethod.GET)
+    public ModelAndView getJobDetailAssigned(@PathVariable("id") final Integer id, final Model model, final HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        Job job = jobService.findById(id);
+        Schueler schueler = getSchueler(request);
+        Anbieter anbieter = userService.getAnbieterById(job.getAnbieter());
+        Jobbewerbung bewerbung = bewerbungService.findByJobidAndSchuelerid(job.getId(), schueler.getId());
+
+        boolean canRequest = false;
+
+        if (bewerbung == null) {
+            canRequest = true;
+        }
+
+        modelAndView.addObject("job", job);
+        modelAndView.addObject("anbieter", anbieter);
+        modelAndView.addObject("canRequest", canRequest);
+        modelAndView.setViewName("job-detail-mit-anbieter");
+
+        return modelAndView;
+
+    }
 
     @RequestMapping(value = "/schueler/offene-job-anfragen", method = RequestMethod.GET)
     public ModelAndView getJobListBeworben(final Model model, final HttpServletRequest request) {
@@ -142,7 +175,7 @@ public class SchuelerJobController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("seitenTitel", "Meine Bewerbungen");
         modelAndView.addObject("jobList", jobListe);
-        modelAndView.setViewName("job-liste-offene-anfragen");
+        modelAndView.setViewName("job-liste-mit-anbieter");
         
 
         
