@@ -127,6 +127,10 @@ public class JobsServiceImpl implements JobsService {
         return jobRepository.findByAnbieterAndSchuelerIsNull(anbieter.getId());
     }
 
+        @Override
+    public List<Job> getAssignedJobsOfAnbieter(Anbieter anbieter) {
+        return jobRepository.findByAnbieterAndSchuelerIsNotNull(anbieter.getId());
+    }
     /**
      * Prüft, ob der Job an den Schüler mit der gegebenen ID vergeben ist.
      * 

@@ -25,7 +25,7 @@
             <div class="row">
                 <c:forEach items="${jobs}" var="job">
                     <div class="col-md-12">
-                       <h3><li><a href="<c:url value="/anbieter/bewerbungen/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
+                       <h3><li><a href="<c:url value="/anbieter/jobs/detail/${job.id}" />">${job.bezeichnung}</a></li></h3>
                              
                         
                     </div>
